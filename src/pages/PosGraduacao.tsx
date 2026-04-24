@@ -222,15 +222,15 @@ export default function PosGraduacao() {
               <Award className="w-3.5 h-3.5" /> Reconhecido pelo MEC
             </span>
 
-            <h1 className="hero-headline mb-6">
-              <span style={{ color: 'oklch(0.93 0.006 250)' }}>
-                Pós-Graduação em Gestão Estratégica de Dados
-              </span>
-              <br />
-              <span className="text-gradient">
-                Reconhecida pelo MEC e focada no mercado de dados
-              </span>
-            </h1>
+            <h1 className="hero-headline mb-4">
+  <span style={{ color: 'oklch(0.93 0.006 250)' }}>
+    Pós-Graduação em Gestão Estratégica de Dados
+  </span>
+</h1>
+
+<h2 className="text-gradient text-2xl md:text-3xl font-semibold mb-6">
+  Reconhecida pelo MEC e focada no mercado de dados
+</h2>
 
             <p className="hero-sub mx-auto mb-10 max-w-3xl">
               Pós-graduação em dados reconhecida pelo MEC, com foco em análise de dados, engenharia de dados,
