@@ -520,7 +520,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={IMAGES.fototurma.jpeg}
+                    src={IMAGES.fototurma}
                     alt="Turma atual Yto Nihon — sala moderna com alunos"
                     className="w-full object-cover"
                     style={{ height: '180px', objectPosition: 'center center', filter: 'brightness(0.90) saturate(0.90)' }}
