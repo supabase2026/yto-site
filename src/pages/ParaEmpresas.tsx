@@ -124,6 +124,11 @@ const faqs = [
     answer:
       'Sim. Os participantes podem receber certificado de participação conforme o treinamento contratado e a carga horária realizada.',
   },
+{
+  question: 'O treinamento pode ser adaptado para a realidade da empresa?',
+  answer:
+    'Sim. Os treinamentos são estruturados de acordo com o nível da equipe, os objetivos da empresa, os desafios internos e as ferramentas utilizadas no dia a dia.',
+},
 ];
 
 const WHATSAPP_PROPOSTA =
@@ -188,12 +193,11 @@ export default function ParaEmpresas() {
                 }}
               >
                 Treinamentos corporativos em{' '}
-                <span className="text-gradient">dados, tecnologia e produtividade</span>
+                <span className="text-gradient">Excel, Power BI e Dados para empresas</span>
               </h1>
 
               <p className="text-lg mb-10 max-w-2xl" style={{ color: 'oklch(0.62 0.012 250)', lineHeight: 1.7 }}>
-                Capacite sua equipe com treinamentos práticos em Excel, Power BI, SQL, Inteligência Artificial e MS Project,
-                aplicados à realidade da sua empresa.
+                Capacite sua equipe com treinamentos práticos, personalizados e aplicados ao negócio em Excel, Power BI, SQL, Inteligência Artificial, Business Intelligence e MS Project.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -286,14 +290,15 @@ export default function ParaEmpresas() {
       <section className="section-pad" style={{ background: 'oklch(0.08 0.020 250)' }}>
         <div className="container-xl max-w-3xl text-center">
           <span className="section-tag">Desafio das empresas</span>
-          <h2 className="section-headline mb-6">Ferramentas sozinhas não geram resultado</h2>
+          <h2 className="section-headline mb-6">Sua equipe trabalha com dados, mas ainda enfrenta dificuldades?</h2>
           <p className="text-base mb-4" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
-            Muitas empresas já possuem Excel, Power BI, bancos de dados e ferramentas de inteligência artificial, mas ainda
-            enfrentam dificuldades para transformar esses recursos em produtividade, análise e tomada de decisão.
-          </p>
-          <p className="text-base" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
-            O Grupo Yto Nihon ajuda equipes a usar tecnologia de forma prática, aplicada e conectada aos objetivos do negócio.
-          </p>
+          Muitas empresas enfrentam retrabalho com planilhas, falta de padronização nas análises, dependência de poucos colaboradores-chave
+          e dificuldade para transformar dados em decisões práticas.
+        </p>
+        <p className="text-base" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
+          O Grupo Yto Nihon desenvolve treinamentos corporativos em Excel, Power BI, SQL, Inteligência Artificial e Business Intelligence
+          para ajudar equipes a ganhar produtividade, clareza e autonomia.
+        </p>
         </div>
       </section>
 
