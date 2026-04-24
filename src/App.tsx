@@ -1,3 +1,4 @@
+import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
@@ -16,7 +17,6 @@ import ParaEmpresas from "./pages/ParaEmpresas";
 import MonteJornada from "./pages/MonteJornada";
 import Contato from "./pages/Contato";
 import { ROUTE_PATHS } from "./lib/index";
-import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
 const queryClient = new QueryClient();
 
 function ScrollToTop(): null {
