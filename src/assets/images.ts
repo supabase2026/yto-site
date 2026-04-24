@@ -71,7 +71,7 @@ export const IMAGES = {
   RECKITT_POWER_BI_44: "/images/Reckitt Power BI.jpeg",
   SAMECH_EXCEL_42: "/images/Samech Excel.jpeg",
   SOUZA_CRUZ_IN_COMPANY_POWER_BI_36: "/images/Souza Cruz, In Company Power BI.jpeg",
-  TURMA_FECHADA_NO_ESCRITO_RIO_DO_GRUPO_YTO_NIHON_39: "/images/Turma fechada no escritório do Grupo Yto Nihon.jpeg",
+  TURMA_FECHADA_NO_ESCRITO_RIO_DO_GRUPO_YTO_NIHON_39: "/images/turma-fechada-yto-nihon.jpg",
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;
