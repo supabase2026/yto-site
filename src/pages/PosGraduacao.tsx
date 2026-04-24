@@ -13,124 +13,148 @@ const courseInfo = [
 ];
 
 const disciplines = [
-  { title: 'AWS para Gestão de Dados' },
-  { title: 'Databricks + IA Generativa' },
-  { title: 'Data Visualization com Python' },
-  { title: 'Empreendedorismo' },
-  { title: 'Engenharia de Dados na Prática' },
-  { title: 'Gestão de Projetos em Dados' },
-  { title: 'Governança de Dados' },
-  { title: 'Modelagem de Dados com SQL Server' },
+  {
+    title: 'AWS para Gestão de Dados',
+    contents: [
+      'Fundamentos de cloud computing com AWS',
+      'Armazenamento e gerenciamento de dados na nuvem',
+      'Processamento de dados com serviços AWS',
+      'Boas práticas de segurança e arquitetura',
+    ],
+  },
+  {
+    title: 'Databricks + IA Generativa',
+    contents: [
+      'Introdução ao Databricks e Apache Spark',
+      'Processamento distribuído de dados',
+      'Aplicações de IA Generativa',
+      'Integração com pipelines de dados',
+    ],
+  },
+  {
+    title: 'Data Visualization com Python',
+    contents: [
+      'Matplotlib, Seaborn e Plotly',
+      'Dashboards interativos',
+      'Storytelling com dados',
+      'Boas práticas de visualização',
+    ],
+  },
 ];
+
+function DisciplineAccordion({ discipline, index }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="border border-gray-700 rounded-lg overflow-hidden">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex justify-between px-6 py-4 text-left"
+      >
+        <span>{discipline.title}</span>
+        <ChevronDown className={`transition ${open ? 'rotate-180' : ''}`} />
+      </button>
+
+      {open && (
+        <div className="px-6 pb-4">
+          <ul>
+            {discipline.contents.map((item) => (
+              <li key={item} className="flex gap-2 text-sm text-gray-400">
+                <CheckCircle2 className="w-4 h-4 mt-1" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function PosGraduacao() {
   return (
     <Layout>
 
-      {/* HERO LIMPO */}
-      <section
-        className="relative flex items-center justify-center text-center"
-        style={{ background: 'var(--brand-navy)', minHeight: '80vh', padding: '6rem 0' }}
-      >
-        <div className="absolute inset-0">
-          <img
-            src={IMAGES.PO_S_GRADUAC_A_O_EM_GESTA_O_ESTRATE_GICA_DE_DADOS_48}
-            className="w-full h-full object-cover opacity-10"
-          />
-        </div>
+      {/* HERO */}
+      <section className="text-center py-24 relative">
+        <img
+          src={IMAGES.PO_S_GRADUAC_A_O_EM_GESTA_O_ESTRATE_GICA_DE_DADOS_48}
+          className="absolute inset-0 w-full h-full object-cover opacity-10"
+        />
 
-        <div className="container-xl relative z-10 max-w-3xl">
-          <span className="pill-badge mb-6 inline-flex items-center gap-2">
-            <Award className="w-4 h-4" /> Diploma reconhecido pelo MEC
+        <div className="relative z-10 max-w-3xl mx-auto">
+
+          <span className="mb-6 inline-flex items-center gap-2">
+            <Award /> Diploma reconhecido pelo MEC
           </span>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="text-4xl font-bold mb-4">
             Pós-Graduação em Gestão Estratégica de Dados
           </h1>
 
-          <p className="text-lg text-gray-300 mb-10">
-            Formação completa para profissionais que desejam evoluir na carreira,
-            dominar dados e atuar com visão estratégica no mercado atual.
+          <h2 className="text-xl text-gray-300 mb-6">
+            Formação completa em dados, tecnologia e decisões estratégicas
+          </h2>
+
+          <p className="text-gray-400 mb-10">
+            Desenvolva competências em análise de dados, engenharia e inteligência artificial,
+            conectando tecnologia e negócios para atuar em projetos reais.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            {courseInfo.map((info) => (
-              <div key={info.label} className="px-5 py-3 rounded-xl border border-gray-700">
-                <info.icon className="w-4 h-4 mx-auto mb-1" />
-                <div className="text-xs text-gray-400">{info.label}</div>
-                <div className="text-sm font-semibold">{info.value}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={WHATSAPP_LINK} className="btn-primary px-8 py-3">
+          <div className="flex justify-center gap-4 mb-10">
+            <a href={WHATSAPP_LINK} className="btn-primary">
               Quero fazer parte da próxima turma
             </a>
 
-            <a href={WHATSAPP_LINK} className="btn-outline px-8 py-3">
-              Falar com um especialista
+            <a href={WHATSAPP_LINK} className="btn-whatsapp">
+              Falar com especialista
             </a>
           </div>
-        </div>
-      </section>
 
-      {/* PROVA SOCIAL DISCRETA */}
-      <section className="py-8 bg-black text-center">
-        <div className="container-xl flex justify-center gap-8 text-sm text-gray-400">
-          <span>+100.000 alunos formados</span>
-          <span>+200 empresas atendidas</span>
-          <span>Avaliação média 5 estrelas</span>
         </div>
       </section>
 
       {/* BLOCO INSTITUCIONAL */}
-      <section className="section-pad text-center max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6">
-          O mercado exige mais do que ferramentas
+      <section className="text-center py-16 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold mb-6">
+          O mercado exige mais do que conhecimento técnico
         </h2>
 
         <p className="text-gray-400 mb-4">
-          Empresas buscam profissionais capazes de transformar dados em decisões estratégicas.
+          Profissionais que dominam ferramentas já não se destacam como antes.
         </p>
 
         <p className="text-gray-400">
-          Esta pós-graduação foi estruturada para desenvolver essa visão de forma prática e aplicada.
+          O diferencial está em transformar dados em decisões estratégicas.
         </p>
       </section>
 
       {/* GRADE */}
-      <section className="section-pad">
-        <div className="container-xl max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-10">
-            Grade Curricular
-          </h2>
+      <section className="max-w-4xl mx-auto py-20">
+        <h2 className="text-2xl font-bold text-center mb-10">
+          Grade Curricular
+        </h2>
 
-          <div className="grid gap-4">
-            {disciplines.map((d, i) => (
-              <div key={i} className="p-4 border border-gray-700 rounded-lg">
-                {d.title}
-              </div>
-            ))}
-          </div>
+        <div className="space-y-3">
+          {disciplines.map((d, i) => (
+            <DisciplineAccordion key={i} discipline={d} index={i} />
+          ))}
         </div>
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-20 text-center">
-        <div className="container-xl max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">
-            Inicie sua evolução profissional
-          </h2>
+      <section className="text-center py-20">
+        <h2 className="text-2xl font-bold mb-6">
+          Inicie sua evolução profissional
+        </h2>
 
-          <p className="text-gray-400 mb-8">
-            Próximas turmas com vagas limitadas. Fale com nossa equipe e entenda se este é o próximo passo ideal para sua carreira.
-          </p>
+        <p className="text-gray-400 mb-8">
+          Fale com nossa equipe e entenda se essa pós é o próximo passo ideal para você.
+        </p>
 
-          <a href={WHATSAPP_LINK} className="btn-primary px-10 py-4">
-            Falar com a equipe
-          </a>
-        </div>
+        <a href={WHATSAPP_LINK} className="btn-primary">
+          Falar com a equipe
+        </a>
       </section>
 
     </Layout>
