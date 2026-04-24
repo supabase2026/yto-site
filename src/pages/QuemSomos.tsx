@@ -120,7 +120,7 @@ export default function QuemSomos() {
             >
               <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid oklch(0.28 0.040 250 / 0.40)' }}>
                 <img
-                  src={IMAGES.TURMA_FECHADA_NO_ESCRITO_RIO_DO_GRUPO_YTO_NIHON_39}
+                  src={IMAGES.FOTO_COM_TURMA_69}
                   alt="Turma em treinamento corporativo no Grupo Yto Nihon"
                   className="w-full h-80 object-cover"
                   style={{ opacity: 0.92 }}
