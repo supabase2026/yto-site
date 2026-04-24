@@ -519,12 +519,19 @@ export default function Home() {
                     border: '1px solid oklch(0.26 0.036 250 / 0.45)',
                   }}
                 >
-                  <img
-                    src={IMAGES.FOTO_COM_TURMA_69}
-                    alt="Turma atual Yto Nihon — sala moderna com alunos"
-                    className="w-full object-cover"
-                    style={{ height: '180px', objectPosition: 'center center', filter: 'brightness(0.90) saturate(0.90)' }}
-                  />
+                  <div
+                  role="img"
+                  aria-label="Turma atual Yto Nihon — sala moderna com alunos"
+                  className="w-full"
+                  style={{
+                    height: '180px',
+                    backgroundImage: "url('/images/fototurma.jpeg?v=3')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center',
+                    backgroundRepeat: 'no-repeat',
+                    filter: 'brightness(0.90) saturate(0.90)',
+                  }}
+                />
                   <div
                     className="absolute inset-0"
                     style={{ background: 'linear-gradient(to top, oklch(0.09 0.022 250 / 0.65) 0%, transparent 45%)' }}
