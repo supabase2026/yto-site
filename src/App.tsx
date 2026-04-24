@@ -16,7 +16,7 @@ import ParaEmpresas from "./pages/ParaEmpresas";
 import MonteJornada from "./pages/MonteJornada";
 import Contato from "./pages/Contato";
 import { ROUTE_PATHS } from "./lib/index";
-
+import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
 const queryClient = new QueryClient();
 
 function ScrollToTop(): null {
@@ -48,6 +48,7 @@ const App = () => (
           <Route path={ROUTE_PATHS.PARA_EMPRESAS} element={<ParaEmpresas />} />
           <Route path={ROUTE_PATHS.JORNADA} element={<MonteJornada />} />
           <Route path={ROUTE_PATHS.CONTATO} element={<Contato />} />
+          <Route path="/treinamento-excel-empresas" element={<TreinamentoExcelEmpresas />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
