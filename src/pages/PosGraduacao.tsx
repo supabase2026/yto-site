@@ -101,17 +101,17 @@ const differentials = [
   {
     icon: Video,
     title: 'Aulas Gravadas + Ao Vivo',
-    description: 'Combine flexibilidade de conteúdo gravado com interação em encontros ao vivo com professores especialistas.',
+    description: 'Flexibilidade de aulas gravadas com encontros ao vivo para revisão, aprofundamento e direcionamento.',
   },
   {
     icon: Users,
     title: 'Professores do Mercado',
-    description: 'Corpo docente formado por consultores e profissionais atuantes em grandes empresas brasileiras e internacionais.',
+    description: 'Corpo docente formado por profissionais atuantes em dados, tecnologia, gestão e negócios.',
   },
   {
     icon: Star,
-    title: 'Mais de 200 Avaliações ⭐ 5 estrelas',
-    description: 'Reconhecimento real de alunos que transformaram suas carreiras com o programa.',
+    title: 'Mais de 200 Avaliações 5 estrelas',
+    description: 'Reputação construída com alunos que evoluíram profissionalmente por meio da educação prática.',
   },
 ];
 
@@ -156,6 +156,7 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
             {discipline.title}
           </span>
         </div>
+
         <ChevronDown
           className="w-4 h-4 flex-shrink-0 transition-transform duration-300"
           style={{ transform: open ? 'rotate(180deg)' : 'rotate(0)', color: 'oklch(0.56 0.23 250)' }}
@@ -194,6 +195,7 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
 export default function PosGraduacao() {
   return (
     <Layout>
+      {/* HERO */}
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{ background: 'var(--brand-navy)', minHeight: '80vh', paddingTop: '5rem', paddingBottom: '5rem' }}
@@ -218,25 +220,31 @@ export default function PosGraduacao() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 30 }}
           >
-            <span className="pill-badge-green pill-badge mb-8 inline-flex items-center gap-1.5">
+            <span className="pill-badge-green pill-badge mb-6 inline-flex items-center gap-1.5">
               <Award className="w-3.5 h-3.5" /> Reconhecido pelo MEC
             </span>
 
             <h1 className="hero-headline mb-4">
-  <span style={{ color: 'oklch(0.93 0.006 250)' }}>
-    Pós-Graduação em Gestão Estratégica de Dados
-  </span>
-</h1>
+              <span style={{ color: 'oklch(0.93 0.006 250)' }}>
+                Pós-Graduação em Gestão Estratégica de Dados
+              </span>
+            </h1>
 
-<h2 className="text-gradient text-2xl md:text-3xl font-semibold mb-6">
-  Reconhecida pelo MEC e focada no mercado de dados
-</h2>
+            <h2 className="text-gradient text-2xl md:text-3xl font-semibold mb-6">
+              Reconhecida pelo MEC e focada no mercado de dados
+            </h2>
 
             <p className="hero-sub mx-auto mb-10 max-w-3xl">
               Pós-graduação em dados reconhecida pelo MEC, com foco em análise de dados, engenharia de dados,
               inteligência artificial e gestão estratégica. Desenvolva habilidades práticas e prepare-se para atuar
               com dados em empresas, projetos e decisões estratégicas em apenas 9 meses.
             </p>
+
+            <div className="flex flex-wrap justify-center gap-6 mb-10 text-sm md:text-base">
+              <span className="font-semibold text-white">+100.000 alunos formados</span>
+              <span className="font-semibold text-white">+200 empresas atendidas</span>
+              <span className="font-semibold text-white">+200 avaliações 5 estrelas</span>
+            </div>
 
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               {courseInfo.map((info, index) => (
@@ -263,12 +271,16 @@ export default function PosGraduacao() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-base px-8 py-3.5">
-                <MessageCircle className="w-5 h-5" /> Quero saber mais
+                <MessageCircle className="w-5 h-5" /> Quero garantir minha vaga
               </a>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-8 py-3.5">
-                Matricule-se agora
+                Entrar na próxima turma
               </a>
             </div>
+
+            <p className="text-sm mt-5" style={{ color: 'oklch(0.62 0.010 250)' }}>
+              Investimento acessível com possibilidade de parcelamento facilitado.
+            </p>
 
             <div className="mt-6">
               <a
@@ -286,6 +298,31 @@ export default function PosGraduacao() {
         </div>
       </section>
 
+      {/* DOR / CONEXÃO */}
+      <section className="section-pad" style={{ background: 'oklch(0.08 0.024 250)' }}>
+        <div className="container-xl text-center max-w-3xl">
+          <h2 className="section-headline mb-6">
+            Você sente que está ficando para trás no mercado de dados?
+          </h2>
+
+          <p className="text-base mb-4 text-gray-300">
+            Muitas empresas já tomam decisões com dados, inteligência artificial e indicadores. Ao mesmo tempo,
+            muitos profissionais ainda não sabem como transformar ferramentas em estratégia.
+          </p>
+
+          <p className="text-base mb-4 text-gray-300">
+            Se você já trabalha com Excel, BI, tecnologia, gestão ou análise, mas sente que precisa evoluir para
+            um nível mais estratégico, esta pós-graduação foi pensada para esse momento.
+          </p>
+
+          <p className="text-base text-gray-300">
+            A proposta é preparar você para atuar com dados, projetos e decisões de negócio com mais segurança,
+            repertório técnico e visão profissional.
+          </p>
+        </div>
+      </section>
+
+      {/* DIFERENCIAIS */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
           <motion.div
@@ -333,6 +370,7 @@ export default function PosGraduacao() {
         </div>
       </section>
 
+      {/* GRADE CURRICULAR */}
       <section className="section-pad" style={{ background: 'var(--brand-navy)' }}>
         <div className="container-xl">
           <motion.div
@@ -401,13 +439,14 @@ export default function PosGraduacao() {
                 <MessageCircle className="w-5 h-5" /> Falar com especialista
               </a>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-3.5">
-                Matricule-se agora
+                Entrar na próxima turma
               </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* PÚBLICO-ALVO */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
           <motion.div
@@ -446,6 +485,7 @@ export default function PosGraduacao() {
         </div>
       </section>
 
+      {/* CTA FINAL */}
       <section
         className="relative py-24 overflow-hidden text-center"
         style={{ background: 'linear-gradient(135deg, oklch(0.14 0.040 250) 0%, oklch(0.10 0.028 250) 100%)' }}
@@ -468,14 +508,20 @@ export default function PosGraduacao() {
               Garanta sua vaga na pós-graduação em gestão estratégica de dados e desenvolva habilidades essenciais
               para atuar com dados, tecnologia e inteligência de negócios em empresas e projetos reais.
             </p>
+
+            <p className="text-sm mb-8" style={{ color: 'oklch(0.62 0.010 250)' }}>
+              Condições especiais de matrícula e parcelamento facilitado.
+            </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-base px-10 py-4">
-                <MessageCircle className="w-5 h-5" /> Quero saber mais
+                <MessageCircle className="w-5 h-5" /> Quero garantir minha vaga
               </a>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-10 py-4">
-                Matricule-se agora
+                Entrar na próxima turma
               </a>
             </div>
+
             <div className="mt-6">
               <a
                 href={MEC_URL}
