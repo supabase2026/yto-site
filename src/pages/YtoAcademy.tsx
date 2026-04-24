@@ -1,5 +1,24 @@
 import { Layout } from "@/components/Layout";
 
+const CHECKOUT_LINK = "https://chk.eduzz.com/E9OOQN859B";
+const WHATSAPP_LINK =
+  "https://wa.me/5511910704164?text=Quero%20entender%20melhor%20a%20Yto%20Academy";
+
+const cursos = [
+  "Excel Essentials",
+  "Excel Expert",
+  "Excel para Análise de Dados",
+  "Power BI",
+  "SQL Server",
+  "Python para Análise de Dados",
+  "MS Project",
+  "Tableau",
+  "Linguagem R",
+  "Storytelling para Dados",
+  "VBA",
+  "Figma",
+];
+
 export default function YtoAcademy() {
   return (
     <Layout>
@@ -15,24 +34,28 @@ export default function YtoAcademy() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-              A Yto Academy é a plataforma de cursos online do Grupo Yto Nihon, criada para quem deseja desenvolver habilidades práticas em tecnologia, dados, produtividade e carreira.
+              A Yto Academy é a plataforma de cursos online do Grupo Yto Nihon,
+              criada para quem deseja desenvolver habilidades práticas em tecnologia,
+              dados, produtividade e carreira.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://wa.me/5511910704164?text=Tenho%20interesse%20na%20Yto%20Academy"
+                href={CHECKOUT_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-cyan-500 px-6 py-4 text-center font-semibold text-white transition hover:bg-cyan-400"
+                className="rounded-xl bg-green-500 px-6 py-4 text-center font-semibold text-white transition hover:bg-green-400"
               >
-                Quero conhecer a Yto Academy
+                Entrar na Yto Academy agora
               </a>
 
               <a
-                href="#cursos"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-xl border border-slate-600 px-6 py-4 text-center font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
               >
-                Ver cursos disponíveis
+                Falar com especialista
               </a>
             </div>
           </div>
@@ -55,49 +78,61 @@ export default function YtoAcademy() {
             </div>
 
             <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
-              <h2 className="text-xl font-bold text-cyan-300">Certificação</h2>
+              <h2 className="text-xl font-bold text-cyan-300">Plano acessível</h2>
               <p className="mt-3 text-slate-300">
-                Desenvolva novas competências e fortaleça seu currículo com uma trilha de aprendizado contínua.
+                Uma plataforma para desenvolver várias competências sem depender de cursos isolados.
               </p>
             </div>
           </div>
         </section>
 
         <section id="cursos" className="px-6 py-16 md:px-12 lg:px-24">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Cursos disponíveis na Yto Academy
+          <div className="mx-auto max-w-6xl text-center">
+            <span className="inline-block rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-sm font-semibold uppercase tracking-widest text-cyan-300">
+              Cursos disponíveis
+            </span>
+
+            <h2 className="mt-6 text-3xl font-bold md:text-5xl">
+              Ferramentas que você vai dominar
             </h2>
 
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-              A plataforma reúne cursos voltados para quem deseja aprender ferramentas essenciais do mercado de dados, tecnologia, produtividade e negócios.
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+              Acesso a trilhas de aprendizagem com ferramentas essenciais para dados,
+              tecnologia, produtividade e evolução profissional.
             </p>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                "Excel Essentials",
-                "Excel Expert",
-                "Excel para Análise de Dados",
-                "Power BI",
-                "SQL Server",
-                "Python para Análise de Dados",
-                "MS Project",
-                "Tableau",
-                "Linguagem R",
-                "Storytelling para Dados",
-                "VBA",
-                "Figma"
-              ].map((curso) => (
-                <div
+            <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {cursos.map((curso) => (
+                <a
                   key={curso}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6"
+                  href={CHECKOUT_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/60 p-5 text-left transition hover:border-green-400 hover:bg-slate-900"
                 >
-                  <h3 className="text-xl font-bold text-white">{curso}</h3>
-                  <p className="mt-3 text-slate-300">
-                    Curso prático para desenvolver habilidades aplicáveis em projetos, empresas e desafios profissionais.
-                  </p>
-                </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white">{curso}</h3>
+                    <p className="mt-2 text-sm text-slate-400">
+                      Acesse dentro da Yto Academy
+                    </p>
+                  </div>
+
+                  <span className="rounded-full bg-green-500/10 px-4 py-2 text-sm font-bold text-green-400 transition group-hover:bg-green-500 group-hover:text-white">
+                    Acessar
+                  </span>
+                </a>
               ))}
+            </div>
+
+            <div className="mt-10">
+              <a
+                href={CHECKOUT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block rounded-xl bg-green-500 px-8 py-4 font-bold text-white transition hover:bg-green-400"
+              >
+                Comprar acesso à Yto Academy
+              </a>
             </div>
           </div>
         </section>
@@ -109,7 +144,9 @@ export default function YtoAcademy() {
             </h2>
 
             <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
-              A Yto Academy é indicada para estudantes, profissionais em transição de carreira, analistas, assistentes, gestores, empreendedores e pessoas que desejam aprender ferramentas valorizadas pelo mercado.
+              A Yto Academy é indicada para estudantes, profissionais em transição de carreira,
+              analistas, assistentes, gestores, empreendedores e pessoas que desejam aprender
+              ferramentas valorizadas pelo mercado.
             </p>
 
             <ul className="mt-8 grid gap-4 md:grid-cols-2">
@@ -126,6 +163,26 @@ export default function YtoAcademy() {
                 Empresas que desejam capacitar equipes
               </li>
             </ul>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href={CHECKOUT_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl bg-green-500 px-6 py-4 text-center font-semibold text-white transition hover:bg-green-400"
+              >
+                Quero começar agora
+              </a>
+
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl border border-slate-600 px-6 py-4 text-center font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+              >
+                Tenho dúvidas
+              </a>
+            </div>
           </div>
         </section>
 
@@ -167,24 +224,26 @@ export default function YtoAcademy() {
             </h2>
 
             <p className="mx-auto mt-5 max-w-3xl text-lg text-slate-700">
-              Fale com nossa equipe para conhecer planos, condições de acesso e a melhor trilha para o seu momento profissional.
+              Entre agora na plataforma ou fale com nossa equipe para entender qual trilha combina melhor com seu momento.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
               <a
-                href="https://wa.me/5511910704164?text=Quero%20saber%20mais%20sobre%20a%20Yto%20Academy"
+                href={CHECKOUT_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl bg-green-500 px-8 py-4 font-bold text-white transition hover:bg-green-400"
               >
-                Falar no WhatsApp
+                Comprar acesso agora
               </a>
 
               <a
-                href="mailto:yto@ytonihon.com.br?subject=Interesse%20na%20Yto%20Academy"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-xl border border-slate-300 px-8 py-4 font-bold text-slate-900 transition hover:border-cyan-500 hover:text-cyan-600"
               >
-                Enviar e-mail
+                Falar no WhatsApp
               </a>
             </div>
           </div>
