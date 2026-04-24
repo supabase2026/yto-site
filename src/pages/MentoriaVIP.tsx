@@ -1,425 +1,431 @@
 import { motion } from 'framer-motion';
+import {
+  MessageCircle,
+  Target,
+  Users,
+  CheckCircle2,
+  Compass,
+  BarChart3,
+  FileSpreadsheet,
+  Database,
+  CalendarDays,
+  Brain,
+  Star,
+  ChevronRight,
+  HelpCircle,
+} from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { WHATSAPP_LINK } from '@/lib/index';
-import {
-  MessageCircle, CheckCircle2, Star, Target, User, Zap,
-  FileSpreadsheet, BarChart3, Database, Kanban, ArrowRight, Clock, Shield
-} from 'lucide-react';
+
+const WHATSAPP_MENTORIA =
+  'https://wa.me/5511910704164?text=Ol%C3%A1!%20Tenho%20interesse%20na%20Mentoria%20VIP%20do%20Grupo%20Yto%20Nihon.';
 
 const areas = [
-  {
-    icon: FileSpreadsheet,
-    title: 'Excel',
-    description: 'Fórmulas avançadas, Power Query, VBA, macros, dashboards e automação de relatórios.',
-  },
-  {
-    icon: BarChart3,
-    title: 'Power BI',
-    description: 'Modelagem de dados, DAX, dashboards executivos, relatórios e otimização de performance.',
-  },
-  {
-    icon: Database,
-    title: 'SQL Server',
-    description: 'Consultas, joins, stored procedures, otimização de queries e integração com outras ferramentas.',
-  },
-  {
-    icon: Kanban,
-    title: 'MS Project',
-    description: 'Planejamento de projetos, cronogramas, recursos, EAP e gestão de portfólio.',
-  },
+  { icon: FileSpreadsheet, title: 'Excel', desc: 'Apoio para dominar análises, fórmulas, dashboards, Power Query e automações.' },
+  { icon: BarChart3, title: 'Power BI', desc: 'Direcionamento para criar dashboards, indicadores, modelagem e relatórios profissionais.' },
+  { icon: Database, title: 'SQL Server', desc: 'Mentoria para consultas, lógica de banco de dados, análise e estruturação de informações.' },
+  { icon: CalendarDays, title: 'MS Project', desc: 'Acompanhamento para cronogramas, recursos, linha de base e gestão de projetos.' },
+  { icon: Brain, title: 'Carreira em Dados', desc: 'Orientação para transição de carreira, portfólio, estudos e próximos passos profissionais.' },
+  { icon: Compass, title: 'Projetos e dúvidas reais', desc: 'Ajuda prática em desafios do trabalho, estudos, dashboards, apresentações e entregas.' },
 ];
 
-const differentials = [
-  {
-    icon: User,
-    title: 'Atendimento 100% Individual',
-    description: 'Sessão exclusiva com Eduardo Yto — sem outros alunos, sem distrações. Foco total no seu problema.',
-  },
-  {
-    icon: Target,
-    title: 'Foco no seu Problema Real',
-    description: 'Não ensinamos teoria. Resolvemos o problema específico que você traz — com solução prática e aplicável imediatamente.',
-  },
-  {
-    icon: Zap,
-    title: 'Resultado na Sessão',
-    description: 'Em 1 hora, você sai com a solução implementada, não apenas com uma explicação.',
-  },
-  {
-    icon: Shield,
-    title: '26 Anos de Experiência',
-    description: 'Eduardo Yto já capacitou mais de 100 mil profissionais. Cada solução vem de décadas de prática real.',
-  },
+const audience = [
+  'Profissionais que estudam, mas ainda se sentem perdidos',
+  'Alunos que precisam de acompanhamento individual',
+  'Pessoas em transição para a área de dados',
+  'Profissionais que precisam resolver dúvidas reais do trabalho',
+  'Quem quer acelerar o aprendizado com orientação direta',
+  'Quem precisa montar dashboards, projetos ou apresentações',
 ];
 
-const whoIsFor = [
+const steps = [
   {
-    title: 'Profissionais que travam em algum ponto',
-    description: 'Você domina o básico, mas tem uma dúvida específica que nenhum vídeo do YouTube resolve.',
+    num: '01',
+    title: 'Diagnóstico inicial',
+    desc: 'Entendemos seu momento atual, nível técnico, objetivo profissional e principais dificuldades.',
   },
   {
-    title: 'Quem precisa entregar rápido',
-    description: 'Tem um prazo apertado e precisa resolver aquele relatório, dashboard ou planilha complexa com urgência.',
+    num: '02',
+    title: 'Plano personalizado',
+    desc: 'Montamos uma rota prática com prioridades, ferramentas, estudos e entregas reais.',
   },
   {
-    title: 'Gestores e analistas exigentes',
-    description: 'Profissionais que precisam de orientação precisa e personalizada, sem perder tempo com conteúdo genérico.',
-  },
-  {
-    title: 'Quem quer aprender fazendo',
-    description: 'Você aprende melhor na prática, resolvendo o seu próprio problema, com orientação de um especialista.',
+    num: '03',
+    title: 'Acompanhamento VIP',
+    desc: 'Você recebe orientação direta para evoluir com mais clareza, foco e segurança.',
   },
 ];
 
 const faqs = [
   {
-    q: 'Como funciona a mentoria?',
-    a: 'A sessão é online, individual, por videoconferência. Você apresenta seu problema ou dúvida específica e o Eduardo trabalha junto com você para resolver, na prática, durante a sessão.',
+    question: 'A Mentoria VIP é um curso?',
+    answer:
+      'Não. A Mentoria VIP é um acompanhamento personalizado. O foco não é apenas assistir aulas, mas receber direção, orientação prática e apoio em dúvidas reais.',
   },
   {
-    q: 'Qual a duração de cada sessão?',
-    a: 'Cada sessão tem duração de 1 hora. Em casos mais complexos, é possível agendar sessões adicionais.',
+    question: 'Quais ferramentas podem ser trabalhadas?',
+    answer:
+      'A mentoria pode envolver Excel, Power BI, SQL Server, MS Project, análise de dados, dashboards, carreira e projetos profissionais.',
   },
   {
-    q: 'Preciso ter algum nível mínimo?',
-    a: 'Não. A mentoria é adaptada ao seu nível e ao seu problema específico. Pode ser desde uma dúvida básica até um projeto avançado.',
+    question: 'A mentoria pode ajudar em dúvidas do trabalho?',
+    answer:
+      'Sim. A proposta é justamente ajudar o aluno ou profissional a avançar em desafios reais, como relatórios, dashboards, cronogramas, análises e apresentações.',
   },
   {
-    q: 'Em quais ferramentas posso pedir ajuda?',
-    a: 'Excel, Power BI, SQL Server e MS Project. Focamos nas ferramentas onde temos maior domínio e profundidade de mercado.',
+    question: 'A mentoria é individual?',
+    answer:
+      'A proposta principal é atendimento individual ou em grupos reduzidos, dependendo da necessidade e disponibilidade.',
   },
 ];
 
 export default function MentoriaVIP() {
   return (
     <Layout>
-      {/* ═══ HERO ═══ */}
       <section
         className="relative flex items-center justify-center overflow-hidden"
-        style={{ background: 'var(--brand-navy)', minHeight: '80vh', paddingTop: '5rem', paddingBottom: '5rem' }}
+        style={{
+          background: 'oklch(0.08 0.018 250)',
+          minHeight: '80vh',
+          paddingTop: '5rem',
+          paddingBottom: '5rem',
+        }}
       >
-        <div className="orb orb-blue" style={{ width: '700px', height: '600px', top: '-25%', right: '-10%', opacity: 0.35 }} />
-        <div className="orb orb-purple" style={{ width: '500px', height: '450px', bottom: '-15%', left: '-5%', opacity: 0.20 }} />
-        <div className="bg-dot-grid absolute inset-0 opacity-25" />
+        <div className="orb orb-blue" style={{ width: '620px', height: '520px', top: '-20%', right: '-10%', opacity: 0.2 }} />
+        <div className="orb orb-cyan" style={{ width: '420px', height: '420px', bottom: '-15%', left: '-8%', opacity: 0.18 }} />
+        <div className="bg-dot-grid absolute inset-0 opacity-20" />
 
-        <div className="container-xl relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-          >
-            <span
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold mb-8"
-              style={{ background: 'oklch(0.60 0.20 300 / 0.12)', border: '1px solid oklch(0.60 0.20 300 / 0.28)', color: 'oklch(0.78 0.14 300)' }}
-            >
-              <Star className="w-3.5 h-3.5" /> Atendimento exclusivo
-            </span>
-
-            <h1 className="hero-headline mb-6">
-              <span style={{ color: 'oklch(0.93 0.006 250)' }}>Mentoria VIP</span><br />
-              <span className="text-gradient">em Dados</span>
-            </h1>
-
-            <p className="hero-sub mx-auto mb-10 max-w-3xl">
-              Resolva seu problema com dados de forma direta. Sessão individual com Eduardo Yto — especialista com 26 anos de experiência. Foco no seu desafio real, solução na prática.
-            </p>
-
-            {/* Badges */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {['Atendimento Individual', '26 anos de expertise', 'Excel · Power BI · SQL · MS Project', 'Online ou Presencial'].map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-1.5 rounded-full text-xs font-medium"
-                  style={{ background: 'oklch(0.14 0.028 250 / 0.80)', border: '1px solid oklch(0.28 0.040 250 / 0.45)', color: 'oklch(0.78 0.010 250)' }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-base font-bold px-10 py-4 rounded-xl transition-all duration-200"
-              style={{
-                background: 'linear-gradient(135deg, oklch(0.56 0.23 250) 0%, oklch(0.50 0.26 245) 100%)',
-                color: 'white',
-                boxShadow: '0 8px 32px oklch(0.56 0.23 250 / 0.38)',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 12px 40px oklch(0.56 0.23 250 / 0.55)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 32px oklch(0.56 0.23 250 / 0.38)'; }}
-            >
-              <MessageCircle className="w-5 h-5" />
-              Falar no WhatsApp para agendar mentoria
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══ O QUE É ═══ */}
-      <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
-        <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="container-xl relative z-10">
+          <div className="max-w-3xl">
             <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 28 }}
             >
-              <span className="section-tag">O que é a Mentoria VIP</span>
-              <h2 className="section-headline mb-6">
-                Atendimento personalizado,<br />
-                <span className="text-gradient-static">resultado imediato</span>
-              </h2>
-              <div className="space-y-5">
-                <p className="text-base leading-relaxed" style={{ color: 'oklch(0.62 0.012 250)' }}>
-                  A <strong style={{ color: 'oklch(0.88 0.008 250)' }}>Mentoria VIP em Dados</strong> é um atendimento individual e personalizado com <strong style={{ color: 'oklch(0.88 0.008 250)' }}>Eduardo Yto</strong>, especialista com mais de 26 anos de experiência em educação e consultoria de dados.
-                </p>
-                <p className="text-base leading-relaxed" style={{ color: 'oklch(0.62 0.012 250)' }}>
-                  Diferente de cursos ou aulas em grupo, aqui o foco é 100% no <strong style={{ color: 'oklch(0.88 0.008 250)' }}>seu problema real</strong>. Você apresenta o desafio — uma planilha complexa, um dashboard que não funciona, uma query difícil — e saímos com a solução implementada na mesma sessão.
-                </p>
-                <p className="text-base leading-relaxed" style={{ color: 'oklch(0.62 0.012 250)' }}>
-                  Seja para resolver um problema pontual ou para acelerar seu desenvolvimento em alguma ferramenta específica, a Mentoria VIP é o caminho mais direto e eficiente.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl p-8"
-              style={{ background: 'oklch(0.12 0.028 250 / 0.90)', border: '1px solid oklch(0.28 0.040 250 / 0.50)' }}
-            >
-              <div className="flex items-center gap-3 mb-7">
-                <Clock className="w-5 h-5" style={{ color: 'oklch(0.72 0.20 250)' }} />
-                <h3 className="font-bold text-lg" style={{ color: 'oklch(0.90 0.006 250)' }}>Como funciona</h3>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { num: '01', title: 'Contato via WhatsApp', desc: 'Descreva seu problema e agendamos a sessão no melhor horário para você.' },
-                  { num: '02', title: 'Sessão online individual', desc: '1 hora de videoconferência com Eduardo Yto, focada exclusivamente no seu desafio.' },
-                  { num: '03', title: 'Solução na prática', desc: 'Trabalhamos juntos no seu arquivo real, com explicação passo a passo.' },
-                  { num: '04', title: 'Você sai resolvido', desc: 'Ao final, você tem a solução implementada e o conhecimento para replicar.' },
-                ].map((step) => (
-                  <div key={step.num} className="flex gap-4">
-                    <span
-                      className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
-                      style={{ background: 'oklch(0.56 0.23 250 / 0.18)', color: 'oklch(0.72 0.20 250)', border: '1px solid oklch(0.56 0.23 250 / 0.30)' }}
-                    >
-                      {step.num}
-                    </span>
-                    <div>
-                      <div className="text-sm font-semibold mb-0.5" style={{ color: 'oklch(0.88 0.006 250)' }}>{step.title}</div>
-                      <div className="text-sm" style={{ color: 'oklch(0.58 0.010 250)' }}>{step.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp w-full justify-center mt-7"
+              <span
+                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold mb-7"
+                style={{
+                  background: 'oklch(0.56 0.23 250 / 0.12)',
+                  border: '1px solid oklch(0.56 0.23 250 / 0.28)',
+                  color: 'oklch(0.72 0.18 250)',
+                }}
               >
-                <MessageCircle className="w-5 h-5" />
-                Agendar minha mentoria
-              </a>
+                <Star className="w-3.5 h-3.5" /> Atendimento personalizado
+              </span>
+
+              <h1
+                className="font-bold mb-6 leading-tight"
+                style={{
+                  fontSize: 'clamp(2rem, 4vw, 3.3rem)',
+                  color: 'oklch(0.96 0.006 250)',
+                  fontFamily: 'var(--font-heading)',
+                }}
+              >
+                Mentoria VIP em{' '}
+                <span className="text-gradient">dados, ferramentas e carreira</span>
+              </h1>
+
+              <p className="text-lg mb-10 max-w-2xl" style={{ color: 'oklch(0.62 0.012 250)', lineHeight: 1.7 }}>
+                Acompanhamento estratégico para quem precisa de direção, prática e clareza para evoluir em Excel,
+                Power BI, SQL Server, MS Project ou carreira na área de dados.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href={WHATSAPP_MENTORIA}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold transition-all duration-200 hover:scale-105"
+                  style={{
+                    background: 'oklch(0.56 0.23 250)',
+                    color: 'white',
+                    boxShadow: '0 8px 24px oklch(0.56 0.23 250 / 0.35)',
+                  }}
+                >
+                  Quero participar da mentoria <ChevronRight className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold transition-all duration-200 hover:opacity-90"
+                  style={{
+                    background: 'rgba(37,211,102,0.12)',
+                    border: '1.5px solid rgba(37,211,102,0.35)',
+                    color: '#25D366',
+                  }}
+                >
+                  <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ═══ ÁREAS ═══ */}
-      <section className="section-pad" style={{ background: 'var(--brand-navy)' }}>
+      <section className="section-pad" style={{ background: 'oklch(0.10 0.022 250)' }}>
+        <div className="container-xl max-w-3xl text-center">
+          <span className="section-tag">Direção personalizada</span>
+          <h2 className="section-headline mb-6">
+            Você não precisa aprender tudo sozinho
+          </h2>
+          <p className="text-base mb-4" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
+            Muitas pessoas estudam Excel, Power BI, SQL ou dados, mas travam quando precisam aplicar o conhecimento
+            em situações reais.
+          </p>
+          <p className="text-base" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
+            A Mentoria VIP existe para encurtar esse caminho, com orientação prática, direcionamento individual e foco no que realmente importa para sua evolução.
+          </p>
+        </div>
+      </section>
+
+      <section className="section-pad" style={{ background: 'oklch(0.09 0.020 250)' }}>
         <div className="container-xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-14"
           >
-            <span className="section-tag">Ferramentas</span>
-            <h2 className="section-headline mb-4">Áreas de Atuação</h2>
-            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.60 0.010 250)' }}>
-              Mentoria especializada nas ferramentas mais utilizadas pelo mercado de dados e tecnologia
+            <span className="section-tag">Aplicações práticas</span>
+            <h2 className="section-headline mb-4">O que pode ser trabalhado na mentoria</h2>
+            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
+              A mentoria pode ser direcionada para dúvidas técnicas, projetos profissionais, carreira, portfólio e evolução prática.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {areas.map((area, i) => (
-              <motion.div
-                key={area.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="rounded-2xl p-6 transition-all duration-200"
-                style={{ background: 'oklch(0.13 0.028 250 / 0.80)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'oklch(0.56 0.23 250 / 0.45)';
-                  (e.currentTarget as HTMLDivElement).style.background = 'oklch(0.15 0.030 250 / 0.85)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'oklch(0.22 0.032 250 / 0.50)';
-                  (e.currentTarget as HTMLDivElement).style.background = 'oklch(0.13 0.028 250 / 0.80)';
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                  style={{ background: 'oklch(0.56 0.23 250 / 0.15)', border: '1px solid oklch(0.56 0.23 250 / 0.25)' }}
-                >
-                  <area.icon className="w-6 h-6" style={{ color: 'oklch(0.72 0.20 250)' }} />
-                </div>
-                <h3 className="font-bold mb-2 text-lg" style={{ color: 'oklch(0.90 0.006 250)' }}>{area.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.58 0.010 250)' }}>{area.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ DIFERENCIAIS ═══ */}
-      <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
-        <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <span className="section-tag">Por que escolher</span>
-            <h2 className="section-headline mb-4">Diferenciais da Mentoria VIP</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {differentials.map((item, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {areas.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex gap-5 rounded-2xl p-6"
-                style={{ background: 'oklch(0.13 0.028 250 / 0.80)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'oklch(0.56 0.23 250 / 0.15)', border: '1px solid oklch(0.56 0.23 250 / 0.25)' }}
-                >
-                  <item.icon className="w-6 h-6" style={{ color: 'oklch(0.72 0.20 250)' }} />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2" style={{ color: 'oklch(0.90 0.006 250)' }}>{item.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.58 0.010 250)' }}>{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ PARA QUEM É ═══ */}
-      <section className="section-pad" style={{ background: 'var(--brand-navy)' }}>
-        <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <span className="section-tag">Público-alvo</span>
-            <h2 className="section-headline mb-4">Para Quem é a Mentoria VIP?</h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {whoIsFor.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex gap-4 rounded-xl p-6"
-                style={{ background: 'oklch(0.13 0.028 250 / 0.70)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}
-              >
-                <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'oklch(0.65 0.18 160)' }} />
-                <div>
-                  <h3 className="text-sm font-bold mb-1" style={{ color: 'oklch(0.88 0.006 250)' }}>{item.title}</h3>
-                  <p className="text-sm" style={{ color: 'oklch(0.58 0.010 250)' }}>{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ FAQ ═══ */}
-      <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
-        <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <span className="section-tag">Dúvidas frequentes</span>
-            <h2 className="section-headline mb-4">Perguntas Frequentes</h2>
-          </motion.div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
-                className="rounded-xl p-6"
-                style={{ background: 'oklch(0.13 0.028 250 / 0.80)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}
+                className="rounded-2xl p-6"
+                style={{
+                  background: 'oklch(0.13 0.026 250 / 0.85)',
+                  border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+                }}
               >
-                <h3 className="font-semibold mb-2" style={{ color: 'oklch(0.90 0.006 250)' }}>{faq.q}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.60 0.010 250)' }}>{faq.a}</p>
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                  style={{
+                    background: 'oklch(0.56 0.23 250 / 0.12)',
+                    border: '1px solid oklch(0.56 0.23 250 / 0.22)',
+                  }}
+                >
+                  <item.icon className="w-5 h-5" style={{ color: 'oklch(0.68 0.20 250)' }} />
+                </div>
+                <h3 className="text-base font-bold mb-2" style={{ color: 'oklch(0.90 0.006 250)', fontFamily: 'var(--font-heading)' }}>
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.55 0.010 250)' }}>
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA FINAL ═══ */}
+      <section className="section-pad" style={{ background: 'oklch(0.11 0.024 250)' }}>
+        <div className="container-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="section-tag">Perfil ideal</span>
+            <h2 className="section-headline mb-4">Para quem é a Mentoria VIP</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {audience.map((item, i) => (
+              <motion.div
+                key={item}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="flex items-start gap-3 rounded-xl p-5"
+                style={{
+                  background: 'oklch(0.13 0.026 250 / 0.85)',
+                  border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+                }}
+              >
+                <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'oklch(0.62 0.18 160)' }} />
+                <p className="text-sm" style={{ color: 'oklch(0.70 0.010 250)' }}>
+                  {item}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad" style={{ background: 'oklch(0.09 0.020 250)' }}>
+        <div className="container-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="section-tag">Metodologia</span>
+            <h2 className="section-headline mb-4">Como funciona a mentoria</h2>
+            <p className="text-base max-w-xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
+              Um processo simples, direto e personalizado para dar clareza ao seu próximo passo.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-7 max-w-5xl mx-auto">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative rounded-2xl p-7"
+                style={{
+                  background: 'oklch(0.12 0.025 250 / 0.90)',
+                  border: '1px solid oklch(0.22 0.032 250 / 0.50)',
+                }}
+              >
+                <span
+                  className="text-5xl font-black mb-4 block leading-none"
+                  style={{ color: 'oklch(0.56 0.23 250 / 0.22)', fontFamily: 'var(--font-heading)' }}
+                >
+                  {step.num}
+                </span>
+                <h3 className="text-lg font-bold mb-3" style={{ color: 'oklch(0.92 0.006 250)', fontFamily: 'var(--font-heading)' }}>
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.56 0.010 250)' }}>
+                  {step.desc}
+                </p>
+
+                {i < steps.length - 1 && (
+                  <ChevronRight
+                    className="hidden md:block absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7"
+                    style={{ color: 'oklch(0.36 0.060 250 / 0.60)' }}
+                  />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-pad" style={{ background: 'oklch(0.10 0.022 250)' }}>
+        <div className="container-xl max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="section-tag">Dúvidas frequentes</span>
+            <h2 className="section-headline mb-4">Perguntas sobre a Mentoria VIP</h2>
+            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
+              Informações úteis para quem busca orientação personalizada em dados, carreira e ferramentas profissionais.
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="rounded-2xl p-6"
+                style={{
+                  background: 'oklch(0.13 0.026 250 / 0.85)',
+                  border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+                }}
+              >
+                <h3 className="text-base font-bold mb-2 flex items-center gap-2" style={{ color: 'oklch(0.92 0.006 250)' }}>
+                  <HelpCircle className="w-4 h-4" style={{ color: 'oklch(0.68 0.20 250)' }} />
+                  {faq.question}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.58 0.010 250)' }}>
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section
-        className="relative py-24 overflow-hidden text-center"
-        style={{ background: 'linear-gradient(135deg, oklch(0.14 0.040 250) 0%, oklch(0.10 0.028 250) 100%)' }}
+        className="section-pad"
+        style={{
+          background: 'oklch(0.08 0.018 250)',
+          borderTop: '1px solid oklch(0.16 0.026 250 / 0.50)',
+        }}
       >
-        <div className="orb orb-blue" style={{ width: '600px', height: '500px', top: '-40%', left: '50%', transform: 'translateX(-50%)', opacity: 0.22 }} />
-        <div className="container-xl relative z-10">
+        <div className="container-xl">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
           >
-            <Star className="w-16 h-16 mx-auto mb-6" style={{ color: 'oklch(0.72 0.20 250)' }} />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'oklch(0.93 0.006 250)', fontFamily: 'var(--font-heading)' }}>
-              Resolva seu problema agora
-            </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: 'oklch(0.60 0.010 250)' }}>
-              Entre em contato via WhatsApp para agendar sua sessão de Mentoria VIP. Atendimento rápido e personalizado.
-            </p>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-base font-bold px-10 py-4 rounded-xl transition-all duration-200"
+            <div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-7"
               style={{
-                background: 'linear-gradient(135deg, oklch(0.56 0.23 250) 0%, oklch(0.50 0.26 245) 100%)',
-                color: 'white',
-                boxShadow: '0 8px 32px oklch(0.56 0.23 250 / 0.40)',
+                background: 'oklch(0.56 0.23 250 / 0.12)',
+                border: '1px solid oklch(0.56 0.23 250 / 0.28)',
               }}
             >
-              <MessageCircle className="w-5 h-5" />
-              Falar no WhatsApp para agendar mentoria
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <Target className="w-7 h-7" style={{ color: 'oklch(0.68 0.20 250)' }} />
+            </div>
+
+            <h2 className="section-headline mb-5">Receba orientação para o seu próximo passo</h2>
+
+            <p className="text-base mb-10 max-w-xl mx-auto" style={{ color: 'oklch(0.56 0.012 250)', lineHeight: 1.7 }}>
+              Fale com nossa equipe e entenda se a Mentoria VIP é o melhor caminho para acelerar sua evolução em dados,
+              ferramentas ou carreira profissional.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={WHATSAPP_MENTORIA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm font-bold transition-all duration-200 hover:scale-105"
+                style={{
+                  background: 'oklch(0.56 0.23 250)',
+                  color: 'white',
+                  boxShadow: '0 8px 28px oklch(0.56 0.23 250 / 0.35)',
+                }}
+              >
+                Quero participar da mentoria <ChevronRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm font-bold transition-all duration-200 hover:opacity-90"
+                style={{
+                  background: 'rgba(37,211,102,0.12)',
+                  border: '1.5px solid rgba(37,211,102,0.35)',
+                  color: '#25D366',
+                }}
+              >
+                <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+              </a>
+            </div>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3">
+              {['Atendimento individual ou reduzido', 'Plano personalizado', 'Foco em evolução prática'].map((b) => (
+                <span key={b} className="inline-flex items-center gap-2 text-sm" style={{ color: 'oklch(0.58 0.012 250)' }}>
+                  <CheckCircle2 className="w-4 h-4" style={{ color: 'oklch(0.62 0.18 160)' }} /> {b}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
