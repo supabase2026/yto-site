@@ -10,8 +10,8 @@ import {
   HelpCircle,
   ChevronRight,
 } from 'lucide-react';
-import { Layout } from '@/components/Layout';
-import { WHATSAPP_LINK } from '@/lib/index';
+import { Layout } from '../components/Layout';
+import { WHATSAPP_LINK } from '../lib';
 
 const WHATSAPP_EXCEL =
   'https://wa.me/5511910704164?text=Ol%C3%A1!%20Tenho%20interesse%20em%20um%20treinamento%20de%20Excel%20para%20minha%20empresa.%20Gostaria%20de%20receber%20uma%20proposta.';
