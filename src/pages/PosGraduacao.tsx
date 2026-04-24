@@ -124,6 +124,7 @@ const targetAudience = [
 
 function DisciplineAccordion({ discipline, index }: { discipline: Discipline; index: number }) {
   const [open, setOpen] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -131,7 +132,10 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
       viewport={{ once: true }}
       transition={{ delay: index * 0.04 }}
       className="rounded-xl overflow-hidden"
-      style={{ border: '1px solid oklch(0.24 0.034 250 / 0.50)', background: open ? 'oklch(0.13 0.028 250 / 0.80)' : 'oklch(0.11 0.025 250 / 0.70)' }}
+      style={{
+        border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+        background: open ? 'oklch(0.13 0.028 250 / 0.80)' : 'oklch(0.11 0.025 250 / 0.70)',
+      }}
     >
       <button
         className="w-full flex items-center justify-between px-6 py-4 text-left transition-all"
@@ -140,17 +144,24 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
         <div className="flex items-center gap-3">
           <span
             className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
-            style={{ background: 'oklch(0.56 0.23 250 / 0.18)', color: 'oklch(0.72 0.20 250)', border: '1px solid oklch(0.56 0.23 250 / 0.30)' }}
+            style={{
+              background: 'oklch(0.56 0.23 250 / 0.18)',
+              color: 'oklch(0.72 0.20 250)',
+              border: '1px solid oklch(0.56 0.23 250 / 0.30)',
+            }}
           >
             {String(index + 1).padStart(2, '0')}
           </span>
-          <span className="text-sm font-semibold" style={{ color: 'oklch(0.90 0.006 250)' }}>{discipline.title}</span>
+          <span className="text-sm font-semibold" style={{ color: 'oklch(0.90 0.006 250)' }}>
+            {discipline.title}
+          </span>
         </div>
         <ChevronDown
           className="w-4 h-4 flex-shrink-0 transition-transform duration-300"
           style={{ transform: open ? 'rotate(180deg)' : 'rotate(0)', color: 'oklch(0.56 0.23 250)' }}
         />
       </button>
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -166,7 +177,9 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
                 {discipline.contents.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: 'oklch(0.65 0.18 160)' }} />
-                    <span className="text-sm" style={{ color: 'oklch(0.72 0.008 250)' }}>{item}</span>
+                    <span className="text-sm" style={{ color: 'oklch(0.72 0.008 250)' }}>
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -181,7 +194,6 @@ function DisciplineAccordion({ discipline, index }: { discipline: Discipline; in
 export default function PosGraduacao() {
   return (
     <Layout>
-      {/* ═══ HERO ═══ */}
       <section
         className="relative flex items-center justify-center overflow-hidden"
         style={{ background: 'var(--brand-navy)', minHeight: '80vh', paddingTop: '5rem', paddingBottom: '5rem' }}
@@ -189,12 +201,13 @@ export default function PosGraduacao() {
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.PO_S_GRADUAC_A_O_EM_GESTA_O_ESTRATE_GICA_DE_DADOS_48}
-            alt=""
+            alt="Pós-graduação em gestão estratégica de dados reconhecida pelo MEC com foco em análise de dados e inteligência artificial"
             className="w-full h-full object-cover"
             style={{ opacity: 0.15, filter: 'blur(2px) brightness(0.7)' }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, oklch(0.09 0.030 250 / 0.82), var(--brand-navy) 85%)' }} />
         </div>
+
         <div className="orb orb-blue" style={{ width: '700px', height: '600px', top: '-30%', left: '-10%', opacity: 0.35 }} />
         <div className="orb orb-cyan" style={{ width: '400px', height: '400px', bottom: '-10%', right: '-5%', opacity: 0.22 }} />
         <div className="bg-dot-grid absolute inset-0 opacity-25" />
@@ -210,15 +223,21 @@ export default function PosGraduacao() {
             </span>
 
             <h1 className="hero-headline mb-6">
-              <span style={{ color: 'oklch(0.93 0.006 250)' }}>Pós-Graduação em</span><br />
-              <span className="text-gradient">Gestão Estratégica de Dados</span>
+              <span style={{ color: 'oklch(0.93 0.006 250)' }}>
+                Pós-Graduação em Gestão Estratégica de Dados
+              </span>
+              <br />
+              <span className="text-gradient">
+                Reconhecida pelo MEC e focada no mercado de dados
+              </span>
             </h1>
 
             <p className="hero-sub mx-auto mb-10 max-w-3xl">
-              Diploma reconhecido pelo MEC. Formato híbrido com aulas gravadas e encontros ao vivo. Torne-se um líder em dados em 09 meses.
+              Pós-graduação em dados reconhecida pelo MEC, com foco em análise de dados, engenharia de dados,
+              inteligência artificial e gestão estratégica. Desenvolva habilidades práticas e prepare-se para atuar
+              com dados em empresas, projetos e decisões estratégicas em apenas 9 meses.
             </p>
 
-            {/* Stats pills */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               {courseInfo.map((info, index) => (
                 <motion.div
@@ -227,7 +246,11 @@ export default function PosGraduacao() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 30, delay: 0.15 + index * 0.08 }}
                   className="flex items-center gap-2.5 px-5 py-3 rounded-xl"
-                  style={{ background: 'oklch(0.14 0.028 250 / 0.85)', border: '1px solid oklch(0.30 0.045 250 / 0.45)', backdropFilter: 'blur(16px)' }}
+                  style={{
+                    background: 'oklch(0.14 0.028 250 / 0.85)',
+                    border: '1px solid oklch(0.30 0.045 250 / 0.45)',
+                    backdropFilter: 'blur(16px)',
+                  }}
                 >
                   <info.icon className="w-4 h-4" style={{ color: 'oklch(0.72 0.20 250)' }} />
                   <div className="text-left">
@@ -263,7 +286,6 @@ export default function PosGraduacao() {
         </div>
       </section>
 
-      {/* ═══ DIFERENCIAIS ═══ */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
           <motion.div
@@ -273,9 +295,12 @@ export default function PosGraduacao() {
             className="text-center mb-14"
           >
             <span className="section-tag">Por que escolher</span>
-            <h2 className="section-headline mb-4">Diferenciais do Programa</h2>
+            <h2 className="section-headline mb-4">
+              Diferenciais da Pós-Graduação em Gestão Estratégica de Dados
+            </h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.60 0.010 250)' }}>
-              O que torna nossa pós-graduação única no mercado de educação em dados
+              Conheça os diferenciais da pós-graduação em dados do Grupo Yto Nihon, desenvolvida para formar
+              profissionais preparados para atuar com análise, engenharia e estratégia de dados no mercado atual.
             </p>
           </motion.div>
 
@@ -296,15 +321,18 @@ export default function PosGraduacao() {
                 >
                   <item.icon className="w-7 h-7" style={{ color: 'oklch(0.72 0.20 250)' }} />
                 </div>
-                <h3 className="text-base font-bold mb-3" style={{ color: 'oklch(0.90 0.006 250)' }}>{item.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.60 0.010 250)' }}>{item.description}</p>
+                <h3 className="text-base font-bold mb-3" style={{ color: 'oklch(0.90 0.006 250)' }}>
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.60 0.010 250)' }}>
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ GRADE CURRICULAR (ACCORDION) ═══ */}
       <section className="section-pad" style={{ background: 'var(--brand-navy)' }}>
         <div className="container-xl">
           <motion.div
@@ -314,9 +342,12 @@ export default function PosGraduacao() {
             className="text-center mb-14"
           >
             <span className="section-tag">Grade Curricular</span>
-            <h2 className="section-headline mb-4">O Que Você Vai Aprender</h2>
+            <h2 className="section-headline mb-4">
+              Grade curricular da Pós-Graduação em Dados
+            </h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.60 0.010 250)' }}>
-              Clique em cada disciplina para ver os conteúdos abordados. Currículo completo em 09 meses.
+              A pós-graduação em gestão estratégica de dados oferece uma grade completa com disciplinas voltadas
+              para análise de dados, engenharia de dados, cloud computing, inteligência artificial e governança de dados.
             </p>
           </motion.div>
 
@@ -326,7 +357,6 @@ export default function PosGraduacao() {
             ))}
           </div>
 
-          {/* CTA abaixo da grade — solicitar lista completa */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -341,14 +371,15 @@ export default function PosGraduacao() {
           >
             <div>
               <p className="text-base font-semibold mb-1" style={{ color: 'oklch(0.92 0.006 250)', fontFamily: 'var(--font-heading)' }}>
-                Quer ver a grade curricular completa?
+                Quer ver a grade completa da pós-graduação em dados?
               </p>
               <p className="text-sm" style={{ color: 'oklch(0.58 0.012 250)' }}>
-                Fale com a nossa equipe pelo WhatsApp e receba o programa detalhado.
+                Fale com nossa equipe e receba o conteúdo detalhado da pós-graduação em gestão estratégica de dados diretamente no seu WhatsApp.
               </p>
             </div>
+
             <a
-              href={`https://wa.me/5511910704164?text=Ol%C3%A1!%20Gostaria%20de%20receber%20a%20grade%20curricular%20completa%20da%20P%C3%B3s-Gradua%C3%A7%C3%A3o%20em%20Gest%C3%A3o%20Estrat%C3%A9gica%20de%20Dados.`}
+              href="https://wa.me/5511910704164?text=Ol%C3%A1!%20Gostaria%20de%20receber%20a%20grade%20curricular%20completa%20da%20P%C3%B3s-Gradua%C3%A7%C3%A3o%20em%20Gest%C3%A3o%20Estrat%C3%A9gica%20de%20Dados."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold flex-shrink-0 transition-all duration-200 hover:scale-105"
@@ -377,7 +408,6 @@ export default function PosGraduacao() {
         </div>
       </section>
 
-      {/* ═══ PARA QUEM É ═══ */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
           <motion.div
@@ -387,7 +417,9 @@ export default function PosGraduacao() {
             className="text-center mb-14"
           >
             <span className="section-tag">Público-Alvo</span>
-            <h2 className="section-headline mb-4">Para Quem é Este Programa</h2>
+            <h2 className="section-headline mb-4">
+              Para quem é a pós-graduação em dados
+            </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -402,15 +434,18 @@ export default function PosGraduacao() {
                 style={{ background: 'oklch(0.13 0.028 250 / 0.70)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}
               >
                 <CheckCircle2 className="w-10 h-10 mx-auto mb-4" style={{ color: 'oklch(0.65 0.18 160)' }} />
-                <h3 className="text-base font-bold mb-2" style={{ color: 'oklch(0.90 0.006 250)' }}>{audience.title}</h3>
-                <p className="text-sm" style={{ color: 'oklch(0.58 0.010 250)' }}>{audience.description}</p>
+                <h3 className="text-base font-bold mb-2" style={{ color: 'oklch(0.90 0.006 250)' }}>
+                  {audience.title}
+                </h3>
+                <p className="text-sm" style={{ color: 'oklch(0.58 0.010 250)' }}>
+                  {audience.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA FINAL ═══ */}
       <section
         className="relative py-24 overflow-hidden text-center"
         style={{ background: 'linear-gradient(135deg, oklch(0.14 0.040 250) 0%, oklch(0.10 0.028 250) 100%)' }}
@@ -423,11 +458,15 @@ export default function PosGraduacao() {
             viewport={{ once: true }}
           >
             <GraduationCap className="w-16 h-16 mx-auto mb-6" style={{ color: 'oklch(0.72 0.20 250)' }} />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'oklch(0.93 0.006 250)', fontFamily: 'var(--font-heading)' }}>
-              Comece sua jornada agora
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ color: 'oklch(0.93 0.006 250)', fontFamily: 'var(--font-heading)' }}
+            >
+              Comece sua pós-graduação em dados agora
             </h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: 'oklch(0.62 0.010 250)' }}>
-              Próximas turmas com vagas limitadas. Não perca sua oportunidade de transformar sua carreira com um diploma reconhecido pelo MEC.
+              Garanta sua vaga na pós-graduação em gestão estratégica de dados e desenvolva habilidades essenciais
+              para atuar com dados, tecnologia e inteligência de negócios em empresas e projetos reais.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-base px-10 py-4">
