@@ -1,3 +1,4 @@
+import TreinamentoIAEmpresas from './pages/TreinamentoIAEmpresas';
 import TreinamentoMSProjectEmpresas from './pages/TreinamentoMSProjectEmpresas';
 import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
 import TreinamentoSQLEmpresas from './pages/TreinamentoSQLEmpresas';
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/treinamento-power-bi-empresas" element={<TreinamentoPowerBIEmpresas />} />
           <Route path="/treinamento-sql-empresas" element={<TreinamentoSQLEmpresas />} />
           <Route path="/treinamento-ms-project-empresas" element={<TreinamentoMSProjectEmpresas />} />
+          <Route path="/treinamento-ia-empresas" element={<TreinamentoIAEmpresas />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
