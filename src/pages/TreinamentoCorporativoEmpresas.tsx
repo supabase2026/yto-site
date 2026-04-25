@@ -55,27 +55,47 @@ export default function TreinamentoCorporativoEmpresas() {
     <Layout>
       <SEO />
 
-      {/* HERO FORTE */}
-      <section className="section-pad text-center">
-        <h1 className="section-headline mb-6">
+      {/* HERO */}
+      <section
+        className="section-pad text-center"
+        style={{ background: 'oklch(0.08 0.018 250)' }}
+      >
+        <h1
+          className="section-headline mb-6"
+          style={{ color: 'oklch(0.95 0.005 250)' }}
+        >
           Sua empresa está perdendo produtividade por falta de capacitação?
         </h1>
 
-        <p className="text-lg max-w-2xl mx-auto mb-10">
+        <p
+          className="text-lg max-w-2xl mx-auto mb-10"
+          style={{ color: 'oklch(0.70 0.010 250)' }}
+        >
           Treinamentos corporativos práticos em dados, BI e gestão para transformar sua equipe em um motor de resultados.
         </p>
 
         <a
           href="https://wa.me/5511910704164"
-          className="btn-primary"
+          className="px-8 py-4 rounded-xl font-bold inline-block"
+          style={{
+            background: 'oklch(0.56 0.23 250)',
+            color: 'white',
+            boxShadow: '0 8px 30px oklch(0.56 0.23 250 / 0.40)',
+          }}
         >
           Falar com especialista
         </a>
       </section>
 
       {/* PROBLEMA */}
-      <section className="section-pad text-center">
-        <h2 className="section-headline mb-8">
+      <section
+        className="section-pad text-center"
+        style={{ background: 'oklch(0.09 0.020 250)' }}
+      >
+        <h2
+          className="section-headline mb-8"
+          style={{ color: 'oklch(0.95 0.005 250)' }}
+        >
           Problemas que vemos todos os dias nas empresas
         </h2>
 
@@ -87,27 +107,18 @@ export default function TreinamentoCorporativoEmpresas() {
             'Dependência excessiva de planilhas',
           ].map((item) => (
             <div key={item} className="flex gap-3 items-start">
-              <CheckCircle2 className="text-green-400 mt-1" />
-              <span>{item}</span>
+              <CheckCircle2 style={{ color: 'oklch(0.72 0.20 250)' }} />
+              <span style={{ color: 'oklch(0.70 0.010 250)' }}>{item}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SOLUÇÃO */}
-      <section className="section-pad text-center">
-        <h2 className="section-headline mb-6">
-          A solução: capacitar sua equipe
-        </h2>
-
-        <p className="max-w-2xl mx-auto mb-10">
-          Empresas que treinam suas equipes conseguem automatizar processos,
-          melhorar análises e tomar decisões mais rápidas e estratégicas.
-        </p>
-      </section>
-
-      {/* GRID FODA */}
-      <section className="section-pad">
+      {/* GRID */}
+      <section
+        className="section-pad"
+        style={{ background: 'oklch(0.08 0.018 250)' }}
+      >
         <div className="container-xl grid md:grid-cols-3 gap-6">
 
           {treinamentos.map((t, i) => (
@@ -123,9 +134,21 @@ export default function TreinamentoCorporativoEmpresas() {
                 border: '1px solid oklch(0.24 0.034 250 / 0.50)',
               }}
             >
-              <h3 className="text-lg font-bold mb-2">{t.titulo}</h3>
-              <p className="text-sm mb-4 text-gray-300">{t.desc}</p>
-              <span style={{ color: '#3b82f6' }}>
+              <h3
+                className="text-lg font-bold mb-2"
+                style={{ color: 'oklch(0.95 0.005 250)' }}
+              >
+                {t.titulo}
+              </h3>
+
+              <p
+                className="text-sm mb-4"
+                style={{ color: 'oklch(0.70 0.010 250)' }}
+              >
+                {t.desc}
+              </p>
+
+              <span style={{ color: 'oklch(0.72 0.20 250)' }}>
                 Ver mais <ChevronRight className="inline w-4" />
               </span>
             </motion.a>
@@ -134,19 +157,30 @@ export default function TreinamentoCorporativoEmpresas() {
         </div>
       </section>
 
-      {/* CTA FINAL PESADO */}
-      <section className="section-pad text-center">
-        <h2 className="section-headline mb-4">
+      {/* CTA FINAL */}
+      <section
+        className="section-pad text-center"
+        style={{ background: 'oklch(0.09 0.020 250)' }}
+      >
+        <h2
+          className="section-headline mb-4"
+          style={{ color: 'oklch(0.95 0.005 250)' }}
+        >
           Quer uma proposta personalizada?
         </h2>
 
-        <p className="mb-6 text-gray-400">
+        <p style={{ color: 'oklch(0.70 0.010 250)' }} className="mb-6">
           Fale com nossa equipe e estruturamos um treinamento sob medida para sua empresa.
         </p>
 
         <a
           href="https://wa.me/5511910704164"
-          className="btn-primary"
+          className="px-8 py-4 rounded-xl font-bold inline-block"
+          style={{
+            background: 'oklch(0.56 0.23 250)',
+            color: 'white',
+            boxShadow: '0 8px 30px oklch(0.56 0.23 250 / 0.40)',
+          }}
         >
           Solicitar proposta agora
         </a>
