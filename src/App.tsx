@@ -1,4 +1,5 @@
 import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
+import TreinamentoPowerBIEmpresas from './pages/TreinamentoPowerBIEmpresas';
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
@@ -49,6 +50,7 @@ const App = () => (
           <Route path={ROUTE_PATHS.JORNADA} element={<MonteJornada />} />
           <Route path={ROUTE_PATHS.CONTATO} element={<Contato />} />
           <Route path="/treinamento-excel-empresas" element={<TreinamentoExcelEmpresas />} />
+          <Route path="/treinamento-power-bi-empresas" element={<TreinamentoPowerBIEmpresas />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
