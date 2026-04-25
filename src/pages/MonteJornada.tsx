@@ -45,11 +45,7 @@ const questions: Question[] = [
   {
     id: 'tempo',
     title: 'Quanto tempo você consegue dedicar por semana?',
-    options: [
-      'Até 3 horas',
-      'De 3 a 6 horas',
-      'Mais de 6 horas',
-    ],
+    options: ['Até 3 horas', 'De 3 a 6 horas', 'Mais de 6 horas'],
   },
   {
     id: 'perfil',
@@ -83,7 +79,8 @@ function calcResult(answers: Record<string, string>): Result {
       text: 'Você já possui base sólida e está pronto para uma formação mais estratégica. A Pós-graduação em Gestão Estratégica de Dados é o próximo passo para acelerar sua evolução profissional com diploma reconhecido pelo MEC.',
       cta: 'Conhecer a Pós-graduação',
       path: ROUTE_PATHS.POS_GRADUACAO,
-      whatsappMsg: 'Olá! Acabei de fazer o quiz do site e meu perfil indicou a Pós-graduação em Gestão Estratégica de Dados. Gostaria de saber mais!',
+      whatsappMsg:
+        'Olá! Acabei de fazer o quiz do site e meu perfil indicou a Pós-graduação em Gestão Estratégica de Dados. Gostaria de saber mais!',
     };
   }
 
@@ -93,7 +90,8 @@ function calcResult(answers: Record<string, string>): Result {
       text: 'Pelo seu perfil, o caminho mais eficiente é um acompanhamento direto, focado exatamente no que você precisa resolver. A Mentoria VIP garante evolução rápida com atenção individualizada.',
       cta: 'Falar sobre Mentoria VIP',
       path: ROUTE_PATHS.MENTORIA_VIP,
-      whatsappMsg: 'Olá! Fiz o quiz do site e meu perfil indicou a Mentoria VIP. Gostaria de saber mais sobre as aulas individuais!',
+      whatsappMsg:
+        'Olá! Fiz o quiz do site e meu perfil indicou a Mentoria VIP. Gostaria de saber mais sobre as aulas individuais!',
     };
   }
 
@@ -106,20 +104,19 @@ function calcResult(answers: Record<string, string>): Result {
       text: 'Pelo seu perfil, o ideal é começar construindo uma base sólida e prática no seu ritmo. A Yto Academy oferece acesso a dezenas de cursos para você evoluir com consistência antes de avançar para formações mais avançadas.',
       cta: 'Começar agora na Yto Academy',
       path: ROUTE_PATHS.YTO_ACADEMY,
-      whatsappMsg: 'Olá! Fiz o quiz do site e meu perfil indicou a Yto Academy como o melhor ponto de partida. Gostaria de saber mais!',
+      whatsappMsg:
+        'Olá! Fiz o quiz do site e meu perfil indicou a Yto Academy como o melhor ponto de partida. Gostaria de saber mais!',
     };
   }
 
-  if (
-    objetivo === 'Entrar na área de dados' ||
-    objetivo === 'Mudar de carreira'
-  ) {
+  if (objetivo === 'Entrar na área de dados' || objetivo === 'Mudar de carreira') {
     return {
       title: 'Você está pronto para iniciar sua carreira em dados',
       text: 'Com base no seu objetivo, o melhor caminho é uma formação estruturada que te leve do zero até o mercado, com foco em prática e aplicação real. A Formação em Data Analytics é exatamente isso.',
       cta: 'Conhecer formação em Data Analytics',
       path: ROUTE_PATHS.DATA_ANALYTICS,
-      whatsappMsg: 'Olá! Fiz o quiz do site e meu perfil indicou a Formação em Data Analytics. Gostaria de saber mais sobre o programa!',
+      whatsappMsg:
+        'Olá! Fiz o quiz do site e meu perfil indicou a Formação em Data Analytics. Gostaria de saber mais sobre o programa!',
     };
   }
 
@@ -128,7 +125,8 @@ function calcResult(answers: Record<string, string>): Result {
     text: 'Pelo seu perfil, o ideal é começar construindo uma base sólida e prática no seu ritmo. A Yto Academy oferece acesso a dezenas de cursos para evoluir com consistência.',
     cta: 'Começar agora na Yto Academy',
     path: ROUTE_PATHS.YTO_ACADEMY,
-    whatsappMsg: 'Olá! Fiz o quiz do site e meu perfil indicou a Yto Academy como o melhor caminho. Gostaria de saber mais!',
+    whatsappMsg:
+      'Olá! Fiz o quiz do site e meu perfil indicou a Yto Academy como o melhor caminho. Gostaria de saber mais!',
   };
 }
 
@@ -227,25 +225,33 @@ export default function MonteJornada() {
     setIsSubmitting(true);
     setFormError('');
 
-    const { error } = await supabase.from('leads_jornada').insert([
-      {
-        nome_completo: nomeCompleto.trim(),
-        email: email.trim(),
-        whatsapp: whatsapp.trim(),
-        perfil_resultado: result.title,
-        pontuacao,
-        origem_pagina: 'monte-sua-jornada',
-      },
-    ]);
+    const leadPayload = {
+      nome_completo: nomeCompleto.trim(),
+      email: email.trim(),
+      whatsapp: whatsapp.trim(),
+      perfil_resultado: result.title,
+      pontuacao,
+      origem_pagina: 'monte-sua-jornada',
+    };
 
-    setIsSubmitting(false);
+    const { error } = await supabase.from('leads_jornada').insert([leadPayload]);
 
     if (error) {
+      setIsSubmitting(false);
       console.error('Erro ao salvar lead:', error);
       setFormError('Não conseguimos salvar seus dados agora. Tente novamente em alguns instantes.');
       return;
     }
 
+    const { error: notifyError } = await supabase.functions.invoke('notificar-lead', {
+      body: leadPayload,
+    });
+
+    if (notifyError) {
+      console.error('Lead salvo, mas houve erro ao enviar notificação:', notifyError);
+    }
+
+    setIsSubmitting(false);
     setStage('result');
   };
 
@@ -301,9 +307,11 @@ export default function MonteJornada() {
                 >
                   Descubra o melhor caminho para sua carreira em dados
                 </h1>
+
                 <p className="text-lg mb-4 max-w-xl mx-auto" style={{ color: 'oklch(0.60 0.012 250)', lineHeight: 1.7 }}>
                   Responda algumas perguntas rápidas e receba uma recomendação personalizada baseada no seu momento atual.
                 </p>
+
                 <p className="text-sm mb-10" style={{ color: 'oklch(0.46 0.010 250)' }}>
                   Em menos de 1 minuto, vamos te mostrar o caminho mais eficiente para evoluir em dados.
                 </p>
@@ -405,9 +413,11 @@ export default function MonteJornada() {
                     </div>
                   </div>
                 </div>
+
                 <h2 className="text-2xl font-bold mb-3" style={{ color: 'oklch(0.94 0.006 250)', fontFamily: 'var(--font-heading)' }}>
                   Analisando seu perfil…
                 </h2>
+
                 <p className="text-sm" style={{ color: 'oklch(0.52 0.010 250)' }}>
                   Identificando o melhor caminho para você
                 </p>
@@ -434,9 +444,11 @@ export default function MonteJornada() {
                     >
                       Resultado pronto
                     </span>
+
                     <h2 className="text-2xl font-bold mb-3" style={{ color: 'oklch(0.94 0.006 250)', fontFamily: 'var(--font-heading)' }}>
                       Para ver sua recomendação, preencha seus dados
                     </h2>
+
                     <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.58 0.010 250)' }}>
                       Vamos salvar seu resultado para nossa equipe te orientar melhor, sem compromisso.
                     </p>
@@ -502,12 +514,14 @@ export default function MonteJornada() {
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" /> Análise concluída
                   </span>
+
                   <h2
                     className="text-2xl font-bold mb-5 leading-snug"
                     style={{ color: 'oklch(0.94 0.006 250)', fontFamily: 'var(--font-heading)' }}
                   >
                     {result.title}
                   </h2>
+
                   <p className="text-base max-w-xl mx-auto leading-relaxed" style={{ color: 'oklch(0.60 0.012 250)' }}>
                     {result.text}
                   </p>
@@ -520,6 +534,7 @@ export default function MonteJornada() {
                   <p className="text-sm mb-6" style={{ color: 'oklch(0.54 0.010 250)' }}>
                     Quer saber mais? Fale com nossa equipe pelo WhatsApp e receba orientação personalizada.
                   </p>
+
                   <a
                     href={`https://wa.me/5511910704164?text=${encodeURIComponent(result.whatsappMsg)}`}
                     target="_blank"
@@ -529,7 +544,9 @@ export default function MonteJornada() {
                   >
                     💬 {result.cta} via WhatsApp
                   </a>
+
                   <br />
+
                   <a
                     href={result.path}
                     className="inline-flex items-center gap-1.5 text-sm transition-all duration-150 hover:underline"
