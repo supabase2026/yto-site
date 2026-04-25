@@ -1,3 +1,4 @@
+import TreinamentoSQLEmpresas from './pages/TreinamentoSQLEmpresas';
 import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
 import TreinamentoPowerBIEmpresas from './pages/TreinamentoPowerBIEmpresas';
 import { Toaster } from "./components/ui/toaster";
@@ -51,6 +52,7 @@ const App = () => (
           <Route path={ROUTE_PATHS.CONTATO} element={<Contato />} />
           <Route path="/treinamento-excel-empresas" element={<TreinamentoExcelEmpresas />} />
           <Route path="/treinamento-power-bi-empresas" element={<TreinamentoPowerBIEmpresas />} />
+          <Route path="/treinamento-sql-empresas" element={<TreinamentoSQLEmpresas />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
