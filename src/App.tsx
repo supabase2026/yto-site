@@ -1,5 +1,5 @@
-import TreinamentoSQLEmpresas from './pages/TreinamentoSQLEmpresas';
 import TreinamentoExcelEmpresas from './pages/TreinamentoExcelEmpresas';
+import TreinamentoSQLEmpresas from './pages/TreinamentoSQLEmpresas';
 import TreinamentoPowerBIEmpresas from './pages/TreinamentoPowerBIEmpresas';
 import { Toaster } from "./components/ui/toaster";
 import { Toaster as Sonner } from "./components/ui/sonner";
