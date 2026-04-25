@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   MessageCircle,
@@ -68,9 +69,51 @@ const faqs = [
   },
 ];
 
+function SEO() {
+  useEffect(() => {
+    document.title = 'Treinamento de Power BI para Empresas | Grupo Yto Nihon';
+
+    const description =
+      'Treinamento de Power BI para empresas com foco prático em dashboards, DAX, Power Query, modelagem de dados e tomada de decisão. Capacite sua equipe com especialistas.';
+
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', description);
+
+    const schemaId = 'schema-power-bi-empresas';
+    const oldSchema = document.getElementById(schemaId);
+    if (oldSchema) oldSchema.remove();
+
+    const schema = document.createElement('script');
+    schema.id = schemaId;
+    schema.type = 'application/ld+json';
+    schema.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      name: 'Treinamento de Power BI para Empresas',
+      description:
+        'Capacitação corporativa em Power BI com foco em dashboards, DAX, Power Query, modelagem de dados e tomada de decisão.',
+      provider: {
+        '@type': 'Organization',
+        name: 'Grupo Yto Nihon',
+        url: 'https://www.grupoytonihon.com.br',
+      },
+    });
+    document.head.appendChild(schema);
+  }, []);
+
+  return null;
+}
+
 export default function TreinamentoPowerBIEmpresas() {
   return (
     <Layout>
+      <SEO />
+
       <section
         className="relative overflow-hidden"
         style={{
@@ -109,13 +152,13 @@ export default function TreinamentoPowerBIEmpresas() {
                   fontFamily: 'var(--font-heading)',
                 }}
               >
-                Treinamento de Power BI para empresas:{' '}
-                <span className="text-gradient">transforme dados em dashboards e decisões</span>
+                Treinamento de Power BI para Empresas:{' '}
+                <span className="text-gradient">dashboards, DAX e tomada de decisão</span>
               </h1>
 
               <p className="text-lg mb-10 max-w-3xl" style={{ color: 'oklch(0.64 0.012 250)', lineHeight: 1.75 }}>
                 Capacite sua equipe em Power BI com treinamento prático, personalizado e aplicado à realidade da empresa,
-                desde a criação de dashboards até modelagem de dados, DAX e publicação de relatórios.
+                desde a criação de dashboards até modelagem de dados, DAX, Power Query e publicação de relatórios.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -192,7 +235,7 @@ export default function TreinamentoPowerBIEmpresas() {
 
           <p className="text-base mb-10 max-w-3xl mx-auto" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
             Muitas empresas possuem dados, mas ainda têm dificuldade para transformar essas informações em dashboards,
-            indicadores e decisões estratégicas.
+            indicadores e decisões estratégicas com Power BI.
           </p>
 
           <div className="grid md:grid-cols-2 gap-4 text-left">
@@ -226,7 +269,7 @@ export default function TreinamentoPowerBIEmpresas() {
             <span className="section-tag">Conteúdo do treinamento</span>
             <h2 className="section-headline mb-4">O que sua equipe pode aprender</h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
-              O programa pode ser ajustado para diferentes níveis, áreas e objetivos da empresa.
+              O curso de Power BI para empresas pode ser ajustado para diferentes níveis, áreas e objetivos.
             </p>
           </motion.div>
 
@@ -251,6 +294,14 @@ export default function TreinamentoPowerBIEmpresas() {
               </motion.div>
             ))}
           </div>
+
+          <p className="text-sm mt-8 text-center" style={{ color: 'oklch(0.54 0.010 250)' }}>
+            Sua equipe também pode complementar a capacitação com nosso{' '}
+            <a href="/treinamento-excel-empresas" className="underline" style={{ color: 'oklch(0.68 0.20 250)' }}>
+              treinamento de Excel para empresas
+            </a>
+            .
+          </p>
         </div>
       </section>
 
