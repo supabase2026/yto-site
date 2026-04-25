@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { ROUTE_PATHS } from '@/lib/index';
+import { supabase } from '../lib/supabase';
 
 interface Question {
   id: string;
@@ -73,7 +74,6 @@ interface Result {
 function calcResult(answers: Record<string, string>): Result {
   const { escolaridade, nivel, objetivo, perfil } = answers;
 
-  // Pós-graduado ou quer se especializar → Pós-graduação
   if (
     escolaridade === 'Pós-graduado ou MBA' ||
     nivel === 'Já atuo com dados e quero me especializar'
@@ -87,7 +87,6 @@ function calcResult(answers: Record<string, string>): Result {
     };
   }
 
-  // Quer acompanhamento personalizado → Mentoria VIP
   if (perfil === '100% personalizado para minha necessidade') {
     return {
       title: 'Sua melhor opção é uma mentoria personalizada',
@@ -98,7 +97,6 @@ function calcResult(answers: Record<string, string>): Result {
     };
   }
 
-  // Iniciante completo ou pouca base → Yto Academy
   if (
     nivel === 'Nunca tive contato com análise de dados' ||
     nivel === 'Já tenho uma base básica (Excel ou similares)'
@@ -112,7 +110,6 @@ function calcResult(answers: Record<string, string>): Result {
     };
   }
 
-  // Quer mudar de carreira ou entrar na área → Data Analytics
   if (
     objetivo === 'Entrar na área de dados' ||
     objetivo === 'Mudar de carreira'
@@ -126,7 +123,6 @@ function calcResult(answers: Record<string, string>): Result {
     };
   }
 
-  // Default → Yto Academy
   return {
     title: 'Seu melhor caminho começa pela Yto Academy',
     text: 'Pelo seu perfil, o ideal é começar construindo uma base sólida e prática no seu ritmo. A Yto Academy oferece acesso a dezenas de cursos para evoluir com consistência.',
@@ -136,19 +132,45 @@ function calcResult(answers: Record<string, string>): Result {
   };
 }
 
+function calcPontuacao(answers: Record<string, string>): number {
+  let score = 0;
+
+  if (answers.escolaridade === 'Graduação completa') score += 2;
+  if (answers.escolaridade === 'Pós-graduado ou MBA') score += 3;
+
+  if (answers.nivel === 'Já tenho uma base básica (Excel ou similares)') score += 1;
+  if (answers.nivel === 'Já trabalho com dados, mas quero evoluir') score += 2;
+  if (answers.nivel === 'Já atuo com dados e quero me especializar') score += 3;
+
+  if (answers.tempo === 'De 3 a 6 horas') score += 1;
+  if (answers.tempo === 'Mais de 6 horas') score += 2;
+
+  if (answers.perfil === 'Com acompanhamento próximo') score += 2;
+  if (answers.perfil === '100% personalizado para minha necessidade') score += 3;
+
+  return score;
+}
+
 const METRICS = [
   { value: '+100k', label: 'alunos formados' },
   { value: '+200', label: 'empresas atendidas' },
   { value: '26+', label: 'anos de experiência' },
 ];
 
-type Stage = 'intro' | 'questions' | 'analyzing' | 'result';
+type Stage = 'intro' | 'questions' | 'analyzing' | 'lead' | 'result';
 
 export default function MonteJornada() {
   const [stage, setStage] = useState<Stage>('intro');
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<Result | null>(null);
+  const [pontuacao, setPontuacao] = useState(0);
+
+  const [nomeCompleto, setNomeCompleto] = useState('');
+  const [email, setEmail] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const handleStart = () => setStage('questions');
 
@@ -161,9 +183,14 @@ export default function MonteJornada() {
       setCurrentQ(currentQ + 1);
     } else {
       setStage('analyzing');
+
       setTimeout(() => {
-        setResult(calcResult(newAnswers));
-        setStage('result');
+        const finalResult = calcResult(newAnswers);
+        const finalScore = calcPontuacao(newAnswers);
+
+        setResult(finalResult);
+        setPontuacao(finalScore);
+        setStage('lead');
       }, 2200);
     }
   };
@@ -177,9 +204,57 @@ export default function MonteJornada() {
     setCurrentQ(0);
     setAnswers({});
     setResult(null);
+    setPontuacao(0);
+    setNomeCompleto('');
+    setEmail('');
+    setWhatsapp('');
+    setFormError('');
   };
 
-  const progress = stage === 'questions' ? ((currentQ) / questions.length) * 100 : stage === 'analyzing' || stage === 'result' ? 100 : 0;
+  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!nomeCompleto.trim() || !email.trim() || !whatsapp.trim()) {
+      setFormError('Preencha nome, e-mail e WhatsApp para ver seu resultado.');
+      return;
+    }
+
+    if (!result) {
+      setFormError('Não encontramos o resultado do quiz. Tente novamente.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setFormError('');
+
+    const { error } = await supabase.from('leads_jornada').insert([
+      {
+        nome_completo: nomeCompleto.trim(),
+        email: email.trim(),
+        whatsapp: whatsapp.trim(),
+        perfil_resultado: result.title,
+        pontuacao,
+        origem_pagina: 'monte-sua-jornada',
+      },
+    ]);
+
+    setIsSubmitting(false);
+
+    if (error) {
+      console.error('Erro ao salvar lead:', error);
+      setFormError('Não conseguimos salvar seus dados agora. Tente novamente em alguns instantes.');
+      return;
+    }
+
+    setStage('result');
+  };
+
+  const progress =
+    stage === 'questions'
+      ? (currentQ / questions.length) * 100
+      : stage === 'analyzing' || stage === 'lead' || stage === 'result'
+        ? 100
+        : 0;
 
   return (
     <Layout>
@@ -187,12 +262,10 @@ export default function MonteJornada() {
         className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden"
         style={{ background: 'var(--brand-navy)', paddingTop: '5rem', paddingBottom: '5rem' }}
       >
-        {/* Background orbs */}
         <div className="orb orb-blue" style={{ width: '700px', height: '600px', top: '-20%', right: '-10%', opacity: 0.20 }} />
         <div className="orb orb-cyan" style={{ width: '500px', height: '400px', bottom: '-15%', left: '-8%', opacity: 0.14 }} />
         <div className="bg-dot-grid absolute inset-0 opacity-20" />
 
-        {/* Progress bar */}
         {stage !== 'intro' && (
           <div className="fixed top-0 left-0 right-0 z-[60] h-1" style={{ background: 'oklch(0.16 0.028 250 / 0.60)' }}>
             <motion.div
@@ -206,8 +279,6 @@ export default function MonteJornada() {
 
         <div className="container-xl relative z-10 w-full max-w-2xl">
           <AnimatePresence mode="wait">
-
-            {/* ─── INTRO ─── */}
             {stage === 'intro' && (
               <motion.div
                 key="intro"
@@ -245,7 +316,6 @@ export default function MonteJornada() {
                   Começar agora <ChevronRight className="w-5 h-5" />
                 </button>
 
-                {/* Métricas */}
                 <div className="flex flex-wrap justify-center gap-8">
                   {METRICS.map((m) => (
                     <div key={m.label} className="text-center">
@@ -257,7 +327,6 @@ export default function MonteJornada() {
               </motion.div>
             )}
 
-            {/* ─── QUESTIONS ─── */}
             {stage === 'questions' && (
               <motion.div
                 key={`q-${currentQ}`}
@@ -267,7 +336,6 @@ export default function MonteJornada() {
                 transition={{ duration: 0.3 }}
                 className="px-4"
               >
-                {/* Step indicator */}
                 <div className="flex items-center justify-between mb-8">
                   <button
                     onClick={handleBack}
@@ -302,18 +370,6 @@ export default function MonteJornada() {
                         border: '1px solid oklch(0.26 0.036 250 / 0.55)',
                         color: 'oklch(0.82 0.008 250)',
                       }}
-                      onMouseEnter={(e) => {
-                        const el = e.currentTarget;
-                        el.style.background = 'oklch(0.56 0.23 250 / 0.14)';
-                        el.style.borderColor = 'oklch(0.56 0.23 250 / 0.50)';
-                        el.style.color = 'oklch(0.96 0.006 250)';
-                      }}
-                      onMouseLeave={(e) => {
-                        const el = e.currentTarget;
-                        el.style.background = 'oklch(0.13 0.026 250 / 0.80)';
-                        el.style.borderColor = 'oklch(0.26 0.036 250 / 0.55)';
-                        el.style.color = 'oklch(0.82 0.008 250)';
-                      }}
                     >
                       {opt}
                     </motion.button>
@@ -322,7 +378,6 @@ export default function MonteJornada() {
               </motion.div>
             )}
 
-            {/* ─── ANALYZING ─── */}
             {stage === 'analyzing' && (
               <motion.div
                 key="analyzing"
@@ -359,7 +414,79 @@ export default function MonteJornada() {
               </motion.div>
             )}
 
-            {/* ─── RESULT ─── */}
+            {stage === 'lead' && result && (
+              <motion.div
+                key="lead"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                className="px-4"
+              >
+                <div
+                  className="rounded-2xl p-8"
+                  style={{ background: 'oklch(0.13 0.026 250 / 0.85)', border: '1px solid oklch(0.28 0.040 250 / 0.55)' }}
+                >
+                  <div className="text-center mb-8">
+                    <span
+                      className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold mb-5"
+                      style={{ background: 'oklch(0.56 0.23 250 / 0.12)', border: '1px solid oklch(0.56 0.23 250 / 0.28)', color: 'oklch(0.72 0.18 250)' }}
+                    >
+                      Resultado pronto
+                    </span>
+                    <h2 className="text-2xl font-bold mb-3" style={{ color: 'oklch(0.94 0.006 250)', fontFamily: 'var(--font-heading)' }}>
+                      Para ver sua recomendação, preencha seus dados
+                    </h2>
+                    <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.58 0.010 250)' }}>
+                      Vamos salvar seu resultado para nossa equipe te orientar melhor, sem compromisso.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleLeadSubmit} className="space-y-4">
+                    <input
+                      value={nomeCompleto}
+                      onChange={(e) => setNomeCompleto(e.target.value)}
+                      placeholder="Nome completo"
+                      className="w-full px-5 py-4 rounded-xl text-sm outline-none"
+                      style={{ background: 'oklch(0.10 0.024 250)', border: '1px solid oklch(0.26 0.036 250 / 0.70)', color: 'oklch(0.92 0.006 250)' }}
+                    />
+
+                    <input
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="E-mail"
+                      type="email"
+                      className="w-full px-5 py-4 rounded-xl text-sm outline-none"
+                      style={{ background: 'oklch(0.10 0.024 250)', border: '1px solid oklch(0.26 0.036 250 / 0.70)', color: 'oklch(0.92 0.006 250)' }}
+                    />
+
+                    <input
+                      value={whatsapp}
+                      onChange={(e) => setWhatsapp(e.target.value)}
+                      placeholder="WhatsApp com DDD"
+                      className="w-full px-5 py-4 rounded-xl text-sm outline-none"
+                      style={{ background: 'oklch(0.10 0.024 250)', border: '1px solid oklch(0.26 0.036 250 / 0.70)', color: 'oklch(0.92 0.006 250)' }}
+                    />
+
+                    {formError && (
+                      <p className="text-sm" style={{ color: 'oklch(0.70 0.20 30)' }}>
+                        {formError}
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-sm font-bold transition-all duration-200 disabled:opacity-60"
+                      style={{ background: 'oklch(0.56 0.23 250)', color: 'white', boxShadow: '0 8px 24px oklch(0.56 0.23 250 / 0.35)' }}
+                    >
+                      {isSubmitting ? 'Salvando...' : 'Ver meu resultado'} <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </form>
+                </div>
+              </motion.div>
+            )}
+
             {stage === 'result' && result && (
               <motion.div
                 key="result"
@@ -386,7 +513,6 @@ export default function MonteJornada() {
                   </p>
                 </div>
 
-                {/* CTA card */}
                 <div
                   className="rounded-2xl p-8 text-center mb-6"
                   style={{ background: 'oklch(0.13 0.026 250 / 0.85)', border: '1px solid oklch(0.28 0.040 250 / 0.55)' }}
@@ -405,7 +531,7 @@ export default function MonteJornada() {
                   </a>
                   <br />
                   <a
-                    href={`#${result.path}`}
+                    href={result.path}
                     className="inline-flex items-center gap-1.5 text-sm transition-all duration-150 hover:underline"
                     style={{ color: 'oklch(0.62 0.18 250)' }}
                   >
@@ -424,7 +550,6 @@ export default function MonteJornada() {
                 </div>
               </motion.div>
             )}
-
           </AnimatePresence>
         </div>
       </div>
