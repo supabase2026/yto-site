@@ -1,3 +1,4 @@
+import { SeoLocal } from '@/components/SeoLocal';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -434,6 +435,7 @@ export default function TreinamentoIAEmpresas() {
                 <MessageCircle className="w-4 h-4" />
                 Falar no WhatsApp
               </a>
+              <SeoLocal />
             </div>
           </motion.div>
         </div>
