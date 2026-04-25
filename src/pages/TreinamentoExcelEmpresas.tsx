@@ -1,3 +1,4 @@
+import { SeoLocal } from '@/components/SeoLocal';
 import { motion } from 'framer-motion';
 import {
   MessageCircle,
@@ -390,6 +391,7 @@ export default function TreinamentoExcelEmpresas() {
                 <MessageCircle className="w-4 h-4" />
                 Falar no WhatsApp
               </a>
+              <SeoLocal />
             </div>
           </motion.div>
         </div>
