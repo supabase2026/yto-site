@@ -85,7 +85,7 @@ const CursoExcelBarueri = () => {
           </section>
         </div>
       </Layout>
-    </>
+  
   );
 };
 
