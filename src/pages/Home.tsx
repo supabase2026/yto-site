@@ -175,21 +175,24 @@ export default function Home() {
                   Ver todas as soluções
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {/* 🆕 NOVO BOTÃO */}
+                <Link
+                  to="/pos-graduacao-dados"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200"
                   style={{
-                    background: 'rgba(37,211,102,0.12)',
-                    border: '1.5px solid rgba(37,211,102,0.38)',
-                    color: '#25D366',
+                    background: 'oklch(0.14 0.028 250)',
+                    border: '1px solid oklch(0.30 0.040 250)',
+                    color: 'oklch(0.90 0.004 250)',
                     letterSpacing: '0.01em',
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,211,102,0.20)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,211,102,0.12)'; }}
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  Ver Pós-graduação
+                </Link>
+                
+                <a
+                  href={WHATSAPP_LINK}
+                  ...
+                >
                   Falar no WhatsApp
                 </a>
               </motion.div>
