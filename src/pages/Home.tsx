@@ -115,19 +115,17 @@ export default function Home() {
                   color: 'oklch(0.97 0.004 250)',
                   letterSpacing: '-0.02em',
                 }}
-              >
-                Transforme dados em{' '}
-                <span
-                  style={{
-                    background: 'linear-gradient(135deg, oklch(0.72 0.20 250), oklch(0.60 0.22 250))',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  oportunidades reais
-                </span>{' '}
-                de carreira
+              >Formamos profissionais e empresas em{' '}
+<span
+  style={{
+    background: 'linear-gradient(135deg, oklch(0.72 0.20 250), oklch(0.60 0.22 250))',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+  }}
+>
+  Excel, Power BI, Dados e IA
+</span>
               </motion.h1>
 
               {/* Subheadline */}
