@@ -1,4 +1,31 @@
 {
+  "redirects": [
+    {
+      "source": "/ytoacademy",
+      "destination": "/yto-academy",
+      "permanent": true
+    },
+    {
+      "source": "/posgraduacao",
+      "destination": "/pos-graduacao-dados",
+      "permanent": true
+    },
+    {
+      "source": "/paraempresas",
+      "destination": "/treinamento-corporativo",
+      "permanent": true
+    },
+    {
+      "source": "/dataanalytics",
+      "destination": "/formacao-data-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/incompany",
+      "destination": "/treinamento-corporativo",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
