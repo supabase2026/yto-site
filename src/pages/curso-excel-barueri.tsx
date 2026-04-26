@@ -1,19 +1,9 @@
-import { Helmet } from "react-helmet-async";
 import { Layout } from "@/components/Layout";
 import { WHATSAPP_LINK } from "@/lib/index";
 
 const CursoExcelBarueri = () => {
   return (
-    <>
-      <Helmet>
-        <title>Curso de Excel em Barueri e Alphaville | Grupo Yto Nihon</title>
-        <meta
-          name="description"
-          content="Curso de Excel em Barueri e Alphaville com foco prático. Aprenda do básico ao avançado com o Grupo Yto Nihon."
-        />
-      </Helmet>
-
-      <Layout>
+    <Layout>
         <div className="min-h-screen bg-background text-foreground">
           <section className="py-20">
             <div className="container-xl">
