@@ -1,4 +1,4 @@
-
+import CursoExcelBarueri from "./pages/CursoExcelBarueri";
 import TreinamentoCorporativoEmpresas from './pages/TreinamentoCorporativoEmpresas';
 import TreinamentoIAEmpresas from './pages/TreinamentoIAEmpresas';
 import TreinamentoMSProjectEmpresas from './pages/TreinamentoMSProjectEmpresas';
@@ -63,6 +63,7 @@ const App = () => (
           <Route path="/treinamento-ia-empresas" element={<TreinamentoIAEmpresas />} />
           <Route path="/treinamento-corporativo-empresas" element={<TreinamentoCorporativoEmpresas />} />
           <Route path="/treinamento-corporativo" element={<TreinamentoCorporativoEmpresas />} />
+          <Route path="/curso-excel-barueri" element={<CursoExcelBarueri />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
