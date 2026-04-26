@@ -189,12 +189,23 @@ export default function Home() {
                   Ver Pós-graduação
                 </Link>
                 
-                <a
-                  href={WHATSAPP_LINK}
-                  ...
-                >
-                  Falar no WhatsApp
-                </a>
+              <a
+  href={WHATSAPP_LINK}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200"
+  style={{
+    background: 'rgba(37,211,102,0.12)',
+    border: '1.5px solid rgba(37,211,102,0.38)',
+    color: '#25D366',
+    letterSpacing: '0.01em',
+  }}
+  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,211,102,0.20)'; }}
+  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,211,102,0.12)'; }}
+>
+  <MessageCircle className="w-4 h-4" />
+  Falar no WhatsApp
+</a>
               </motion.div>
 
               {/* Prova social em linha */}
