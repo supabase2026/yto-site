@@ -8,7 +8,7 @@ const CursoPowerBIBarueri = () => {
         <section className="py-20">
           <div className="container-xl">
             <h1 className="text-4xl font-bold mb-6">
-              Curso de Power BI em Barueri e Alphaville
+              Curso de Power BI em Barueri e Alphaville.
             </h1>
 
             <p className="text-lg mb-6">
