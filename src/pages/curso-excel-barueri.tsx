@@ -1,9 +1,18 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 
 const CursoExcelBarueri = () => {
   return (
+   <Helmet>
+  <title>Curso de Excel em Barueri e Alphaville | Grupo Yto Nihon</title>
+  <meta
+    name="description"
+    content="Curso de Excel em Barueri e Alphaville com foco prático. Aprenda do básico ao avançado com o Grupo Yto Nihon."
+  />
+</Helmet>
+    
     <div className="min-h-screen bg-background text-foreground">
 
       <section className="py-20">
