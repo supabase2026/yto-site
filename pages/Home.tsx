@@ -192,7 +192,7 @@ export default function Home() {
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(37,211,102,0.12)'; }}
                 >
                   <MessageCircle className="w-4 h-4" />
-                  Falar no WhatsApp
+                  Falar com especialista agora
                 </a>
               </motion.div>
 
