@@ -457,11 +457,11 @@ export default function Home() {
           >
             <span className="section-tag">Nossos Programas</span>
             <h2 className="section-headline mb-4">
-              A solução certa para<br />
-              <span className="text-gradient-static">cada etapa da sua carreira</span>
+              Todos os nossos programas<br />
+              <span className="text-gradient-static">em detalhes.</span>
             </h2>
             <p className="section-subline mx-auto">
-              Do iniciante ao executivo — temos o programa ideal para você dominar dados e avançar profissionalmente.
+              Conheça em profundidade cada um dos nossos programas, formatos e caminhos de aprendizado.
             </p>
           </motion.div>
 
