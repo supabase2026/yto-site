@@ -1,4 +1,4 @@
-import CursoExcelBarueri from "./pages/CursoExcelBarueri";
+import CursoExcelBarueri from "./pages/curso-excel-barueri";
 import TreinamentoCorporativoEmpresas from './pages/TreinamentoCorporativoEmpresas';
 import TreinamentoIAEmpresas from './pages/TreinamentoIAEmpresas';
 import TreinamentoMSProjectEmpresas from './pages/TreinamentoMSProjectEmpresas';
