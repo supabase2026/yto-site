@@ -366,7 +366,82 @@ export default function Home() {
         </div>
         <div className="section-divider absolute bottom-0 left-0 right-0" />
       </section>
+{/* ══════════════════════════════════════════════
+    ESCOLHA SEU CAMINHO
+══════════════════════════════════════════════ */}
+<section className="section-pad" style={{ background: 'oklch(0.09 0.022 250)' }}>
+  <div className="container-xl">
+    <motion.div
+      className="text-center mb-14"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+    >
+      <span className="section-tag">Escolha seu caminho</span>
+      <h2 className="section-headline mb-4">
+        Encontre a solução ideal<br />
+        <span className="text-gradient-static">para o seu momento</span>
+      </h2>
+      <p className="section-subline mx-auto">
+        Seja para estudar no seu ritmo, fazer uma pós-graduação, capacitar sua equipe ou entrar na área de dados, temos um caminho claro para você.
+      </p>
+    </motion.div>
 
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {[
+        {
+          title: 'Yto Academy',
+          text: 'Cursos online para estudar no seu ritmo e evoluir em Excel, Power BI, SQL, Python e tecnologia.',
+          link: '/yto-academy',
+          cta: 'Conhecer Academy',
+        },
+        {
+          title: 'Pós-graduação',
+          text: 'Gestão Estratégica de Dados para quem quer liderar projetos, decisões e carreiras orientadas por dados.',
+          link: '/pos-graduacao-dados',
+          cta: 'Ver Pós',
+        },
+        {
+          title: 'Empresas',
+          text: 'Treinamentos corporativos sob medida em Excel, Power BI, SQL, IA e MS Project para equipes.',
+          link: '/treinamento-corporativo',
+          cta: 'Treinar equipe',
+        },
+        {
+          title: 'Data Analytics',
+          text: 'Formação prática para quem deseja iniciar ou acelerar sua carreira na área de análise de dados.',
+          link: '/formacao-data-analytics',
+          cta: 'Ver formação',
+        },
+      ].map((item) => (
+        <Link
+          key={item.title}
+          to={item.link}
+          className="group rounded-2xl p-6 transition-all duration-200"
+          style={{
+            background: 'oklch(0.12 0.028 250)',
+            border: '1px solid oklch(0.25 0.035 250 / 0.50)',
+          }}
+        >
+          <h3
+            className="text-xl font-bold mb-3"
+            style={{ color: 'oklch(0.93 0.006 250)', fontFamily: 'var(--font-heading)' }}
+          >
+            {item.title}
+          </h3>
+          <p className="text-sm leading-relaxed mb-5" style={{ color: 'oklch(0.58 0.010 250)' }}>
+            {item.text}
+          </p>
+          <span className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: 'oklch(0.65 0.18 250)' }}>
+            {item.cta}
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
       {/* ══════════════════════════════════════════════
           SOLUTIONS
       ══════════════════════════════════════════════ */}
