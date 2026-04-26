@@ -1,3 +1,4 @@
+import CursoPowerBIBarueri from "./pages/curso-power-bi-barueri";
 import CursoExcelBarueri from "./pages/curso-excel-barueri";
 import TreinamentoCorporativoEmpresas from './pages/TreinamentoCorporativoEmpresas';
 import TreinamentoIAEmpresas from './pages/TreinamentoIAEmpresas';
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/treinamento-corporativo-empresas" element={<TreinamentoCorporativoEmpresas />} />
           <Route path="/treinamento-corporativo" element={<TreinamentoCorporativoEmpresas />} />
           <Route path="/curso-excel-barueri" element={<CursoExcelBarueri />} />
+          <Route path="/curso-power-bi-barueri" element={<CursoPowerBIBarueri />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
@@ -71,3 +73,5 @@ const App = () => (
 );
 
 export default App;
+
+feat: adiciona rota power bi barueri
