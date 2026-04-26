@@ -47,8 +47,10 @@ const App = () => (
           <Route path={ROUTE_PATHS.QUEM_SOMOS} element={<QuemSomos />} />
           <Route path={ROUTE_PATHS.SOLUCOES} element={<Solucoes />} />
           <Route path={ROUTE_PATHS.POS_GRADUACAO} element={<PosGraduacao />} />
+          <Route path="/pos-graduacao-dados" element={<PosGraduacao />} />
           <Route path={ROUTE_PATHS.YTO_ACADEMY} element={<YtoAcademy />} />
           <Route path={ROUTE_PATHS.DATA_ANALYTICS} element={<DataAnalytics />} />
+          <Route path="/formacao-data-analytics" element={<DataAnalytics />} />
           <Route path={ROUTE_PATHS.IN_COMPANY} element={<InCompany />} />
           <Route path={ROUTE_PATHS.MENTORIA_VIP} element={<MentoriaVIP />} />
           <Route path={ROUTE_PATHS.PARA_EMPRESAS} element={<ParaEmpresas />} />
