@@ -369,7 +369,27 @@ export default function Home() {
 {/* ══════════════════════════════════════════════
     ESCOLHA SEU CAMINHO
 ══════════════════════════════════════════════ */}
-<section className="section-pad" style={{ background: 'oklch(0.09 0.022 250)' }}>
+<Link
+  to="/curso-excel-barueri"
+  className="group rounded-2xl p-6 transition-all duration-200"
+  style={{
+    background: 'oklch(0.12 0.028 250)',
+    border: '1px solid oklch(0.25 0.035 250 / 0.50)',
+  }}
+>
+  <h3 className="text-xl font-bold mb-3">
+    Curso de Excel em Barueri
+  </h3>
+
+  <p className="text-sm mb-5">
+    Aprenda Excel com foco no mercado em Alphaville e região.
+  </p>
+
+  <span className="text-sm font-semibold">
+    Ver detalhes →
+  </span>
+</Link>
+      <section className="section-pad" style={{ background: 'oklch(0.09 0.022 250)' }}>
   <div className="container-xl">
     <motion.div
       className="text-center mb-14"
