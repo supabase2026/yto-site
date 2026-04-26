@@ -73,5 +73,3 @@ const App = () => (
 );
 
 export default App;
-
-feat: adiciona rota power bi barueri
