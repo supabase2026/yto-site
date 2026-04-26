@@ -138,7 +138,7 @@ export default function Home() {
                   maxWidth: '560px',
                 }}
               >
-                Aprenda na prática com especialistas do mercado e desenvolva habilidades em Excel, Power BI, SQL, Python e IA — com mais de 26 anos formando profissionais.
+                Cursos online, pós-graduação e treinamentos corporativos para quem quer crescer na carreira ou capacitar equipes em Excel, Power BI, SQL, Python e IA.
               </motion.p>
 
               {/* Pills de tecnologias */}
@@ -172,7 +172,7 @@ export default function Home() {
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 6px 32px oklch(0.56 0.23 250 / 0.55)'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 24px oklch(0.56 0.23 250 / 0.35)'; }}
                 >
-                  Conhecer programas
+                  Ver todas as soluções
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
