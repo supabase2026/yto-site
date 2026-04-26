@@ -339,7 +339,25 @@ export default function Home() {
           <ChevronDown className="w-4 h-4" style={{ color: 'oklch(0.38 0.008 250)' }} />
         </motion.div>
       </section>
-
+{/* BLOCO DE URGÊNCIA */}
+<section className="py-6" style={{ background: 'oklch(0.09 0.022 250)' }}>
+  <div className="container-xl">
+    <div
+      className="rounded-2xl px-6 py-5 text-center"
+      style={{
+        background: 'oklch(0.56 0.23 250 / 0.10)',
+        border: '1px solid oklch(0.56 0.23 250 / 0.28)',
+      }}
+    >
+      <p className="text-sm md:text-base font-semibold" style={{ color: 'oklch(0.90 0.006 250)' }}>
+        ⚡ Atenção: as turmas, mentorias e vagas para acompanhamento são limitadas.
+      </p>
+      <p className="text-sm mt-1" style={{ color: 'oklch(0.58 0.010 250)' }}>
+        Se você quer entrar na área de dados ou acelerar sua carreira, adiar isso pode custar caro.
+      </p>
+    </div>
+  </div>
+</section>
       {/* ══════════════════════════════════════════════
           STATS
       ══════════════════════════════════════════════ */}
@@ -711,6 +729,9 @@ export default function Home() {
             transition={{ type: 'spring', stiffness: 260, damping: 30 }}
           >
             <span className="section-tag">Depoimentos Reais</span>
+           <p className="mt-4 mb-4 text-sm md:text-base" style={{ color: 'oklch(0.58 0.010 250)' }}>
+  Mais de 100.000 alunos já passaram por aqui. Alguns deles começaram exatamente como você.
+</p>
             <h2 className="section-headline mb-4">
               Histórias de quem<br />
               <span className="text-gradient-static">transformou a carreira</span>
@@ -744,12 +765,12 @@ export default function Home() {
           >
             <span className="section-tag pill-badge-cyan mb-8 inline-flex">Próximo passo</span>
             <h2 className="hero-headline mb-6" style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}>
-              <span style={{ color: 'oklch(0.93 0.006 250)' }}>Pronto para dominar</span>
-              <br />
-              <span className="text-gradient">o mercado de dados?</span>
+              <span style={{ color: 'oklch(0.93 0.006 250)' }}>Seu próximo nível começa</span>
+<br />
+<span className="text-gradient">com uma decisão.</span>
             </h2>
             <p className="text-lg mb-10" style={{ color: 'oklch(0.55 0.010 250)' }}>
-              Fale com um especialista agora. Vamos identificar o programa ideal para sua carreira e seus objetivos.
+              Você pode continuar como está ou começar hoje a construir uma carreira em dados. Fale com um especialista e descubra qual caminho faz mais sentido para você.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-base px-10 py-5">
