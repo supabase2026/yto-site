@@ -1,3 +1,14 @@
+import CursoExcelAlphaville from "./pages/curso-excel-alphaville";
+import CursoPowerBIAlphaville from "./pages/curso-power-bi-alphaville";
+import CursoExcelOsasco from "./pages/curso-excel-osasco";
+import CursoPowerBIOsasco from "./pages/curso-power-bi-osasco";
+import CursoExcelSantanaDeParnaiba from "./pages/curso-excel-santana-de-parnaiba";
+import CursoPowerBISantanaDeParnaiba from "./pages/curso-power-bi-santana-de-parnaiba";
+import CursoExcelParaIniciantesBarueri from "./pages/curso-excel-para-iniciantes-barueri";
+import CursoPowerBIPresencialBarueri from "./pages/curso-power-bi-presencial-barueri";
+import TreinamentoExcelBarueri from "./pages/treinamento-excel-barueri";
+import TreinamentoPowerBIBarueri from "./pages/treinamento-power-bi-barueri";
+
 import CursoPowerBIBarueri from "./pages/curso-power-bi-barueri";
 import CursoExcelBarueri from "./pages/curso-excel-barueri";
 import TreinamentoCorporativoEmpresas from './pages/TreinamentoCorporativoEmpresas';
@@ -66,6 +77,19 @@ const App = () => (
           <Route path="/treinamento-corporativo" element={<TreinamentoCorporativoEmpresas />} />
           <Route path="/curso-excel-barueri" element={<CursoExcelBarueri />} />
           <Route path="/curso-power-bi-barueri" element={<CursoPowerBIBarueri />} />
+          
+<Route path="/curso-excel-alphaville" element={<CursoExcelAlphaville />} />
+<Route path="/curso-power-bi-alphaville" element={<CursoPowerBIAlphaville />} />
+<Route path="/curso-excel-osasco" element={<CursoExcelOsasco />} />
+<Route path="/curso-power-bi-osasco" element={<CursoPowerBIOsasco />} />
+<Route path="/curso-excel-santana-de-parnaiba" element={<CursoExcelSantanaDeParnaiba />} />
+<Route path="/curso-power-bi-santana-de-parnaiba" element={<CursoPowerBISantanaDeParnaiba />} />
+<Route path="/curso-excel-para-iniciantes-barueri" element={<CursoExcelParaIniciantesBarueri />} />
+<Route path="/curso-power-bi-presencial-barueri" element={<CursoPowerBIPresencialBarueri />} />
+<Route path="/treinamento-excel-barueri" element={<TreinamentoExcelBarueri />} />
+<Route path="/treinamento-power-bi-barueri" element={<TreinamentoPowerBIBarueri />} />
+
+          
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
