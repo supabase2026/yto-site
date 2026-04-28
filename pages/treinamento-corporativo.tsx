@@ -319,12 +319,15 @@ export default function InCompany() {
               <Building2 className="w-3.5 h-3.5" /> Soluções Corporativas
             </span>
             <h1 className="hero-headline mb-6">
-              <span style={{ color: 'oklch(0.93 0.006 250)' }}>Treinamentos</span><br />
-              <span className="text-gradient">In Company</span>
-            </h1>
-            <p className="hero-sub mx-auto mb-10 max-w-3xl">
-              Capacite sua equipe com os melhores professores de dados do Brasil. Treinamentos personalizados, presenciais ou online, para resultados reais e mensuráveis.
-            </p>
+  <span style={{ color: 'oklch(0.93 0.006 250)' }}>
+    Treinamentos corporativos em Excel, Power BI, Dados e IA
+  </span><br />
+  <span className="text-gradient">para equipes que precisam performar mais</span>
+</h1>
+
+<p className="hero-sub mx-auto mb-10 max-w-3xl">
+  O Grupo Yto Nihon capacita equipes com treinamentos práticos, presenciais ou online ao vivo, focados em produtividade, relatórios, automação e tomada de decisão baseada em dados.
+</p>
 
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               {['+200 empresas atendidas', '26 anos de experiência', 'Presencial ou Online', 'Conteúdo personalizado'].map((item) => (
@@ -340,7 +343,7 @@ export default function InCompany() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-whatsapp text-base px-8 py-3.5">
-                <MessageCircle className="w-5 h-5" /> Solicitar proposta
+                <MessageCircle className="w-5 h-5" /> Quero treinar minha equipe
               </a>
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary text-base px-8 py-3.5">
                 <Send className="w-5 h-5" /> Falar com especialista
