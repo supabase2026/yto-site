@@ -8,11 +8,11 @@ const CursoExcelBarueri = () => {
           <section className="py-20">
             <div className="container-xl">
               <h1 className="text-4xl font-bold mb-6">
-                Curso de Excel em Barueri e Alphaville
+                Curso de Excel em Barueri e Alphaville para Profissionais e Empresas
               </h1>
 
               <p className="text-lg mb-6">
-                Se você está buscando um curso de Excel em Barueri ou Alphaville, o Grupo Yto Nihon oferece uma formação completa, prática e alinhada ao mercado de trabalho.
+                Aprenda Excel na prática com o Grupo Yto Nihon, referência em treinamentos para profissionais e empresas em Barueri, Alphaville, Osasco e região.
               </p>
 
               <p className="mb-6">
@@ -79,7 +79,7 @@ const CursoExcelBarueri = () => {
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold"
               >
-                Quero aprender Excel agora
+                Falar sobre o curso de Excel
               </a>
             </div>
           </section>
