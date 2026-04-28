@@ -352,7 +352,26 @@ export default function InCompany() {
           </motion.div>
         </div>
       </section>
+<section className="section-pad" style={{ background: 'var(--brand-navy)' }}>
+  <div className="container-xl text-center">
+    
+    <h2 className="section-headline mb-6">
+      Sua equipe está enfrentando esses desafios?
+    </h2>
 
+    <div className="max-w-3xl mx-auto text-left space-y-4 text-lg">
+      <p>❌ Planilhas demoradas e manuais</p>
+      <p>❌ Falta de padronização nos relatórios</p>
+      <p>❌ Dificuldade para analisar dados com rapidez</p>
+      <p>❌ Decisões baseadas em feeling e não em dados</p>
+    </div>
+
+    <p className="mt-8 text-xl font-semibold">
+      Se sim, sua empresa precisa evoluir agora.
+    </p>
+
+  </div>
+</section>
       {/* ═══ GALERIA DE TREINAMENTOS ═══ */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
