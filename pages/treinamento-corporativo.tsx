@@ -372,6 +372,7 @@ export default function InCompany() {
 
   </div>
 </section>
+      
       {/* ═══ GALERIA DE TREINAMENTOS ═══ */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.024 250)' }}>
         <div className="container-xl">
