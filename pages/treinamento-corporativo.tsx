@@ -356,8 +356,7 @@ export default function InCompany() {
   <div className="container-xl text-center">
     
     <h2 className="section-headline mb-6">
-      Sua equipe está enfrentando esses desafios?
-    </h2>
+TESTE YTO AQUI    </h2>
 
     <div className="max-w-3xl mx-auto text-left space-y-4 text-lg">
       <p>❌ Planilhas demoradas e manuais</p>
