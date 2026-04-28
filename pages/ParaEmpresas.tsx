@@ -119,6 +119,44 @@ export default function ParaEmpresas() {
         </div>
       </section>
 
+{/* ═══ BLOCO DE DOR ═══ */}
+<section style={{ background: 'oklch(0.09 0.020 250)' }}>
+  <div className="container-xl py-16 text-center">
+
+    <span className="section-tag">Desafios das empresas</span>
+
+    <h2 className="section-headline mb-6">
+      Sua equipe ainda enfrenta esses problemas?
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto text-left mt-8">
+      {[
+        'Planilhas demoradas e manuais',
+        'Relatórios sem padronização',
+        'Dificuldade para analisar dados com rapidez',
+        'Decisões baseadas em feeling e não em dados'
+      ].map((item) => (
+        <div
+          key={item}
+          className="p-5 rounded-xl"
+          style={{
+            background: 'oklch(0.13 0.026 250 / 0.85)',
+            border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+            color: 'oklch(0.82 0.008 250)'
+          }}
+        >
+          ❌ {item}
+        </div>
+      ))}
+    </div>
+
+    <p className="mt-8 text-lg font-semibold" style={{ color: 'oklch(0.90 0.006 250)' }}>
+      Se isso acontece na sua empresa, você está perdendo produtividade todos os dias.
+    </p>
+
+  </div>
+</section>
+      
       {/* ═══ PROVA SOCIAL ═══ */}
       <section style={{ background: 'oklch(0.10 0.022 250)', borderTop: '1px solid oklch(0.16 0.026 250 / 0.50)' }}>
         <div className="container-xl py-14">
