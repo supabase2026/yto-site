@@ -66,6 +66,44 @@ const TreinamentosBarueriAlphavilleRegiao = () => {
           </p>
         </div>
       </section>
+
+<section className="max-w-6xl mx-auto mt-20">
+  <h2 className="text-3xl font-bold mb-6">
+    Por que escolher o Grupo Yto Nihon para treinamentos em Barueri e Alphaville?
+  </h2>
+
+  <p className="text-slate-300 mb-6">
+    O Grupo Yto Nihon é referência em treinamentos profissionais na região de
+    Barueri e Alphaville, atendendo alunos, profissionais e empresas que buscam
+    evolução prática no uso de Excel, Power BI e ferramentas de análise de dados.
+  </p>
+
+  <p className="text-slate-300 mb-6">
+    Nossos cursos são desenvolvidos com foco no dia a dia do mercado de trabalho,
+    permitindo que os alunos apliquem o conhecimento desde as primeiras aulas.
+    Atendemos também empresas com treinamentos personalizados, adaptados à
+    realidade de cada equipe.
+  </p>
+
+  <p className="text-slate-300 mb-6">
+    Com atuação em Barueri, Alphaville, Osasco e Santana de Parnaíba, o Grupo
+    Yto Nihon oferece opções de treinamentos presenciais e online ao vivo,
+    garantindo flexibilidade e alto nível de aprendizado.
+  </p>
+
+  <h3 className="text-2xl font-semibold mt-10 mb-4">
+    Treinamentos mais procurados na região
+  </h3>
+
+  <ul className="list-disc pl-6 text-slate-300 space-y-2">
+    <li>Curso de Excel em Barueri e Alphaville</li>
+    <li>Curso de Power BI em Barueri e Alphaville</li>
+    <li>Treinamentos corporativos para empresas</li>
+    <li>Capacitação em análise de dados</li>
+    <li>Treinamentos em SQL e ferramentas de BI</li>
+  </ul>
+</section>
+      
     </main>
   );
 };
