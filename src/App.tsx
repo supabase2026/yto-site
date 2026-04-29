@@ -1,3 +1,4 @@
+import CursoExcelBarueriRegiao from "./pages/curso-excel-barueri-regiao";
 import TreinamentosBarueriAlphavilleRegiao from "./pages/treinamentos-barueri-alphaville-regiao";
 import CursoExcelAlphaville from "./pages/curso-excel-alphaville";
 import CursoPowerBIAlphaville from "./pages/curso-power-bi-alphaville";
@@ -93,7 +94,10 @@ const App = () => (
   path="/treinamentos-barueri-alphaville"
   element={<TreinamentosBarueriAlphavilleRegiao />}
 />
-          
+          <Route
+  path="/curso-excel-barueri-regiao"
+  element={<CursoExcelBarueriRegiao />}
+/>
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
