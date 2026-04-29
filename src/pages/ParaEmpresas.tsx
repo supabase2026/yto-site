@@ -25,14 +25,14 @@ const WHATSAPP_PROPOSTA =
   'https://wa.me/5511910704164?text=Ol%C3%A1!%20Tenho%20interesse%20em%20treinamentos%20corporativos%20para%20minha%20empresa.%20Gostaria%20de%20receber%20uma%20proposta.';
 
 const images = {
-  hero: '/incompany/incompany-hero-yto.jpg',
-  excel01: '/incompany/incompany-excel-empresa-01.jpg',
-  excel02: '/incompany/incompany-excel-empresa-02.jpg',
-  powerbi01: '/incompany/incompany-powerbi-empresa-01.jpg',
-  msproject01: '/incompany/incompany-msproject-empresa-01.jpg',
-  turma01: '/incompany/incompany-turma-corporativa-01.jpg',
-  aula01: '/incompany/incompany-aula-presencial-01.jpg',
-  eduardo01: '/incompany/incompany-professor-eduardo-01.jpg',
+  hero: '/incompany/incompany-hero-yto.jpeg',
+  excel01: '/incompany/incompany-excel-empresa-01.jpeg',
+  excel02: '/incompany/incompany-excel-empresa-02.jpeg',
+  powerbi01: '/incompany/incompany-powerbi-empresa-01.jpeg',
+  msproject01: '/incompany/incompany-msproject-empresa-01.jpeg',
+  turma01: '/incompany/incompany-turma-corporativa-01.jpeg',
+  aula01: '/incompany/incompany-aula-presencial-01.jpeg',
+  eduardo01: '/incompany/incompany-professor-eduardo-01.jpeg',
 };
 
 const stats = [
