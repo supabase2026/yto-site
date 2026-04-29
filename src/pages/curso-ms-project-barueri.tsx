@@ -130,11 +130,7 @@ const CursoMSProjectBarueri = () => {
               corporativa.
             </p>
 
-            <a
-              href="/TreinamentoMSProjectEmpresas"
-              className="text-blue-500 underline"
-            >
-              Conheça também o treinamento de MS Project para empresas
+            <a href="/treinamento-ms-project-empresas" className="text-blue-500 underline">
             </a>
 
             <h2 className="text-2xl font-semibold mt-10 mb-4">
