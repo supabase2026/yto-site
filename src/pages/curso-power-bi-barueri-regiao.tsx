@@ -111,7 +111,22 @@ const CursoPowerBIBarueriRegiao = () => {
 
           </div>
         </section>
+<h2 className="text-2xl font-semibold mt-10 mb-4">
+  Veja também outros treinamentos
+</h2>
 
+<ul className="mb-10 space-y-2">
+  <li>
+    <a href="/curso-excel-barueri-regiao" className="text-blue-500 underline">
+      Curso de Excel em Barueri e Alphaville
+    </a>
+  </li>
+  <li>
+    <a href="/treinamentos-barueri-alphaville" className="text-blue-500 underline">
+      Ver todos os treinamentos na região
+    </a>
+  </li>
+</ul>
       </div>
     </Layout>
   );
