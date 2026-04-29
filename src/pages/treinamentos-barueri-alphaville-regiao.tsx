@@ -110,8 +110,88 @@ const TreinamentosBarueriAlphavilleRegiao = () => {
             </a>
 
           </div>
-        </section>
 
+                <section className="py-16 bg-slate-950">
+          <div className="container-xl max-w-6xl">
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              Encontre o treinamento ideal por cidade
+            </h2>
+
+            <p className="text-slate-300 mb-10 max-w-3xl">
+              O Grupo Yto Nihon atende alunos, profissionais e empresas em Barueri,
+              Alphaville, Osasco, Santana de Parnaíba e região, com treinamentos
+              práticos em Excel, Power BI, análise de dados e tecnologia.
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <a href="/curso-excel-barueri" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Barueri</h3>
+                <p className="text-slate-300 text-sm">
+                  Cursos de Excel, Power BI e treinamentos corporativos para profissionais e empresas em Barueri.
+                </p>
+              </a>
+
+              <a href="/curso-excel-alphaville" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Alphaville</h3>
+                <p className="text-slate-300 text-sm">
+                  Treinamentos profissionais em Excel, Power BI e análise de dados para Alphaville e região.
+                </p>
+              </a>
+
+              <a href="/curso-excel-osasco" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Osasco</h3>
+                <p className="text-slate-300 text-sm">
+                  Cursos e capacitações para quem busca evolução profissional em Excel e Power BI em Osasco.
+                </p>
+              </a>
+
+              <a href="/curso-excel-santana-de-parnaiba" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Santana de Parnaíba</h3>
+                <p className="text-slate-300 text-sm">
+                  Formação prática em ferramentas corporativas para alunos e empresas de Santana de Parnaíba.
+                </p>
+              </a>
+            </div>
+
+            <h2 className="text-3xl font-bold mb-4 text-white">
+              Escolha por tipo de treinamento
+            </h2>
+
+            <p className="text-slate-300 mb-10 max-w-3xl">
+              Além dos cursos por cidade, você também pode escolher a solução ideal
+              conforme o objetivo: aprender Excel, dominar Power BI ou capacitar
+              equipes com treinamentos corporativos.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <a href="/curso-excel-barueri" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Cursos de Excel</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  Aprenda Excel do básico ao avançado, com foco em produtividade, fórmulas, relatórios e análise de dados.
+                </p>
+                <span className="text-blue-400 font-semibold">Ver cursos de Excel</span>
+              </a>
+
+              <a href="/curso-power-bi-barueri" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Cursos de Power BI</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  Desenvolva dashboards, indicadores, relatórios gerenciais e análises visuais para tomada de decisão.
+                </p>
+                <span className="text-blue-400 font-semibold">Ver cursos de Power BI</span>
+              </a>
+
+              <a href="/treinamento-corporativo-empresas" className="rounded-2xl bg-slate-900 border border-blue-500/20 p-6 hover:border-blue-400 transition">
+                <h3 className="text-xl font-semibold text-white mb-3">Treinamentos para Empresas</h3>
+                <p className="text-slate-300 text-sm mb-4">
+                  Capacite sua equipe com treinamentos online ao vivo, presenciais ou personalizados para a realidade da empresa.
+                </p>
+                <span className="text-blue-400 font-semibold">Conhecer soluções corporativas</span>
+              </a>
+            </div>
+          </div>
+        </section>
+          
+        </section>
       </div>
     </Layout>
   );
