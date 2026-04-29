@@ -61,7 +61,22 @@ const TreinamentosBarueriAlphavilleRegiao = () => {
         {/* LINKS PRINCIPAIS */}
         <section className="py-16">
           <div className="container-xl max-w-5xl">
+<h2 className="text-2xl font-semibold mt-10 mb-4">
+  Explore nossos principais treinamentos
+</h2>
 
+<ul className="mb-10 space-y-2">
+  <li>
+    <a href="/curso-excel-barueri-regiao" className="text-blue-500 underline">
+      Ver todos os cursos de Excel na região
+    </a>
+  </li>
+  <li>
+    <a href="/curso-power-bi-barueri-regiao" className="text-blue-500 underline">
+      Ver todos os cursos de Power BI na região
+    </a>
+  </li>
+</ul>
             <h2 className="text-2xl font-semibold mb-6">
               Cursos disponíveis na região
             </h2>
