@@ -1,3 +1,5 @@
+// src/pages/ParaEmpresas.tsx
+
 import { motion } from 'framer-motion';
 import {
   Building2,
@@ -8,71 +10,48 @@ import {
   ChevronRight,
   BarChart3,
   FileSpreadsheet,
-  Database,
-  Brain,
   CalendarDays,
+  Target,
+  ShieldCheck,
   HelpCircle,
 } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { WHATSAPP_LINK } from '@/lib/index';
 import { IMAGES } from '@/assets/images';
 
+const WHATSAPP_PROPOSTA =
+  'https://wa.me/5511910704164?text=Ol%C3%A1!%20Tenho%20interesse%20em%20treinamentos%20corporativos%20para%20minha%20empresa.%20Gostaria%20de%20receber%20uma%20proposta.';
+
 const stats = [
   { value: '+100.000', label: 'Profissionais capacitados' },
   { value: '+200', label: 'Empresas atendidas' },
   { value: '26+', label: 'Anos de experiência' },
-  { value: '+50', label: 'Países com alunos' },
+  { value: 'Brasil e exterior', label: 'Alunos em diversos países' },
 ];
 
-const steps = [
-  {
-    num: '01',
-    title: 'Diagnóstico',
-    desc: 'Entendemos as necessidades da equipe, o nível atual dos colaboradores e os desafios reais da empresa.',
-  },
-  {
-    num: '02',
-    title: 'Treinamento personalizado',
-    desc: 'Estruturamos uma capacitação sob medida, com conteúdo, carga horária e metodologia alinhados ao contexto do negócio.',
-  },
-  {
-    num: '03',
-    title: 'Aplicação prática',
-    desc: 'Conduzimos o treinamento com foco em exercícios, cases, ferramentas e situações próximas da rotina da equipe.',
-  },
-];
-
-const trainings = [
+const mainTrainings = [
   {
     icon: FileSpreadsheet,
-    title: 'Excel Corporativo',
-    desc: 'Treinamentos de Excel do básico ao avançado, com dashboards, fórmulas, tabelas dinâmicas, Power Query, VBA e automação.',
+    title: 'Excel para Empresas',
+    desc: 'Treinamentos práticos em Excel para equipes administrativas, financeiras, comerciais, RH e operações.',
   },
   {
     icon: BarChart3,
-    title: 'Power BI',
-    desc: 'Dashboards executivos, modelagem de dados, indicadores, relatórios gerenciais e análise visual para tomada de decisão.',
-  },
-  {
-    icon: Database,
-    title: 'SQL Server',
-    desc: 'Consultas, manipulação, análise e estruturação de dados em bancos relacionais para equipes técnicas e analíticas.',
-  },
-  {
-    icon: Brain,
-    title: 'Inteligência Artificial',
-    desc: 'IA aplicada ao negócio, produtividade, análise, automação, prompts e uso prático de ferramentas inteligentes.',
+    title: 'Power BI para Empresas',
+    desc: 'Criação de dashboards, indicadores, relatórios gerenciais e análise visual para tomada de decisão.',
   },
   {
     icon: CalendarDays,
-    title: 'MS Project',
-    desc: 'Gestão de projetos, cronogramas, recursos, linha de base, acompanhamento e controle com Microsoft Project.',
+    title: 'MS Project para Empresas',
+    desc: 'Capacitação em cronogramas, recursos, linha de base, acompanhamento e controle de projetos.',
   },
-  {
-    icon: TrendingUp,
-    title: 'Business Intelligence',
-    desc: 'Estratégia de BI, cultura data-driven, indicadores de performance e capacitação para decisões orientadas por dados.',
-  },
+];
+
+const extras = [
+  'SQL Server para análise de dados',
+  'Inteligência Artificial aplicada ao trabalho',
+  'Business Intelligence e cultura data-driven',
+  'Gestão de projetos e produtividade',
 ];
 
 const companies = [
@@ -95,44 +74,54 @@ const companies = [
 ];
 
 const galleryImages = [
-  { src: IMAGES.SOUZA_CRUZ_IN_COMPANY_POWER_BI_36, label: 'Power BI — Souza Cruz' },
-  { src: IMAGES.BRADESCO_SEGUROS_IN_COMPANY_MS_PROJECT_38, label: 'MS Project — Bradesco Seguros' },
-  { src: IMAGES.GRUPO_GAIA_IN_COMPANY_EXCEL_40, label: 'Excel — Grupo Gaia' },
-  { src: IMAGES.ARKEMA_IN_COMPANY_EXCEL_43, label: 'Excel — Arkema' },
-  { src: IMAGES.RECKITT_POWER_BI_44, label: 'Power BI — Reckitt' },
-  { src: IMAGES.GRUPO_HDI_POWER_BI_46, label: 'Power BI — Grupo HDI' },
+  { src: IMAGES.SOUZA_CRUZ_IN_COMPANY_POWER_BI_36, label: 'Power BI na Souza Cruz' },
+  { src: IMAGES.BRADESCO_SEGUROS_IN_COMPANY_MS_PROJECT_38, label: 'MS Project na Bradesco Seguros' },
+  { src: IMAGES.GRUPO_GAIA_IN_COMPANY_EXCEL_40, label: 'Excel no Grupo Gaia' },
+  { src: IMAGES.ARKEMA_IN_COMPANY_EXCEL_43, label: 'Excel na Arkema' },
+  { src: IMAGES.RECKITT_POWER_BI_44, label: 'Power BI na Reckitt' },
+  { src: IMAGES.GRUPO_HDI_POWER_BI_46, label: 'Power BI no Grupo HDI' },
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Diagnóstico da necessidade',
+    desc: 'Entendemos o nível da equipe, os desafios da empresa e os objetivos do treinamento.',
+  },
+  {
+    num: '02',
+    title: 'Proposta personalizada',
+    desc: 'Montamos uma capacitação com carga horária, formato e conteúdo adequados à realidade da empresa.',
+  },
+  {
+    num: '03',
+    title: 'Treinamento prático',
+    desc: 'As aulas são conduzidas com exemplos, exercícios e situações próximas da rotina dos colaboradores.',
+  },
 ];
 
 const faqs = [
   {
-    question: 'Quais treinamentos corporativos o Grupo Yto Nihon oferece?',
+    question: 'O treinamento pode ser personalizado?',
     answer:
-      'O Grupo Yto Nihon oferece treinamentos corporativos em Excel, Power BI, SQL Server, Inteligência Artificial, MS Project, Business Intelligence e outras soluções voltadas para dados, tecnologia e produtividade.',
+      'Sim. O conteúdo é adaptado ao nível da equipe, aos objetivos da empresa e às atividades realizadas no dia a dia.',
   },
   {
-    question: 'Os treinamentos podem ser personalizados para a empresa?',
+    question: 'O treinamento pode ser presencial?',
     answer:
-      'Sim. A proposta é construída considerando o nível da equipe, os objetivos da empresa, a carga horária desejada e os desafios reais do negócio.',
+      'Sim. Os treinamentos podem ser realizados presencialmente, online ao vivo ou em formato híbrido.',
   },
   {
-    question: 'Os treinamentos podem ser presenciais ou online?',
+    question: 'Vocês atendem empresas em Barueri e Alphaville?',
     answer:
-      'Sim. Os treinamentos podem ser realizados presencialmente, online ao vivo ou em formatos híbridos, conforme a necessidade da empresa.',
+      'Sim. O Grupo Yto Nihon atende empresas em Barueri, Alphaville, Osasco, São Paulo e também empresas de outras regiões no formato online ao vivo.',
   },
   {
-    question: 'A empresa recebe certificado para os participantes?',
+    question: 'Os participantes recebem certificado?',
     answer:
-      'Sim. Os participantes podem receber certificado de participação conforme o treinamento contratado e a carga horária realizada.',
+      'Sim. Os participantes podem receber certificado conforme o treinamento contratado e a carga horária realizada.',
   },
-{
-  question: 'O treinamento pode ser adaptado para a realidade da empresa?',
-  answer:
-    'Sim. Os treinamentos são estruturados de acordo com o nível da equipe, os objetivos da empresa, os desafios internos e as ferramentas utilizadas no dia a dia.',
-},
 ];
-
-const WHATSAPP_PROPOSTA =
-  'https://wa.me/5511910704164?text=Ol%C3%A1!%20Tenho%20interesse%20em%20treinamentos%20corporativos%20para%20minha%20equipe.%20Gostaria%20de%20receber%20uma%20proposta.';
 
 export default function ParaEmpresas() {
   return (
@@ -142,7 +131,7 @@ export default function ParaEmpresas() {
         className="relative flex items-center justify-center overflow-hidden"
         style={{
           background: 'oklch(0.08 0.018 250)',
-          minHeight: '80vh',
+          minHeight: '82vh',
           paddingTop: '5rem',
           paddingBottom: '5rem',
         }}
@@ -150,24 +139,23 @@ export default function ParaEmpresas() {
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.TURMA_FECHADA_NO_ESCRITO_RIO_DO_GRUPO_YTO_NIHON_39}
-            alt="Treinamento corporativo em dados, Excel e Power BI realizado pelo Grupo Yto Nihon"
+            alt="Treinamento corporativo realizado pelo Grupo Yto Nihon"
             className="w-full h-full object-cover"
-            style={{ opacity: 0.12, filter: 'grayscale(40%) brightness(0.7)' }}
+            style={{ opacity: 0.14, filter: 'grayscale(30%) brightness(0.65)' }}
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(to bottom, oklch(0.07 0.018 250 / 0.90), oklch(0.08 0.018 250) 85%)',
+                'linear-gradient(to bottom, oklch(0.07 0.018 250 / 0.92), oklch(0.08 0.018 250) 88%)',
             }}
           />
         </div>
 
-        <div className="orb orb-blue" style={{ width: '600px', height: '500px', top: '-20%', right: '-10%', opacity: 0.18 }} />
         <div className="bg-dot-grid absolute inset-0 opacity-20" />
 
         <div className="container-xl relative z-10">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
@@ -181,23 +169,25 @@ export default function ParaEmpresas() {
                   color: 'oklch(0.72 0.18 250)',
                 }}
               >
-                <Building2 className="w-3.5 h-3.5" /> Soluções corporativas
+                <Building2 className="w-3.5 h-3.5" />
+                Treinamentos corporativos para empresas
               </span>
 
               <h1
                 className="font-bold mb-6 leading-tight"
                 style={{
-                  fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+                  fontSize: 'clamp(2.2rem, 4.4vw, 3.8rem)',
                   color: 'oklch(0.96 0.006 250)',
                   fontFamily: 'var(--font-heading)',
                 }}
               >
-                Treinamentos corporativos em{' '}
-                <span className="text-gradient">Excel, Power BI e Dados para empresas</span>
+                Capacite sua equipe em{' '}
+                <span className="text-gradient">Excel, Power BI e MS Project</span>
               </h1>
 
-              <p className="text-lg mb-10 max-w-2xl" style={{ color: 'oklch(0.62 0.012 250)', lineHeight: 1.7 }}>
-                Capacite sua equipe com treinamentos práticos, personalizados e aplicados ao negócio em Excel, Power BI, SQL, Inteligência Artificial, Business Intelligence e MS Project.
+              <p className="text-lg mb-9 max-w-2xl" style={{ color: 'oklch(0.64 0.012 250)', lineHeight: 1.75 }}>
+                Treinamentos in company, presenciais ou online ao vivo, para empresas que precisam aumentar produtividade,
+                melhorar relatórios, organizar processos e transformar dados em decisões.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -226,7 +216,8 @@ export default function ParaEmpresas() {
                     color: '#25D366',
                   }}
                 >
-                  <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+                  <MessageCircle className="w-4 h-4" />
+                  Falar no WhatsApp
                 </a>
               </div>
             </motion.div>
@@ -257,14 +248,9 @@ export default function ParaEmpresas() {
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
+          <div className="text-center">
             <p className="text-xs font-semibold tracking-widest uppercase mb-6" style={{ color: 'oklch(0.44 0.010 250)' }}>
-              Empresas que já confiaram na Yto Nihon
+              Empresas que já confiaram no Grupo Yto Nihon
             </p>
 
             <div className="flex flex-wrap justify-center gap-3">
@@ -282,41 +268,94 @@ export default function ParaEmpresas() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* DOR / CONTEXTO */}
+      {/* FOCO */}
       <section className="section-pad" style={{ background: 'oklch(0.08 0.020 250)' }}>
         <div className="container-xl max-w-3xl text-center">
-          <span className="section-tag">Desafio das empresas</span>
-          <h2 className="section-headline mb-6">Sua equipe trabalha com dados, mas ainda enfrenta dificuldades?</h2>
+          <span className="section-tag">Foco da capacitação</span>
+          <h2 className="section-headline mb-6">Treinamentos pensados para problemas reais da empresa</h2>
           <p className="text-base mb-4" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
-          Muitas empresas enfrentam retrabalho com planilhas, falta de padronização nas análises, dependência de poucos colaboradores-chave
-          e dificuldade para transformar dados em decisões práticas.
-        </p>
-        <p className="text-base" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
-          O Grupo Yto Nihon desenvolve treinamentos corporativos em Excel, Power BI, SQL, Inteligência Artificial e Business Intelligence
-          para ajudar equipes a ganhar produtividade, clareza e autonomia.
-        </p>
+            Muitas equipes ainda perdem tempo com planilhas manuais, relatórios repetitivos, falta de padronização,
+            retrabalho e dificuldade para acompanhar indicadores.
+          </p>
+          <p className="text-base" style={{ color: 'oklch(0.60 0.010 250)', lineHeight: 1.8 }}>
+            Por isso, nosso foco principal está em Excel, Power BI e MS Project, três frentes que geram impacto direto
+            na produtividade, na gestão e na tomada de decisão.
+          </p>
+        </div>
+      </section>
+
+      {/* TREINAMENTOS PRINCIPAIS */}
+      <section className="section-pad" style={{ background: 'oklch(0.11 0.024 250)' }}>
+        <div className="container-xl">
+          <div className="text-center mb-14">
+            <span className="section-tag">Treinamentos principais</span>
+            <h2 className="section-headline mb-4">O que sua empresa pode contratar</h2>
+            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
+              Capacitações práticas, com linguagem acessível, exercícios aplicados e possibilidade de personalização.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {mainTrainings.map((t, i) => (
+              <motion.div
+                key={t.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-2xl p-7"
+                style={{
+                  background: 'oklch(0.13 0.026 250 / 0.85)',
+                  border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+                }}
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style={{
+                    background: 'oklch(0.56 0.23 250 / 0.12)',
+                    border: '1px solid oklch(0.56 0.23 250 / 0.22)',
+                  }}
+                >
+                  <t.icon className="w-6 h-6" style={{ color: 'oklch(0.68 0.20 250)' }} />
+                </div>
+                <h3 className="text-xl font-bold mb-3" style={{ color: 'oklch(0.92 0.006 250)', fontFamily: 'var(--font-heading)' }}>
+                  {t.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.56 0.010 250)' }}>
+                  {t.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 max-w-4xl mx-auto rounded-2xl p-6" style={{ background: 'oklch(0.09 0.020 250)', border: '1px solid oklch(0.22 0.032 250 / 0.50)' }}>
+            <h3 className="text-lg font-bold mb-4" style={{ color: 'oklch(0.92 0.006 250)' }}>
+              Também podemos estruturar treinamentos complementares:
+            </h3>
+
+            <div className="grid sm:grid-cols-2 gap-3">
+              {extras.map((item) => (
+                <span key={item} className="inline-flex items-center gap-2 text-sm" style={{ color: 'oklch(0.62 0.012 250)' }}>
+                  <CheckCircle2 className="w-4 h-4" style={{ color: 'oklch(0.62 0.18 160)' }} />
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* COMO FUNCIONA */}
       <section className="section-pad" style={{ background: 'oklch(0.09 0.020 250)' }}>
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
+          <div className="text-center mb-14">
             <span className="section-tag">Metodologia</span>
-            <h2 className="section-headline mb-4">Como funciona o treinamento corporativo</h2>
-            <p className="text-base max-w-xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
-              Um processo estruturado para transformar necessidade de capacitação em evolução prática da equipe.
-            </p>
-          </motion.div>
+            <h2 className="section-headline mb-4">Como funciona o projeto de treinamento</h2>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-7 max-w-5xl mx-auto">
             {steps.map((step, i) => (
@@ -357,50 +396,45 @@ export default function ParaEmpresas() {
         </div>
       </section>
 
-      {/* TREINAMENTOS */}
-      <section className="section-pad" style={{ background: 'oklch(0.11 0.024 250)' }}>
+      {/* DIFERENCIAIS */}
+      <section className="section-pad" style={{ background: 'oklch(0.08 0.020 250)' }}>
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <span className="section-tag">Portfólio</span>
-            <h2 className="section-headline mb-4">Treinamentos corporativos disponíveis</h2>
-            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
-              Capacitações técnicas e práticas para empresas que desejam desenvolver equipes em dados, análise, tecnologia e gestão.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {trainings.map((t, i) => (
+          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Target,
+                title: 'Conteúdo aplicado',
+                desc: 'O treinamento é voltado para situações reais de trabalho, não apenas para teoria de ferramenta.',
+              },
+              {
+                icon: Users,
+                title: 'Turmas para equipes',
+                desc: 'Capacitamos grupos pequenos, médios ou grandes, conforme a necessidade da empresa.',
+              },
+              {
+                icon: ShieldCheck,
+                title: 'Experiência comprovada',
+                desc: 'Mais de duas décadas formando profissionais e atendendo empresas de diferentes segmentos.',
+              },
+            ].map((item, i) => (
               <motion.div
-                key={t.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-                className="rounded-2xl p-6"
+                transition={{ delay: i * 0.08 }}
+                className="rounded-2xl p-7"
                 style={{
-                  background: 'oklch(0.13 0.026 250 / 0.85)',
-                  border: '1px solid oklch(0.24 0.034 250 / 0.50)',
+                  background: 'oklch(0.12 0.025 250 / 0.90)',
+                  border: '1px solid oklch(0.22 0.032 250 / 0.50)',
                 }}
               >
-                <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
-                  style={{
-                    background: 'oklch(0.56 0.23 250 / 0.12)',
-                    border: '1px solid oklch(0.56 0.23 250 / 0.22)',
-                  }}
-                >
-                  <t.icon className="w-5 h-5" style={{ color: 'oklch(0.68 0.20 250)' }} />
-                </div>
-                <h3 className="text-base font-bold mb-2" style={{ color: 'oklch(0.90 0.006 250)', fontFamily: 'var(--font-heading)' }}>
-                  {t.title}
+                <item.icon className="w-7 h-7 mb-4" style={{ color: 'oklch(0.68 0.20 250)' }} />
+                <h3 className="text-lg font-bold mb-3" style={{ color: 'oklch(0.92 0.006 250)' }}>
+                  {item.title}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.55 0.010 250)' }}>
-                  {t.desc}
+                <p className="text-sm leading-relaxed" style={{ color: 'oklch(0.56 0.010 250)' }}>
+                  {item.desc}
                 </p>
               </motion.div>
             ))}
@@ -411,18 +445,13 @@ export default function ParaEmpresas() {
       {/* GALERIA */}
       <section className="section-pad" style={{ background: 'oklch(0.09 0.020 250)' }}>
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="section-tag">Treinamentos reais</span>
-            <h2 className="section-headline mb-4">Capacitações realizadas em empresas</h2>
+          <div className="text-center mb-12">
+            <span className="section-tag">Prova social</span>
+            <h2 className="section-headline mb-4">Treinamentos realizados em empresas</h2>
             <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
-              Registros de treinamentos corporativos realizados com equipes de diferentes setores e níveis de maturidade.
+              Registros reais de capacitações conduzidas pelo Grupo Yto Nihon.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {galleryImages.map((img, i) => (
@@ -437,10 +466,10 @@ export default function ParaEmpresas() {
               >
                 <img
                   src={img.src}
-                  alt={`Treinamento in company de ${img.label} realizado pelo Grupo Yto Nihon`}
+                  alt={`Treinamento corporativo de ${img.label} realizado pelo Grupo Yto Nihon`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, oklch(0.07 0.018 250 / 0.80) 0%, transparent 50%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, oklch(0.07 0.018 250 / 0.82) 0%, transparent 55%)' }} />
                 <span className="absolute bottom-3 left-4 text-sm font-semibold" style={{ color: 'oklch(0.90 0.006 250)' }}>
                   {img.label}
                 </span>
@@ -450,21 +479,13 @@ export default function ParaEmpresas() {
         </div>
       </section>
 
-      {/* FAQ AIO */}
+      {/* FAQ */}
       <section className="section-pad" style={{ background: 'oklch(0.10 0.022 250)' }}>
         <div className="container-xl max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <span className="section-tag">Dúvidas frequentes</span>
             <h2 className="section-headline mb-4">Perguntas sobre treinamentos corporativos</h2>
-            <p className="text-base max-w-2xl mx-auto" style={{ color: 'oklch(0.56 0.010 250)' }}>
-              Informações úteis para empresas que buscam capacitação prática em dados, tecnologia e produtividade.
-            </p>
-          </motion.div>
+          </div>
 
           <div className="space-y-4">
             {faqs.map((faq) => (
@@ -511,14 +532,14 @@ export default function ParaEmpresas() {
                 border: '1px solid oklch(0.56 0.23 250 / 0.28)',
               }}
             >
-              <Users className="w-7 h-7" style={{ color: 'oklch(0.68 0.20 250)' }} />
+              <TrendingUp className="w-7 h-7" style={{ color: 'oklch(0.68 0.20 250)' }} />
             </div>
 
-            <h2 className="section-headline mb-5">Leve a Yto para dentro da sua empresa</h2>
+            <h2 className="section-headline mb-5">Quer capacitar sua equipe?</h2>
 
             <p className="text-base mb-10 max-w-xl mx-auto" style={{ color: 'oklch(0.56 0.012 250)', lineHeight: 1.7 }}>
-              Solicite uma proposta personalizada e descubra como podemos capacitar sua equipe com treinamentos práticos,
-              objetivos e conectados à realidade do seu negócio.
+              Fale com o Grupo Yto Nihon e receba uma proposta personalizada para treinamento corporativo em Excel,
+              Power BI, MS Project ou outras soluções para sua empresa.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -547,14 +568,16 @@ export default function ParaEmpresas() {
                   color: '#25D366',
                 }}
               >
-                <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+                <MessageCircle className="w-4 h-4" />
+                Falar no WhatsApp
               </a>
             </div>
 
             <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3">
               {['Diagnóstico inicial', 'Presencial ou online ao vivo', 'Certificado para participantes'].map((b) => (
                 <span key={b} className="inline-flex items-center gap-2 text-sm" style={{ color: 'oklch(0.58 0.012 250)' }}>
-                  <CheckCircle2 className="w-4 h-4" style={{ color: 'oklch(0.62 0.18 160)' }} /> {b}
+                  <CheckCircle2 className="w-4 h-4" style={{ color: 'oklch(0.62 0.18 160)' }} />
+                  {b}
                 </span>
               ))}
             </div>
