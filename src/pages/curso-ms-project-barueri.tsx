@@ -156,7 +156,14 @@ const CursoMSProjectBarueri = () => {
             <h2 className="text-2xl font-semibold mt-10 mb-4">
               Veja também outros treinamentos
             </h2>
+            
+            <li>
+              <a href="/curso-ms-project" className="text-blue-500 underline">
+                Ver todos os cursos de MS Project
+              </a>
+            </li>
 
+            
             <ul className="mb-10 space-y-2">
               <li>
                 <a href="/curso-excel-barueri-regiao" className="text-blue-500 underline">
