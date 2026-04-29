@@ -116,3 +116,4 @@ const TreinamentosBarueriAlphavilleRegiao = () => {
     </Layout>
   );
 };
+export default TreinamentosBarueriAlphavilleRegiao;
