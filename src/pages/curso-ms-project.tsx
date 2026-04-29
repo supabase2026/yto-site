@@ -244,7 +244,40 @@ const CursoMSProject = () => {
             </a>
           </div>
         </section>
+<div
+  style={{
+    marginTop: "60px",
+    padding: "30px",
+    borderRadius: "16px",
+    background: "rgba(0,123,255,0.08)",
+    border: "1px solid rgba(0,123,255,0.3)",
+    textAlign: "center",
+  }}
+>
+  <h3 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "10px" }}>
+    Sua empresa precisa treinar a equipe em MS Project?
+  </h3>
 
+  <p style={{ marginBottom: "20px", color: "#ccc" }}>
+    O Grupo Yto Nihon oferece treinamentos corporativos de MS Project para equipes
+    que precisam planejar, controlar e acompanhar projetos com mais eficiência.
+  </p>
+
+  <a
+    href="/para-empresas"
+    style={{
+      display: "inline-block",
+      padding: "14px 24px",
+      backgroundColor: "#007BFF",
+      color: "#fff",
+      borderRadius: "8px",
+      textDecoration: "none",
+      fontWeight: "bold",
+    }}
+  >
+    Ver treinamentos para empresas
+  </a>
+</div>
         {/* CTA FINAL */}
         <section className="py-20 bg-slate-950">
           <div className="container-xl max-w-3xl text-center">
