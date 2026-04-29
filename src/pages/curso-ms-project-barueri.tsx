@@ -130,8 +130,16 @@ const CursoMSProjectBarueri = () => {
               corporativa.
             </p>
 
-            <a href="/treinamento-ms-project-empresas" className="text-blue-500 underline">
-            </a>
+            <p className="mb-6">
+              Veja também nosso curso de MS Project em Alphaville:
+              <a href="/curso-ms-project-alphaville" className="text-blue-500 underline ml-1">
+                curso de MS Project em Alphaville
+              </a>
+            </p>
+            
+<a href="/treinamento-ms-project-empresas" className="text-blue-500 underline">
+  Treinamento de MS Project para empresas
+</a>
 
             <h2 className="text-2xl font-semibold mt-10 mb-4">
               Por que escolher o Grupo Yto Nihon?
