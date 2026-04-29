@@ -150,6 +150,13 @@ const CursoMSProjectAlphaville = () => {
               Veja também outros treinamentos
             </h2>
 
+
+                      <li>
+            <a href="/curso-ms-project" className="text-blue-500 underline">
+              Ver todos os cursos de MS Project
+            </a>
+          </li>
+
             <ul className="mb-10 space-y-2">
               <li>
                 <a href="/curso-ms-project-barueri" className="text-blue-500 underline">
