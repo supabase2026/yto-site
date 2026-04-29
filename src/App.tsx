@@ -1,3 +1,4 @@
+import CursoMSProjectAlphaville from "./pages/curso-ms-project-alphaville";
 import CursoMSProjectBarueri from "./pages/curso-ms-project-barueri";
 import CursosEmBarueri from "./pages/cursos-em-barueri";
 import CursoPowerBIBarueriRegiao from "./pages/curso-power-bi-barueri-regiao";
@@ -109,6 +110,8 @@ const App = () => (
 
           <Route path="/cursos-em-barueri" element={<CursosEmBarueri />} />
           <Route path="/curso-ms-project-barueri" element={<CursoMSProjectBarueri />} />
+  <Route path="/curso-ms-project-alphaville" element={<CursoMSProjectAlphaville />} />
+        
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
