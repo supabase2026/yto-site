@@ -51,6 +51,41 @@ const CursoPowerBIAlphaville = () => {
                     <h2 className="text-3xl font-bold text-white mb-3">
                       Transforme dados em decisões
                     </h2>
+<div
+  style={{
+    marginTop: "40px",
+    padding: "24px",
+    borderRadius: "16px",
+    background: "rgba(0,123,255,0.08)",
+    border: "1px solid rgba(0,123,255,0.25)",
+  }}
+>
+  <h3 style={{ fontWeight: "bold", marginBottom: "10px" }}>
+    Sua empresa precisa treinar a equipe em Excel?
+  </h3>
+
+  <p style={{ marginBottom: "16px" }}>
+    O Grupo Yto Nihon realiza treinamentos corporativos em Excel, Power BI e MS Project
+    para empresas em Barueri, Alphaville e região, com foco em produtividade e aplicação prática.
+  </p>
+
+  <a
+    href="/para-empresas"
+    style={{
+      display: "inline-block",
+      padding: "12px 20px",
+      backgroundColor: "#007BFF",
+      color: "#fff",
+      borderRadius: "8px",
+      textDecoration: "none",
+      fontWeight: "bold",
+    }}
+  >
+    Ver treinamentos para empresas
+  </a>
+</div>
+
+                    
                     <p className="text-slate-300">
                       Dashboards, KPIs e relatórios executivos.
                     </p>
