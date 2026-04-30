@@ -360,10 +360,10 @@ export default function Diagnostico() {
     setSavingLead(false);
 
     if (error) {
-      console.error(error);
-      setLeadError("Erro ao salvar. Tente novamente.");
-      return;
-    }
+  console.error(error);
+  setLeadError(error.message);
+  return;
+}
 
     setLeadSaved(true);
   };
