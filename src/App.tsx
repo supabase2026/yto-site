@@ -116,8 +116,6 @@ const App = () => (
           <Route path="/area-do-aluno" element={<AreaDoAluno />} />
         </Routes>
   
-          
-        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
