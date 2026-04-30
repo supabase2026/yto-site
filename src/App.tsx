@@ -117,12 +117,8 @@ const App = () => (
 <Route path="/curso-ms-project" element={<CursoMSProject />} />
 import { Layout } from "./components/Layout";
 
-<Route
-  path="/area-do-aluno"
-  element={
-    <Layout>
-      <AreaDoAluno />
-    </Layout>
+<Route path="/area-do-aluno" element={<AreaDoAluno />} />
+   
   }
 />
           
