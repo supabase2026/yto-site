@@ -22,7 +22,7 @@ const fadeRight = {
 };
 
 const STATS = [
-  { value: '+800.000', label: 'Alunos Formados', icon: 'Users' },
+  { value: '+100.000', label: 'Alunos Formados', icon: 'Users' },
   { value: '+200', label: 'Empresas Atendidas', icon: 'Building2' },
   { value: '+50', label: 'Países Presentes', icon: 'Globe' },
   { value: '26+', label: 'Anos de Experiência', icon: 'Award' },
