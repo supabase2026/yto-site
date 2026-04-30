@@ -1,7 +1,6 @@
 // src/pages/Diagnostico.tsx
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 import { useMemo, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -395,6 +394,38 @@ const [leadError, setLeadError] = useState("");
                     />
                   </div>
 
+{track && !isFinished && (
+  <div>
+    <div className="mb-8">
+      <span className="section-tag">
+        Pergunta {currentIndex + 1} de {currentQuestions.length}
+      </span>
+
+      <h2 className="mt-4 text-2xl font-bold">
+        {currentQuestions[currentIndex].question}
+      </h2>
+    </div>
+
+    <div className="grid gap-3">
+      {currentQuestions[currentIndex].options.map((option, index) => (
+        <button
+          key={option}
+          onClick={() => setAnswers([...answers, index])}
+          className="rounded-xl p-4 text-left"
+          style={{
+            background: "oklch(0.13 0.028 250)",
+            border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+            color: "white",
+          }}
+        >
+          {option}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
+
+                  
                   <h2
                     className="text-2xl font-bold md:text-3xl"
                     style={{
