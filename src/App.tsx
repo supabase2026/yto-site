@@ -1,3 +1,4 @@
+import Diagnostico from "./pages/Diagnostico";
 import AreaDoAluno from "./pages/AreaDoAluno";
 import CursoMSProject from "./pages/curso-ms-project";
 import CursoMSProjectAlphaville from "./pages/curso-ms-project-alphaville";
@@ -114,6 +115,7 @@ const App = () => (
           <Route path="/curso-ms-project-alphaville" element={<CursoMSProjectAlphaville />} />
           <Route path="/curso-ms-project" element={<CursoMSProject />} />
           <Route path="/area-do-aluno" element={<AreaDoAluno />} />
+          <Route path="/diagnostico" element={<Diagnostico />} />
         </Routes>
   
       </BrowserRouter>
