@@ -23,14 +23,14 @@ const AreaDoAluno = () => {
             href="https://www.ytoacademy.com.br"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-3xl border border-blue-500/30 bg-white/5 p-8 hover:bg-blue-500/10 transition-all duration-300 shadow-2xl shadow-blue-950/30"
+            className="group rounded-3xl border border-blue-500/30 bg-white/5 p-8 transition-all duration-300 hover:-translate-y-2 hover:bg-blue-500/10 hover:shadow-2xl hover:shadow-blue-900/40"
           >
-            <div className="h-28 flex items-center justify-center mb-8">
-                          <img
-              src="/images/Logo/yto-academy-logo-transparent.png"
-              alt="Yto Academy"
-              className="h-16 object-contain mx-auto"
-            />
+            <div className="flex justify-center mb-6">
+              <img
+                src="/images/Logo/yto-academy-logo-transparent.png"
+                alt="Yto Academy"
+                className="h-24 object-contain mx-auto transition-all duration-300 group-hover:scale-110 drop-shadow-[0_0_20px_rgba(59,130,246,0.25)] group-hover:drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+              />
             </div>
 
             <h2 className="text-2xl font-bold mb-3">Yto Academy</h2>
@@ -40,20 +40,20 @@ const AreaDoAluno = () => {
               profissional.
             </p>
 
-            <div className="inline-flex items-center gap-2 text-blue-400 font-semibold">
+            <div className="inline-flex items-center gap-2 text-blue-400 font-semibold transition-all duration-300 group-hover:gap-3">
               Acessar plataforma
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </a>
 
           {/* Torii Nihon */}
-          <div className="rounded-3xl border border-purple-500/30 bg-white/5 p-8 opacity-90 shadow-2xl shadow-purple-950/20">
-            <div className="h-28 flex items-center justify-center mb-8">
+          <div className="group rounded-3xl border border-purple-500/30 bg-white/5 p-8 opacity-90 transition-all duration-300 hover:-translate-y-2 hover:bg-purple-500/10 hover:shadow-2xl hover:shadow-purple-900/40">
+            <div className="flex justify-center mb-6">
               <img
-  src="/images/Logo/torii-nihon-logo-transparent.png"
-  alt="Torii Nihon"
-  className="h-16 object-contain mx-auto"
-/>
+                src="/images/Logo/torii-nihon-logo-transparent.png"
+                alt="Torii Nihon"
+                className="h-24 object-contain mx-auto transition-all duration-300 group-hover:scale-110 drop-shadow-[0_0_20px_rgba(168,85,247,0.25)] group-hover:drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]"
+              />
             </div>
 
             <h2 className="text-2xl font-bold mb-3">Torii Nihon</h2>
