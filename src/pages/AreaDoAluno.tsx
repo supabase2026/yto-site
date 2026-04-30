@@ -2,16 +2,14 @@ import { ArrowRight, Clock } from "lucide-react";
 
 const AreaDoAluno = () => {
   return (
- <div className="absolute top-6 left-6">
-  <a
-    href="/"
-    className="text-sm text-gray-400 hover:text-white transition"
-  >
-    ← Voltar para o início
-  </a>
-</div>
-    
-    <div className="min-h-screen bg-[#020817] text-white flex items-center justify-center px-6 py-24">
+    <div className="relative min-h-screen bg-[#020817] text-white flex items-center justify-center px-6 py-24">
+      <a
+        href="/"
+        className="absolute top-6 left-6 text-sm text-gray-400 hover:text-white transition"
+      >
+        ← Voltar para o início
+      </a>
+
       <section className="w-full max-w-5xl text-center">
         <span className="inline-block mb-4 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
           Área do Aluno
@@ -27,7 +25,6 @@ const AreaDoAluno = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Yto Academy */}
           <a
             href="https://www.ytoacademy.com.br"
             target="_blank"
@@ -55,7 +52,6 @@ const AreaDoAluno = () => {
             </div>
           </a>
 
-          {/* Torii Nihon */}
           <div className="group rounded-3xl border border-purple-500/30 bg-white/5 p-8 opacity-90 transition-all duration-300 hover:-translate-y-2 hover:bg-purple-500/10 hover:shadow-2xl hover:shadow-purple-900/40">
             <div className="flex justify-center mb-6">
               <img
