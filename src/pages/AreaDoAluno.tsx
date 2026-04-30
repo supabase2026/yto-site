@@ -2,7 +2,16 @@ import { ArrowRight, Clock } from "lucide-react";
 
 const AreaDoAluno = () => {
   return (
-  <div className="min-h-screen bg-[#020817] text-white flex items-center justify-center px-6 py-24">
+ <div className="absolute top-6 left-6">
+  <a
+    href="/"
+    className="text-sm text-gray-400 hover:text-white transition"
+  >
+    ← Voltar para o início
+  </a>
+</div>
+    
+    <div className="min-h-screen bg-[#020817] text-white flex items-center justify-center px-6 py-24">
       <section className="w-full max-w-5xl text-center">
         <span className="inline-block mb-4 rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
           Área do Aluno
