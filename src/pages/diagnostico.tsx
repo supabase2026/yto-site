@@ -1,4 +1,5 @@
 // src/pages/Diagnostico.tsx
+import { supabase } from "@/lib/supabase";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
