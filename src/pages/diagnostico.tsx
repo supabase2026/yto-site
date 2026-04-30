@@ -262,6 +262,41 @@ const questions: Record<Track, Question[]> = {
 };
 
 export default function Diagnostico() {
+ const reset = () => {
+  setTrack(null);
+  setAnswers([]);
+};
+
+  const saveLead = async () => {
+  if (!track) return;
+
+  if (!leadName || !leadEmail || !leadWhatsapp) {
+    setLeadError("Preencha nome, e-mail e WhatsApp.");
+    return;
+  }
+
+  const { error } = await supabase.from("diagnostico_leads").insert([
+    {
+      nome: leadName,
+      email: leadEmail,
+      whatsapp: leadWhatsapp,
+      trilha: track,
+      pontuacao: score,
+      total_perguntas: currentQuestions.length,
+      percentual: percentage,
+      nivel: level,
+    },
+  ]);
+
+  if (error) {
+    console.error(error);
+    setLeadError("Erro ao salvar");
+    return;
+  }
+
+  setLeadSaved(true);
+};
+  
   const [track, setTrack] = useState<Track | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
 const [leadName, setLeadName] = useState("");
