@@ -386,9 +386,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
               {/* Botão Acessar a Yto Academy */}
               <a
-                href={LOGIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/area-do-aluno"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
                 style={{
                   color: 'oklch(0.82 0.18 250)',
@@ -411,7 +409,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 }}
               >
                 <LogIn className="w-3.5 h-3.5" />
-                Acessar a Yto Academy
+                Área do aluno
               </a>
 
               {/* Botão WhatsApp — verde, destaque */}
