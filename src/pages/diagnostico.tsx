@@ -1,6 +1,5 @@
 // src/pages/diagnostico.tsx
 import { useMemo, useState } from "react";
-import { supabase } from "@/lib/supabase";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -265,13 +264,6 @@ export default function Diagnostico() {
   const [track, setTrack] = useState<Track | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
 
-  const [leadName, setLeadName] = useState("");
-  const [leadEmail, setLeadEmail] = useState("");
-  const [leadWhatsapp, setLeadWhatsapp] = useState("");
-  const [leadSaved, setLeadSaved] = useState(false);
-  const [savingLead, setSavingLead] = useState(false);
-  const [leadError, setLeadError] = useState("");
-
   const currentQuestions = track ? questions[track] : [];
   const currentIndex = answers.length;
   const isFinished = Boolean(track && answers.length === currentQuestions.length);
@@ -325,48 +317,13 @@ export default function Diagnostico() {
   const reset = () => {
     setTrack(null);
     setAnswers([]);
-    setLeadName("");
-    setLeadEmail("");
-    setLeadWhatsapp("");
-    setLeadSaved(false);
-    setSavingLead(false);
-    setLeadError("");
   };
 
-  const saveLead = async () => {
-    if (!track) return;
+  const whatsappMessage = encodeURIComponent(
+    `Olá! Fiz o Diagnóstico Profissional no site do Grupo Yto Nihon e meu resultado foi: ${level} (${percentage}% de aproveitamento). Quero entender o melhor caminho para evoluir.`
+  );
 
-    if (!leadName.trim() || !leadEmail.trim() || !leadWhatsapp.trim()) {
-      setLeadError("Preencha nome, e-mail e WhatsApp para ver seu resultado.");
-      return;
-    }
-
-    setSavingLead(true);
-    setLeadError("");
-
-    const { error } = await supabase.from("diagnostico_leads").insert([
-      {
-        nome: leadName.trim(),
-        email: leadEmail.trim(),
-        whatsapp: leadWhatsapp.trim(),
-        trilha: track,
-        pontuacao: score,
-        total_perguntas: currentQuestions.length,
-        percentual: percentage,
-        nivel: level,
-      },
-    ]);
-
-    setSavingLead(false);
-
-    if (error) {
-  console.error(error);
-  setLeadError(error.message);
-  return;
-}
-
-    setLeadSaved(true);
-  };
+  const whatsappResultLink = `${WHATSAPP_LINK}?text=${whatsappMessage}`;
 
   return (
     <Layout>
@@ -471,8 +428,6 @@ export default function Diagnostico() {
                         onClick={() => {
                           setTrack(item.id);
                           setAnswers([]);
-                          setLeadSaved(false);
-                          setLeadError("");
                         }}
                         className="group rounded-2xl p-6 text-left transition-all duration-200"
                         style={{
@@ -586,87 +541,7 @@ export default function Diagnostico() {
               </div>
             )}
 
-            {track && isFinished && !leadSaved && (
-              <div className="mx-auto max-w-2xl">
-                <div className="mb-8 text-center">
-                  <span className="section-tag">Quase lá</span>
-
-                  <h2
-                    className="mt-4 text-3xl font-bold md:text-4xl"
-                    style={{
-                      color: "oklch(0.94 0.006 250)",
-                      fontFamily: "var(--font-heading)",
-                    }}
-                  >
-                    Receba seu diagnóstico profissional
-                  </h2>
-
-                  <p
-                    className="mt-4 text-sm leading-relaxed"
-                    style={{ color: "oklch(0.60 0.012 250)" }}
-                  >
-                    Preencha seus dados para liberar o resultado e descobrir o
-                    melhor caminho para sua evolução.
-                  </p>
-                </div>
-
-                <div className="grid gap-4">
-                  <input
-                    value={leadName}
-                    onChange={(e) => setLeadName(e.target.value)}
-                    placeholder="Seu nome"
-                    className="rounded-xl px-5 py-4 outline-none"
-                    style={{
-                      background: "oklch(0.13 0.028 250)",
-                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-                      color: "white",
-                    }}
-                  />
-
-                  <input
-                    value={leadEmail}
-                    onChange={(e) => setLeadEmail(e.target.value)}
-                    placeholder="Seu e-mail"
-                    type="email"
-                    className="rounded-xl px-5 py-4 outline-none"
-                    style={{
-                      background: "oklch(0.13 0.028 250)",
-                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-                      color: "white",
-                    }}
-                  />
-
-                  <input
-                    value={leadWhatsapp}
-                    onChange={(e) => setLeadWhatsapp(e.target.value)}
-                    placeholder="Seu WhatsApp"
-                    className="rounded-xl px-5 py-4 outline-none"
-                    style={{
-                      background: "oklch(0.13 0.028 250)",
-                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-                      color: "white",
-                    }}
-                  />
-                </div>
-
-                {leadError && (
-                  <p className="mt-4 text-sm" style={{ color: "#ff8a8a" }}>
-                    {leadError}
-                  </p>
-                )}
-
-                <button
-                  onClick={saveLead}
-                  disabled={savingLead}
-                  className="btn-primary mt-6 w-full justify-center"
-                >
-                  {savingLead ? "Salvando..." : "Ver meu resultado"}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            )}
-
-            {track && isFinished && leadSaved && (
+            {track && isFinished && (
               <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-center">
                 <div>
                   <div
@@ -734,13 +609,13 @@ export default function Diagnostico() {
                     </Link>
 
                     <a
-                      href={WHATSAPP_LINK}
+                      href={whatsappResultLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-ghost"
                     >
                       <MessageCircle className="h-4 w-4" />
-                      Falar com especialista
+                      Chamar no WhatsApp
                     </a>
                   </div>
 
