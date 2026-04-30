@@ -118,9 +118,7 @@ const App = () => (
 import { Layout } from "./components/Layout";
 
 <Route path="/area-do-aluno" element={<AreaDoAluno />} />
-   
-  }
-/>
+  
           
         </Routes>
       </BrowserRouter>
