@@ -70,7 +70,7 @@ const AreaDoAluno = () => {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 
