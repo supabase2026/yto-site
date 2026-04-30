@@ -369,96 +369,51 @@ export default function Home() {
 {/* ══════════════════════════════════════════════
     ESCOLHA SEU CAMINHO
 ══════════════════════════════════════════════ */}
-<Link
-  to="/curso-excel-barueri"
-  className="group rounded-2xl p-6 transition-all duration-200"
-  style={{
-    background: 'oklch(0.12 0.028 250)',
-    border: '1px solid oklch(0.25 0.035 250 / 0.50)',
-  }}
->
-  <h3 className="text-xl font-bold mb-3">
-    Curso de Excel em Barueri
-  </h3>
+<section className="py-20 bg-[#050B18] text-white">
+  <div className="max-w-7xl mx-auto px-6 text-center">
+    <span className="text-blue-400 font-semibold uppercase tracking-wide">
+      Monte sua Jornada
+    </span>
 
-  <p className="text-sm mb-5">
-    Aprenda Excel com foco no mercado em Alphaville e região.
-  </p>
+    <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-6">
+      Escolha o caminho ideal para sua evolução profissional
+    </h2>
 
-  <span className="text-sm font-semibold">
-    Ver detalhes →
-  </span>
-</Link>
-      <section className="section-pad" style={{ background: 'oklch(0.09 0.022 250)' }}>
-  <div className="container-xl">
-    <motion.div
-      className="text-center mb-14"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-    >
-      <span className="section-tag">Escolha seu caminho</span>
-      <h2 className="section-headline mb-4">
-        Encontre a solução ideal<br />
-        <span className="text-gradient-static">para o seu momento</span>
-      </h2>
-      <p className="section-subline mx-auto">
-        Seja para estudar no seu ritmo, fazer uma pós-graduação, capacitar sua equipe ou entrar na área de dados, temos um caminho claro para você.
-      </p>
-    </motion.div>
+    <p className="text-gray-300 max-w-3xl mx-auto mb-12">
+      No Grupo Yto Nihon, você pode começar do básico, avançar para análise de dados,
+      desenvolver habilidades corporativas ou preparar sua equipe com treinamentos sob medida.
+    </p>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-      {[
-        {
-          title: 'Yto Academy',
-          text: 'Cursos online para estudar no seu ritmo e evoluir em Excel, Power BI, SQL, Python e tecnologia.',
-          link: '/yto-academy',
-          cta: 'Conhecer Academy',
-        },
-        {
-          title: 'Pós-graduação',
-          text: 'Gestão Estratégica de Dados para quem quer liderar projetos, decisões e carreiras orientadas por dados.',
-          link: '/pos-graduacao-dados',
-          cta: 'Ver Pós',
-        },
-        {
-          title: 'Empresas',
-          text: 'Treinamentos corporativos sob medida em Excel, Power BI, SQL, IA e MS Project para equipes.',
-          link: '/treinamento-corporativo',
-          cta: 'Treinar equipe',
-        },
-        {
-          title: 'Data Analytics',
-          text: 'Formação prática para quem deseja iniciar ou acelerar sua carreira na área de análise de dados.',
-          link: '/formacao-data-analytics',
-          cta: 'Ver formação',
-        },
-      ].map((item) => (
-        <Link
-          key={item.title}
-          to={item.link}
-          className="group rounded-2xl p-6 transition-all duration-200"
-          style={{
-            background: 'oklch(0.12 0.028 250)',
-            border: '1px solid oklch(0.25 0.035 250 / 0.50)',
-          }}
-        >
-          <h3
-            className="text-xl font-bold mb-3"
-            style={{ color: 'oklch(0.93 0.006 250)', fontFamily: 'var(--font-heading)' }}
-          >
-            {item.title}
-          </h3>
-          <p className="text-sm leading-relaxed mb-5" style={{ color: 'oklch(0.58 0.010 250)' }}>
-            {item.text}
-          </p>
-          <span className="inline-flex items-center gap-2 text-sm font-semibold" style={{ color: 'oklch(0.65 0.18 250)' }}>
-            {item.cta}
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </span>
-        </Link>
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left">
+        <h3 className="text-xl font-bold mb-3">Quero começar do zero</h3>
+        <p className="text-gray-300 mb-5">
+          Ideal para quem precisa aprender Excel, Power BI, lógica, dados e ferramentas essenciais.
+        </p>
+        <a href="/yto-academy" className="text-blue-400 font-semibold">
+          Conhecer a Yto Academy →
+        </a>
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left">
+        <h3 className="text-xl font-bold mb-3">Quero entrar na área de dados</h3>
+        <p className="text-gray-300 mb-5">
+          Uma jornada prática para desenvolver habilidades em Excel, Power BI, SQL, Python e análise de dados.
+        </p>
+        <a href="/data-analytics" className="text-blue-400 font-semibold">
+          Ver Formação Data Analytics →
+        </a>
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left">
+        <h3 className="text-xl font-bold mb-3">Quero treinar minha empresa</h3>
+        <p className="text-gray-300 mb-5">
+          Treinamentos corporativos ao vivo, presenciais ou online, personalizados para equipes.
+        </p>
+        <a href="/para-empresas" className="text-blue-400 font-semibold">
+          Solicitar proposta →
+        </a>
+      </div>
     </div>
   </div>
 </section>
