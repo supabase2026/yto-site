@@ -27,7 +27,7 @@ const AreaDoAluno = () => {
           >
             <div className="h-28 flex items-center justify-center mb-8">
               <img
-                src="/images/Logos/yto-academy-logo.png"
+                src="/images/Logo/yto-academy-logo.png"
                 alt="Yto Academy"
                 className="max-h-24 max-w-full object-contain"
               />
@@ -50,7 +50,7 @@ const AreaDoAluno = () => {
           <div className="rounded-3xl border border-purple-500/30 bg-white/5 p-8 opacity-90 shadow-2xl shadow-purple-950/20">
             <div className="h-28 flex items-center justify-center mb-8">
               <img
-                src="/images/Logos/torii-nihon-logo.png"
+                src="/images/Logo/torii-nihon-logo.png"
                 alt="Torii Nihon"
                 className="max-h-24 max-w-full object-contain"
               />
