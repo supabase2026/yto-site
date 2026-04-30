@@ -1,4 +1,4 @@
-import Diagnostico from "./pages/Diagnostico";
+import Diagnostico from "./pages/diagnostico";
 import AreaDoAluno from "./pages/AreaDoAluno";
 import CursoMSProject from "./pages/curso-ms-project";
 import CursoMSProjectAlphaville from "./pages/curso-ms-project-alphaville";
