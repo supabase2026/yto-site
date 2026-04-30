@@ -1,4 +1,4 @@
-// src/pages/Diagnostico.tsx
+// src/pages/diagnostico.tsx
 import { useMemo, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Link } from "react-router-dom";
@@ -262,52 +262,19 @@ const questions: Record<Track, Question[]> = {
 };
 
 export default function Diagnostico() {
- const reset = () => {
-  setTrack(null);
-  setAnswers([]);
-};
-
-  const saveLead = async () => {
-  if (!track) return;
-
-  if (!leadName || !leadEmail || !leadWhatsapp) {
-    setLeadError("Preencha nome, e-mail e WhatsApp.");
-    return;
-  }
-
-  const { error } = await supabase.from("diagnostico_leads").insert([
-    {
-      nome: leadName,
-      email: leadEmail,
-      whatsapp: leadWhatsapp,
-      trilha: track,
-      pontuacao: score,
-      total_perguntas: currentQuestions.length,
-      percentual: percentage,
-      nivel: level,
-    },
-  ]);
-
-  if (error) {
-    console.error(error);
-    setLeadError("Erro ao salvar");
-    return;
-  }
-
-  setLeadSaved(true);
-};
-  
   const [track, setTrack] = useState<Track | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
-const [leadName, setLeadName] = useState("");
-const [leadEmail, setLeadEmail] = useState("");
-const [leadWhatsapp, setLeadWhatsapp] = useState("");
-const [leadSaved, setLeadSaved] = useState(false);
-const [savingLead, setSavingLead] = useState(false);
-const [leadError, setLeadError] = useState("");
+
+  const [leadName, setLeadName] = useState("");
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadWhatsapp, setLeadWhatsapp] = useState("");
+  const [leadSaved, setLeadSaved] = useState(false);
+  const [savingLead, setSavingLead] = useState(false);
+  const [leadError, setLeadError] = useState("");
+
   const currentQuestions = track ? questions[track] : [];
   const currentIndex = answers.length;
-  const isFinished = track && answers.length === currentQuestions.length;
+  const isFinished = Boolean(track && answers.length === currentQuestions.length);
 
   const score = useMemo(() => {
     if (!track) return 0;
@@ -317,7 +284,10 @@ const [leadError, setLeadError] = useState("");
     }, 0);
   }, [answers, track]);
 
-  const percentage = track ? Math.round((score / currentQuestions.length) * 100) : 0;
+  const percentage =
+    track && currentQuestions.length > 0
+      ? Math.round((score / currentQuestions.length) * 100)
+      : 0;
 
   const level = useMemo(() => {
     if (percentage <= 40) return "Iniciante";
@@ -355,6 +325,47 @@ const [leadError, setLeadError] = useState("");
   const reset = () => {
     setTrack(null);
     setAnswers([]);
+    setLeadName("");
+    setLeadEmail("");
+    setLeadWhatsapp("");
+    setLeadSaved(false);
+    setSavingLead(false);
+    setLeadError("");
+  };
+
+  const saveLead = async () => {
+    if (!track) return;
+
+    if (!leadName.trim() || !leadEmail.trim() || !leadWhatsapp.trim()) {
+      setLeadError("Preencha nome, e-mail e WhatsApp para ver seu resultado.");
+      return;
+    }
+
+    setSavingLead(true);
+    setLeadError("");
+
+    const { error } = await supabase.from("diagnostico_leads").insert([
+      {
+        nome: leadName.trim(),
+        email: leadEmail.trim(),
+        whatsapp: leadWhatsapp.trim(),
+        trilha: track,
+        pontuacao: score,
+        total_perguntas: currentQuestions.length,
+        percentual: percentage,
+        nivel: level,
+      },
+    ]);
+
+    setSavingLead(false);
+
+    if (error) {
+      console.error(error);
+      setLeadError("Erro ao salvar. Tente novamente.");
+      return;
+    }
+
+    setLeadSaved(true);
   };
 
   return (
@@ -393,15 +404,17 @@ const [leadError, setLeadError] = useState("");
               }}
             >
               Descubra seu nível em{" "}
-              <span className="text-gradient-static">Excel, Power BI e Dados</span>
+              <span className="text-gradient-static">
+                Excel, Power BI e Dados
+              </span>
             </h1>
 
             <p
               className="mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
               style={{ color: "oklch(0.62 0.012 250)" }}
             >
-              Responda algumas perguntas rápidas e receba uma recomendação de caminho
-              para evoluir com mais clareza.
+              Responda algumas perguntas rápidas e receba uma recomendação de
+              caminho para evoluir com mais clareza.
             </p>
           </motion.div>
 
@@ -417,7 +430,8 @@ const [leadError, setLeadError] = useState("");
             {!track && (
               <div>
                 <div className="mb-8 text-center">
-                  <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl"
+                  <div
+                    className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl"
                     style={{
                       background: "oklch(0.56 0.23 250 / 0.14)",
                       border: "1px solid oklch(0.56 0.23 250 / 0.35)",
@@ -429,38 +443,6 @@ const [leadError, setLeadError] = useState("");
                     />
                   </div>
 
-{track && !isFinished && (
-  <div>
-    <div className="mb-8">
-      <span className="section-tag">
-        Pergunta {currentIndex + 1} de {currentQuestions.length}
-      </span>
-
-      <h2 className="mt-4 text-2xl font-bold">
-        {currentQuestions[currentIndex].question}
-      </h2>
-    </div>
-
-    <div className="grid gap-3">
-      {currentQuestions[currentIndex].options.map((option, index) => (
-        <button
-          key={option}
-          onClick={() => setAnswers([...answers, index])}
-          className="rounded-xl p-4 text-left"
-          style={{
-            background: "oklch(0.13 0.028 250)",
-            border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-            color: "white",
-          }}
-        >
-          {option}
-        </button>
-      ))}
-    </div>
-  </div>
-)}
-
-                  
                   <h2
                     className="text-2xl font-bold md:text-3xl"
                     style={{
@@ -471,7 +453,10 @@ const [leadError, setLeadError] = useState("");
                     Qual área você quer avaliar?
                   </h2>
 
-                  <p className="mt-3 text-sm" style={{ color: "oklch(0.55 0.010 250)" }}>
+                  <p
+                    className="mt-3 text-sm"
+                    style={{ color: "oklch(0.55 0.010 250)" }}
+                  >
                     Escolha uma trilha para começar seu diagnóstico.
                   </p>
                 </div>
@@ -483,7 +468,12 @@ const [leadError, setLeadError] = useState("");
                     return (
                       <button
                         key={item.id}
-                        onClick={() => setTrack(item.id)}
+                        onClick={() => {
+                          setTrack(item.id);
+                          setAnswers([]);
+                          setLeadSaved(false);
+                          setLeadError("");
+                        }}
                         className="group rounded-2xl p-6 text-left transition-all duration-200"
                         style={{
                           background: "oklch(0.14 0.030 250)",
@@ -517,7 +507,10 @@ const [leadError, setLeadError] = useState("");
                           {item.title}
                         </h3>
 
-                        <p className="text-sm leading-relaxed" style={{ color: "oklch(0.58 0.010 250)" }}>
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{ color: "oklch(0.58 0.010 250)" }}
+                        >
                           {item.subtitle}
                         </p>
                       </button>
@@ -525,83 +518,155 @@ const [leadError, setLeadError] = useState("");
                   })}
                 </div>
               </div>
-            )}{track && isFinished && !leadSaved && (
-  <div className="mx-auto max-w-2xl">
-    <div className="mb-8 text-center">
-      <span className="section-tag">Quase lá</span>
+            )}
 
-      <h2
-        className="mt-4 text-3xl font-bold md:text-4xl"
-        style={{
-          color: "oklch(0.94 0.006 250)",
-          fontFamily: "var(--font-heading)",
-        }}
-      >
-        Receba seu diagnóstico profissional
-      </h2>
+            {track && !isFinished && (
+              <div>
+                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <span className="section-tag">
+                      Pergunta {currentIndex + 1} de {currentQuestions.length}
+                    </span>
 
-      <p className="mt-4 text-sm leading-relaxed" style={{ color: "oklch(0.60 0.012 250)" }}>
-        Preencha seus dados para liberar o resultado e descobrir o melhor caminho para sua evolução.
-      </p>
-    </div>
+                    <h2
+                      className="mt-4 text-2xl font-bold md:text-3xl"
+                      style={{
+                        color: "oklch(0.94 0.006 250)",
+                        fontFamily: "var(--font-heading)",
+                      }}
+                    >
+                      {currentQuestions[currentIndex].question}
+                    </h2>
+                  </div>
 
-    <div className="grid gap-4">
-      <input
-        value={leadName}
-        onChange={(e) => setLeadName(e.target.value)}
-        placeholder="Seu nome"
-        className="rounded-xl px-5 py-4 outline-none"
-        style={{
-          background: "oklch(0.13 0.028 250)",
-          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-          color: "white",
-        }}
-      />
+                  <button
+                    onClick={reset}
+                    className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold"
+                    style={{
+                      color: "oklch(0.62 0.014 250)",
+                      border: "1px solid oklch(0.26 0.036 250 / 0.60)",
+                    }}
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                    Reiniciar
+                  </button>
+                </div>
 
-      <input
-        value={leadEmail}
-        onChange={(e) => setLeadEmail(e.target.value)}
-        placeholder="Seu e-mail"
-        type="email"
-        className="rounded-xl px-5 py-4 outline-none"
-        style={{
-          background: "oklch(0.13 0.028 250)",
-          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-          color: "white",
-        }}
-      />
+                <div
+                  className="mb-8 h-2 overflow-hidden rounded-full"
+                  style={{ background: "oklch(0.18 0.030 250)" }}
+                >
+                  <div
+                    className="h-full rounded-full transition-all duration-300"
+                    style={{
+                      width: `${(currentIndex / currentQuestions.length) * 100}%`,
+                      background: "oklch(0.56 0.23 250)",
+                    }}
+                  />
+                </div>
 
-      <input
-        value={leadWhatsapp}
-        onChange={(e) => setLeadWhatsapp(e.target.value)}
-        placeholder="Seu WhatsApp"
-        className="rounded-xl px-5 py-4 outline-none"
-        style={{
-          background: "oklch(0.13 0.028 250)",
-          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
-          color: "white",
-        }}
-      />
-    </div>
+                <div className="grid gap-3">
+                  {currentQuestions[currentIndex].options.map(
+                    (option, index) => (
+                      <button
+                        key={option}
+                        onClick={() => setAnswers([...answers, index])}
+                        className="rounded-2xl p-5 text-left text-sm font-medium transition-all duration-200 hover:translate-x-1"
+                        style={{
+                          background: "oklch(0.13 0.028 250)",
+                          border: "1px solid oklch(0.26 0.036 250 / 0.60)",
+                          color: "oklch(0.82 0.008 250)",
+                        }}
+                      >
+                        {String.fromCharCode(65 + index)}) {option}
+                      </button>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
 
-    {leadError && (
-      <p className="mt-4 text-sm" style={{ color: "#ff8a8a" }}>
-        {leadError}
-      </p>
-    )}
+            {track && isFinished && !leadSaved && (
+              <div className="mx-auto max-w-2xl">
+                <div className="mb-8 text-center">
+                  <span className="section-tag">Quase lá</span>
 
-    <button
-      onClick={saveLead}
-      disabled={savingLead}
-      className="btn-primary mt-6 w-full justify-center"
-    >
-      {savingLead ? "Salvando..." : "Ver meu resultado"}
-      <ArrowRight className="h-4 w-4" />
-    </button>
-  </div>
-)}
+                  <h2
+                    className="mt-4 text-3xl font-bold md:text-4xl"
+                    style={{
+                      color: "oklch(0.94 0.006 250)",
+                      fontFamily: "var(--font-heading)",
+                    }}
+                  >
+                    Receba seu diagnóstico profissional
+                  </h2>
 
-{track && isFinished && leadSaved && (
+                  <p
+                    className="mt-4 text-sm leading-relaxed"
+                    style={{ color: "oklch(0.60 0.012 250)" }}
+                  >
+                    Preencha seus dados para liberar o resultado e descobrir o
+                    melhor caminho para sua evolução.
+                  </p>
+                </div>
+
+                <div className="grid gap-4">
+                  <input
+                    value={leadName}
+                    onChange={(e) => setLeadName(e.target.value)}
+                    placeholder="Seu nome"
+                    className="rounded-xl px-5 py-4 outline-none"
+                    style={{
+                      background: "oklch(0.13 0.028 250)",
+                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+                      color: "white",
+                    }}
+                  />
+
+                  <input
+                    value={leadEmail}
+                    onChange={(e) => setLeadEmail(e.target.value)}
+                    placeholder="Seu e-mail"
+                    type="email"
+                    className="rounded-xl px-5 py-4 outline-none"
+                    style={{
+                      background: "oklch(0.13 0.028 250)",
+                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+                      color: "white",
+                    }}
+                  />
+
+                  <input
+                    value={leadWhatsapp}
+                    onChange={(e) => setLeadWhatsapp(e.target.value)}
+                    placeholder="Seu WhatsApp"
+                    className="rounded-xl px-5 py-4 outline-none"
+                    style={{
+                      background: "oklch(0.13 0.028 250)",
+                      border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+                      color: "white",
+                    }}
+                  />
+                </div>
+
+                {leadError && (
+                  <p className="mt-4 text-sm" style={{ color: "#ff8a8a" }}>
+                    {leadError}
+                  </p>
+                )}
+
+                <button
+                  onClick={saveLead}
+                  disabled={savingLead}
+                  className="btn-primary mt-6 w-full justify-center"
+                >
+                  {savingLead ? "Salvando..." : "Ver meu resultado"}
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+
+            {track && isFinished && leadSaved && (
               <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-center">
                 <div>
                   <div
@@ -611,7 +676,10 @@ const [leadError, setLeadError] = useState("");
                       border: "1px solid oklch(0.56 0.23 250 / 0.35)",
                     }}
                   >
-                    <Gauge className="h-8 w-8" style={{ color: "oklch(0.72 0.20 250)" }} />
+                    <Gauge
+                      className="h-8 w-8"
+                      style={{ color: "oklch(0.72 0.20 250)" }}
+                    />
                   </div>
 
                   <span className="section-tag">Resultado do diagnóstico</span>
@@ -627,10 +695,14 @@ const [leadError, setLeadError] = useState("");
                     <span className="text-gradient-static">{level}</span>
                   </h2>
 
-                  <p className="mt-5 max-w-2xl leading-relaxed" style={{ color: "oklch(0.60 0.012 250)" }}>
+                  <p
+                    className="mt-5 max-w-2xl leading-relaxed"
+                    style={{ color: "oklch(0.60 0.012 250)" }}
+                  >
                     Você acertou <strong>{score}</strong> de{" "}
-                    <strong>{currentQuestions.length}</strong> perguntas. Esse diagnóstico
-                    não define seu limite, mas mostra o próximo degrau da sua evolução.
+                    <strong>{currentQuestions.length}</strong> perguntas. Esse
+                    diagnóstico não define seu limite, mas mostra o próximo
+                    degrau da sua evolução.
                   </p>
 
                   <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -645,7 +717,10 @@ const [leadError, setLeadError] = useState("");
                           className="h-4 w-4"
                           style={{ color: "oklch(0.62 0.20 250)" }}
                         />
-                        <span className="text-sm" style={{ color: "oklch(0.62 0.012 250)" }}>
+                        <span
+                          className="text-sm"
+                          style={{ color: "oklch(0.62 0.012 250)" }}
+                        >
                           {item}
                         </span>
                       </div>
@@ -691,6 +766,7 @@ const [leadError, setLeadError] = useState("");
                       className="h-6 w-6"
                       style={{ color: "oklch(0.70 0.18 250)" }}
                     />
+
                     <h3
                       className="text-xl font-bold"
                       style={{
@@ -702,7 +778,10 @@ const [leadError, setLeadError] = useState("");
                     </h3>
                   </div>
 
-                  <p className="mb-6 text-sm leading-relaxed" style={{ color: "oklch(0.58 0.010 250)" }}>
+                  <p
+                    className="mb-6 text-sm leading-relaxed"
+                    style={{ color: "oklch(0.58 0.010 250)" }}
+                  >
                     {recommendation.text}
                   </p>
 
@@ -713,7 +792,10 @@ const [leadError, setLeadError] = useState("");
                       border: "1px solid oklch(0.25 0.035 250 / 0.55)",
                     }}
                   >
-                    <p className="text-sm" style={{ color: "oklch(0.58 0.010 250)" }}>
+                    <p
+                      className="text-sm"
+                      style={{ color: "oklch(0.58 0.010 250)" }}
+                    >
                       Aproveitamento
                     </p>
 
