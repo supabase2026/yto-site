@@ -26,11 +26,11 @@ const AreaDoAluno = () => {
             className="group rounded-3xl border border-blue-500/30 bg-white/5 p-8 hover:bg-blue-500/10 transition-all duration-300 shadow-2xl shadow-blue-950/30"
           >
             <div className="h-28 flex items-center justify-center mb-8">
-              <img
-                src="/images/Logo/yto-academy-logo.png"
-                alt="Yto Academy"
-                className="max-h-24 max-w-full object-contain"
-              />
+                          <img
+              src="/images/Logo/yto-academy-logo-transparent.png"
+              alt="Yto Academy"
+              className="h-16 object-contain mx-auto"
+            />
             </div>
 
             <h2 className="text-2xl font-bold mb-3">Yto Academy</h2>
@@ -50,10 +50,10 @@ const AreaDoAluno = () => {
           <div className="rounded-3xl border border-purple-500/30 bg-white/5 p-8 opacity-90 shadow-2xl shadow-purple-950/20">
             <div className="h-28 flex items-center justify-center mb-8">
               <img
-                src="/images/Logo/torii-nihon-logo.png"
-                alt="Torii Nihon"
-                className="max-h-24 max-w-full object-contain"
-              />
+  src="/images/Logo/torii-nihon-logo-transparent.png"
+  alt="Torii Nihon"
+  className="h-16 object-contain mx-auto"
+/>
             </div>
 
             <h2 className="text-2xl font-bold mb-3">Torii Nihon</h2>
