@@ -1,4 +1,5 @@
 // src/pages/Diagnostico.tsx
+import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -264,7 +265,12 @@ const questions: Record<Track, Question[]> = {
 export default function Diagnostico() {
   const [track, setTrack] = useState<Track | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
-
+const [leadName, setLeadName] = useState("");
+const [leadEmail, setLeadEmail] = useState("");
+const [leadWhatsapp, setLeadWhatsapp] = useState("");
+const [leadSaved, setLeadSaved] = useState(false);
+const [savingLead, setSavingLead] = useState(false);
+const [leadError, setLeadError] = useState("");
   const currentQuestions = track ? questions[track] : [];
   const currentIndex = answers.length;
   const isFinished = track && answers.length === currentQuestions.length;
@@ -453,70 +459,83 @@ export default function Diagnostico() {
                   })}
                 </div>
               </div>
-            )}
+            )}{track && isFinished && !leadSaved && (
+  <div className="mx-auto max-w-2xl">
+    <div className="mb-8 text-center">
+      <span className="section-tag">Quase lá</span>
 
-            {track && !isFinished && (
-              <div>
-                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <span className="section-tag">
-                      Pergunta {currentIndex + 1} de {currentQuestions.length}
-                    </span>
+      <h2
+        className="mt-4 text-3xl font-bold md:text-4xl"
+        style={{
+          color: "oklch(0.94 0.006 250)",
+          fontFamily: "var(--font-heading)",
+        }}
+      >
+        Receba seu diagnóstico profissional
+      </h2>
 
-                    <h2
-                      className="mt-4 text-2xl font-bold md:text-3xl"
-                      style={{
-                        color: "oklch(0.94 0.006 250)",
-                        fontFamily: "var(--font-heading)",
-                      }}
-                    >
-                      {currentQuestions[currentIndex].question}
-                    </h2>
-                  </div>
+      <p className="mt-4 text-sm leading-relaxed" style={{ color: "oklch(0.60 0.012 250)" }}>
+        Preencha seus dados para liberar o resultado e descobrir o melhor caminho para sua evolução.
+      </p>
+    </div>
 
-                  <button
-                    onClick={reset}
-                    className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold"
-                    style={{
-                      color: "oklch(0.62 0.014 250)",
-                      border: "1px solid oklch(0.26 0.036 250 / 0.60)",
-                    }}
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                    Reiniciar
-                  </button>
-                </div>
+    <div className="grid gap-4">
+      <input
+        value={leadName}
+        onChange={(e) => setLeadName(e.target.value)}
+        placeholder="Seu nome"
+        className="rounded-xl px-5 py-4 outline-none"
+        style={{
+          background: "oklch(0.13 0.028 250)",
+          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+          color: "white",
+        }}
+      />
 
-                <div className="mb-8 h-2 overflow-hidden rounded-full" style={{ background: "oklch(0.18 0.030 250)" }}>
-                  <div
-                    className="h-full rounded-full transition-all duration-300"
-                    style={{
-                      width: `${(currentIndex / currentQuestions.length) * 100}%`,
-                      background: "oklch(0.56 0.23 250)",
-                    }}
-                  />
-                </div>
+      <input
+        value={leadEmail}
+        onChange={(e) => setLeadEmail(e.target.value)}
+        placeholder="Seu e-mail"
+        type="email"
+        className="rounded-xl px-5 py-4 outline-none"
+        style={{
+          background: "oklch(0.13 0.028 250)",
+          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+          color: "white",
+        }}
+      />
 
-                <div className="grid gap-3">
-                  {currentQuestions[currentIndex].options.map((option, index) => (
-                    <button
-                      key={option}
-                      onClick={() => setAnswers([...answers, index])}
-                      className="rounded-2xl p-5 text-left text-sm font-medium transition-all duration-200 hover:translate-x-1"
-                      style={{
-                        background: "oklch(0.13 0.028 250)",
-                        border: "1px solid oklch(0.26 0.036 250 / 0.60)",
-                        color: "oklch(0.82 0.008 250)",
-                      }}
-                    >
-                      {String.fromCharCode(65 + index)}) {option}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+      <input
+        value={leadWhatsapp}
+        onChange={(e) => setLeadWhatsapp(e.target.value)}
+        placeholder="Seu WhatsApp"
+        className="rounded-xl px-5 py-4 outline-none"
+        style={{
+          background: "oklch(0.13 0.028 250)",
+          border: "1px solid oklch(0.28 0.038 250 / 0.60)",
+          color: "white",
+        }}
+      />
+    </div>
 
-            {track && isFinished && (
+    {leadError && (
+      <p className="mt-4 text-sm" style={{ color: "#ff8a8a" }}>
+        {leadError}
+      </p>
+    )}
+
+    <button
+      onClick={saveLead}
+      disabled={savingLead}
+      className="btn-primary mt-6 w-full justify-center"
+    >
+      {savingLead ? "Salvando..." : "Ver meu resultado"}
+      <ArrowRight className="h-4 w-4" />
+    </button>
+  </div>
+)}
+
+{track && isFinished && leadSaved && (
               <div className="grid gap-8 lg:grid-cols-[1fr_380px] lg:items-center">
                 <div>
                   <div
