@@ -110,14 +110,11 @@ const App = () => (
   element={<CursoPowerBIBarueriRegiao />}
 />
 
-          <Route path="/cursos-em-barueri" element={<CursosEmBarueri />} />
-          <Route path="/curso-ms-project-barueri" element={<CursoMSProjectBarueri />} />
-  <Route path="/curso-ms-project-alphaville" element={<CursoMSProjectAlphaville />} />
-
-<Route path="/curso-ms-project" element={<CursoMSProject />} />
-import { Layout } from "./components/Layout";
-
-<Route path="/area-do-aluno" element={<AreaDoAluno />} />
+                   <Route path="/curso-ms-project-barueri" element={<CursoMSProjectBarueri />} />
+          <Route path="/curso-ms-project-alphaville" element={<CursoMSProjectAlphaville />} />
+          <Route path="/curso-ms-project" element={<CursoMSProject />} />
+          <Route path="/area-do-aluno" element={<AreaDoAluno />} />
+        </Routes>
   
           
         </Routes>
