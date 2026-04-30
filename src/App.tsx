@@ -115,7 +115,16 @@ const App = () => (
   <Route path="/curso-ms-project-alphaville" element={<CursoMSProjectAlphaville />} />
 
 <Route path="/curso-ms-project" element={<CursoMSProject />} />
-<Route path="/area-do-aluno" element={<AreaDoAluno />} />
+import { Layout } from "./components/Layout";
+
+<Route
+  path="/area-do-aluno"
+  element={
+    <Layout>
+      <AreaDoAluno />
+    </Layout>
+  }
+/>
           
         </Routes>
       </BrowserRouter>
